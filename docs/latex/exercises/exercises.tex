@@ -1,11 +1,17 @@
+\makeatletter
+\def\input@path{{../template/2024_I/}}
+\makeatother
+
 \documentclass{LnxClase}
 \usepackage{Lnx} % Paquete Lnx
-\usepackage{tcolorbox}
 \SetLnxLogo{img/logo_dark_edit.png} % cambiar  el logo
-
+\definecolor{LnxRedD}{HTML}{ff6079}
 \begin{document} 
 	\SetLnxColors{LnxblackF}{white}   % fondo y tex color default
-	\SetLnxRptaColors{LnxblackF}{red} %AA
+	\SetLnxRptaColors{LnxblackF}{LnxRedD} %AA
 	
-	\input{integrals/Int_001.tex} 
+	%\input{calculus/Pro_001.tex} 
+	%\newpage
+	\input{calculus/Pro_002.tex} 
+
 \end{document}

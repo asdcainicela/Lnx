@@ -1,7 +1,7 @@
-\LnxPregunta{Calcular la integral,
+\LnxPregunta{Calcule la siguiente  integral,\\
 	\[
-	I = \int  \left( \prod_{i=0}^{m}\frac{i+1}{x-i}\right) \ dx  
-	\]
+	 \int  \left( \prod_{i=0}^{m}\frac{i+1}{x-i}\right) \dd{x}  
+	\] 
 }
 
 \LnxSolucion{Solución}{
@@ -21,27 +21,29 @@
 	\prod_{i=0}^{m} \left(\dfrac{1}{x-i}\right) = \sum_{i=0}^{m} \dfrac{A_i}{x-i}
 	\]
 	
-	 Además \( A_i \) se puede escribir como, 
+	 Además, \( A_i \) se puede escribir como, 
 	
 	\[
 	A_i =   \prod_{\substack{j=0 \\ j\neq i}}^{m} \frac{1}{i-j}
 	\]
 	
-	Entonces,
+	Sea $I$ la integral,
 	
 	\[
-	I = (m+1)! \int \left( \sum_{i=0}^{m} \dfrac{A_i}{x-i} \right) dx
+	I = (m+1)! \int \left( \sum_{i=0}^{m} \dfrac{A_i}{x-i} \right) \dd{x}  
 	\]
+	\newpage
+	Entonces,
 	
 	\[
 	I = (m+1)! \sum_{i=0}^{m} A_i \int \frac{dx}{x-i}
 	\]
-	\newpage
+	
 	
 	Sabemos que, 
 	
 	\[
-	\int \frac{dx}{x-n} = \ln |x-n| + C
+	\int \frac{\dd{x}  }{x-n} = \ln |x-n| + C
 	\]
 	 
 	\[
@@ -49,7 +51,7 @@
 	\]
 }
 
-Por lo tanto $I$ es,
+Reemplazando $A_i $ en $I$  tenemos,
 \begin{LnxRptaBox}
 	\[
 	I = (m+1)! \sum_{i=0}^{m} \left( \prod_{\substack{j=0 \\ j\neq i}}^{m} \frac{1}{i-j}\right) 
