@@ -7,7 +7,12 @@
 \RequirePackage{ifthen}     % Evaluar si una variable est\'a vac\'ia
 \RequirePackage{xcolor}     % Manejo de colores
 \RequirePackage{setspace}   % Espaciado
+\RequirePackage{afterpage}  % Asegura que afterpage está disponible
 \RequirePackage{tcolorbox}  % Cuadros de texto y ecuaciones
+\RequirePackage{tikz}
+\RequirePackage{geometry}
+\RequirePackage{etoolbox} % Para \AtEndDocument
+\usetikzlibrary{shapes, backgrounds}
 
 % ----------------- Configuraci\'on de P\'agina -----------------
 % Definir un nuevo estilo de p\'agina sin pie de p\'agina
@@ -112,7 +117,7 @@
 
 % ----------------- Estilos Generales -----------------
 \doublespacing
-\renewcommand{\normalsize}{\fontsize{20}{24}\selectfont} % Tama\~no de letra predeterminado
+\renewcommand{\normalsize}{\fontsize{19}{24}\selectfont} % Tama\~no de letra predeterminado
 
 % ----------------- Comandos Personalizados -----------------
 \newcommand{\LnxTitulo}[1]{\begin{center}\fontsize{32}{28}\selectfont\textbf{#1}\end{center}}
@@ -147,10 +152,35 @@
 \newtcolorbox{LnxRptaBox}{
 	colback=LnxRptaBg,  % Color de fondo
 	coltext=LnxRptaFg,  % Color del texto
-	boxrule=0pt,      % Sin borde
-	sharp corners,    % Esquinas sin redondear
+	%boxrule=0pt,      % Sin borde
+	%sharp corners,    % Esquinas sin redondear
 	width=\linewidth, % Ancho total
+	arc=5pt,            % Esquinas redondeadas (puedes aumentar el valor)
 }
+%/////////---------------- DEFINICION
+% Definir contador para proposiciones
+
+\newtcolorbox[auto counter, number within=section]{definicion}{
+	colframe=red!15!black, 
+	coltext=white,
+	colback=LnxblackE!100, 
+	coltitle=white,
+	%	fonttitle=\bfseries,
+	title=Definición
+}
+%/////////---------------- proposicion
+\newcounter{proposicion}
+\setcounter{proposicion}{1} % Asegurar que empieza en 1
+
+\newtcolorbox{proposicion}{
+	colframe=LnxblackA, 
+	coltext=white,
+	colback=LnxblackE!100, 
+	coltitle=white,
+	%	fonttitle=\bfseries,
+	title=Proposición~\theproposicion, % Título con numeración
+	 before upper={\refstepcounter{proposicion}} % Asegurar numeración correcta
+	}
 
 % ----------------- Entorno para Preguntas -----------------
 \newcommand{\LnxPregunta}[2]{%
@@ -173,5 +203,50 @@
 	\onehalfspacing 
 	{#2}
 }
+
+
+%---------solucion-------- texto colorido
+\newcommand{\solucion}[1]{%
+	\noindent
+	\begin{tikzpicture}
+		\node[
+		draw=none,
+		fill=red!30!black,
+		fill opacity=1, % Nivel de transparencia (0 = totalmente transparente, 1 = opaco)
+		text=white, % Texto negro
+		font=\bfseries, % Texto en negrita
+		rounded corners=5pt,
+		inner sep=5pt,
+		text width=0.3*\linewidth,
+		align=left
+		] (box) {#1};
+	\end{tikzpicture}
+}
+
+% ----------------- Entorno para Exam -----------------
+
+
+
+
+\newcommand{\LnxExam}[1]{%
+	\begingroup  
+	%\newgeometry{papersize={21cm,20cm}, top=2cm, bottom=2cm, left=1cm, right=1cm}
+	\large
+	\onehalfspacing
+	
+	\SetLnxColors{white}{black}  
+	\sinpiepagina
+	
+	#1  % Contenido del examen
+	
+	%\AtEndDocument{\restoregeometry}  % Asegura que los márgenes vuelvan después de todo
+	%\SetLnxColors{LnxblackF}{white}  
+	\endgroup  
+}
+
+
+
+
+
 
 \endinput

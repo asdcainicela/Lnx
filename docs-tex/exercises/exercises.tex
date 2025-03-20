@@ -6,17 +6,29 @@
 
 \usepackage{Lnx} % Paquete Lnx
 \usepackage{enumitem} % Paquete para personalizar listas
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{pstricks} % usar \red \blue etc
+\usepackage{soul} % resaltar
 
 \SetLnxLogo{img/logo_dark_edit.png} % cambiar  el logo
 \definecolor{LnxRedD}{HTML}{ff6079}
+
+
+\usepackage{mathpazo}
+%\usepackage[utopia]{mathdesign}
+%\usepackage[nomath,fulloldstylenums,fulloldstyle]{kpfonts} % hace negrita
+\usepackage[nomath,fulloldstylenums]{kpfonts}
 \begin{document} 
+	
 	\SetLnxColors{LnxblackF}{white}   % fondo y tex color default
-	\SetLnxRptaColors{LnxblackF}{LnxRedD} %AA
+	\SetLnxRptaColors{LnxblackZ}{LnxRedD} %AA % Fes original
 	
 	%\input{calculus/Pro_001.tex} 
 	%\newpage
 	%\input{calculus/Pro_002.tex} 
 	%\newpage
-	\input{calculus/Pro_003.tex} 
-	
+%	\input{calculus/Pro_003.tex}
+	\input{exam/FIM_BMA02_19-2.tex}
+
 \end{document}
