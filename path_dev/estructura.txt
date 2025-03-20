@@ -1,0 +1,38 @@
+|-- .gitignore
+|-- LICENSE
+|-- README.md
+|-- animation
+  |-- renders
+  |-- scripts
+|-- assets
+  |-- logo
+    |-- logo.svg
+    |-- logo_dark.png
+    |-- logo_light.png
+    |-- logo_main.png
+|-- docs-tex
+  |-- articles
+  |-- exercises
+    |-- calculus
+      |-- Pro_001.tex
+      |-- Pro_002.tex
+      |-- Pro_003.tex
+    |-- exercises.aux
+    |-- exercises.bbl
+    |-- exercises.blg
+    |-- exercises.log
+    |-- exercises.pdf
+    |-- exercises.synctex.gz
+    |-- exercises.tex
+    |-- img
+      |-- logo_dark_edit.png
+    |-- texput.log
+  |-- notes
+|-- estructura.txt
+|-- prueba
+  |-- pathFile.py
+|-- scripts
+|-- template
+  |-- Lnx.sty
+  |-- LnxClase.cls
+  |-- main.tex
