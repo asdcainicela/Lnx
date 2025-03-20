@@ -1,0 +1,60 @@
+\LnxPregunta{Calcule la siguiente  integral,\\
+	\[
+	 \int  \left( \prod_{i=0}^{m}\frac{i+1}{x-i}\right) \dd{x}  
+	\] 
+}
+
+\LnxSolucion{Solución}{
+	Se tiene el producto,
+	
+	\[
+	\prod_{i=0}^{m} \left(\dfrac{i+1}{x-i}\right) = \left(\dfrac{1}{x}\right)\left(\dfrac{2}{x-1}\right) \cdots \left(\dfrac{m+1}{x-m}\right) 
+	\]
+	
+	\[
+	\Rightarrow\prod_{i=0}^{m} \left(\dfrac{i+1}{x-i}\right) = (m+1)! \prod_{i=0}^{m} \left(\dfrac{1}{x-i}\right)
+	\]
+	
+	Expresamos como  suma de fracciones parciales,
+	
+	\[
+	\prod_{i=0}^{m} \left(\dfrac{1}{x-i}\right) = \sum_{i=0}^{m} \dfrac{A_i}{x-i}
+	\]
+	
+	 Además, \( A_i \) se puede escribir como, 
+	
+	\[
+	A_i =   \prod_{\substack{j=0 \\ j\neq i}}^{m} \frac{1}{i-j}
+	\]
+	
+	Sea $I$ la integral,
+	
+	\[
+	I = (m+1)! \int \left( \sum_{i=0}^{m} \dfrac{A_i}{x-i} \right) \dd{x}  
+	\]
+	\newpage
+	Entonces,
+	
+	\[
+	I = (m+1)! \sum_{i=0}^{m} A_i \int \frac{dx}{x-i}
+	\]
+	
+	
+	Sabemos que, 
+	
+	\[
+	\int \frac{\dd{x}  }{x-n} = \ln |x-n| + C
+	\]
+	 
+	\[
+	\Rightarrow I = (m+1)! \sum_{i=0}^{m} A_i \ln |x-i| + C
+	\]
+}
+
+Reemplazando $A_i $ en $I$  tenemos,
+\begin{LnxRptaBox}
+	\[
+	I = (m+1)! \sum_{i=0}^{m} \left( \prod_{\substack{j=0 \\ j\neq i}}^{m} \frac{1}{i-j}\right) 
+	\ln |x-i| + C
+	\]
+\end{LnxRptaBox}
