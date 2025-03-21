@@ -117,7 +117,7 @@
 
 % ----------------- Estilos Generales -----------------
 \doublespacing
-\renewcommand{\normalsize}{\fontsize{19}{24}\selectfont} % Tama\~no de letra predeterminado
+\renewcommand{\normalsize}{\fontsize{20}{24}\selectfont} % Tama\~no de letra predeterminado
 
 % ----------------- Comandos Personalizados -----------------
 \newcommand{\LnxTitulo}[1]{\begin{center}\fontsize{32}{28}\selectfont\textbf{#1}\end{center}}
@@ -166,7 +166,9 @@
 	colback=LnxblackE!100, 
 	coltitle=white,
 	%	fonttitle=\bfseries,
-	title=Definición
+	title=Definición,
+	fontupper=\Large,    % Cambia el tamaño del contenido
+	fonttitle= \LARGE
 }
 %/////////---------------- proposicion
 \newcounter{proposicion}
@@ -225,9 +227,6 @@
 
 % ----------------- Entorno para Exam -----------------
 
-
-
-
 \newcommand{\LnxExam}[1]{%
 	\begingroup  
 	%\newgeometry{papersize={21cm,20cm}, top=2cm, bottom=2cm, left=1cm, right=1cm}
@@ -243,10 +242,5 @@
 	%\SetLnxColors{LnxblackF}{white}  
 	\endgroup  
 }
-
-
-
-
-
 
 \endinput
