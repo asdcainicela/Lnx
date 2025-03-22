@@ -1,0 +1,54 @@
+ \LnxPregunta{Evalúe el siguiente límite,\\
+ 	\begin{equation*}
+ 		\lim_{n \to \infty} \left( \begin{array}{cc} 1 &\quad \displaystyle\frac{\alpha}{n} \\ -\displaystyle\frac{\alpha}{n} & \quad 1 \end{array} \right)^n
+ 	\end{equation*}
+ }
+ 
+ \LnxSolucion{Solución}{
+ 	La matriz
+ 	
+ 	$$
+ 	 \left( \begin{array}{cc} 1 & \frac{\alpha}{n} \\ -\frac{\alpha}{n} & 1 \end{array} \right)
+ 	$$
+ 	Podemos reescribir  como,
+ 	\begin{equation*}
+ 		I + \frac{A}{n}, \quad \text{donde } A = \begin{pmatrix} 0 & \alpha \\ -\alpha & 0 \end{pmatrix}
+ 	\end{equation*}
+ 	
+ 	Se puede verificar que,
+ 	\begin{equation*}
+ 		A = -\alpha \begin{pmatrix} \cos\left(\frac{\pi}{2}\right) & -\sin\left(\frac{\pi}{2}\right) \\ \sin\left(\frac{\pi}{2}\right) & \cos\left(\frac{\pi}{2}\right) \end{pmatrix}
+ 	\end{equation*}
+ 	
+ 	Para una potencia $k$ de $A$,
+ 	\begin{equation*}
+ 		A^k = (-\alpha)^k \begin{pmatrix} \cos\left(\frac{k\pi}{2}\right) & -\sin\left(\frac{k\pi}{2}\right) \\ \sin\left(\frac{k\pi}{2}\right) & \cos\left(\frac{k\pi}{2}\right) \end{pmatrix}
+ 	\end{equation*}
+ 	
+ 	Aplicamos la exponencial de matrices,
+ 	\begin{equation*}
+ 		\lim_{n \to \infty} \left( I + \frac{A}{n} \right)^n = e^A = \sum_{k=0}^{\infty} \frac{A^k}{k!}
+ 	\end{equation*}
+ 	
+ 	Expandiendo la serie,
+ 	\begin{equation*}
+ 		\sum_{k=0}^{\infty} \frac{(-\alpha)^k}{k!} \begin{pmatrix} \cos\left(\frac{k\pi}{2}\right) & -\sin\left(\frac{k\pi}{2}\right) \\ \sin\left(\frac{k\pi}{2}\right) & \cos\left(\frac{k\pi}{2}\right) \end{pmatrix}
+ 	\end{equation*}
+ 	
+ 	Calculando los t\'erminos, 
+ 	\begin{align*}
+ 		\sum_{k=0}^{\infty} \frac{(-\alpha)^k \cos\left(\frac{k\pi}{2}\right)}{k!} &= \cos(\alpha), \\
+ 		\sum_{k=0}^{\infty} \frac{(-\alpha)^k \sin\left(\frac{k\pi}{2}\right)}{k!} &= -\sin(\alpha)
+ 	\end{align*}
+ 	
+ 	Por lo tanto, el límite de la matriz es,
+ 	
+ }
+  
+ 
+ \begin{LnxRptaBox}
+ 	\begin{equation*}
+ 			\lim_{n \to \infty} \left( \begin{array}{cc} 1 & \frac{\alpha}{n} \\ -\frac{\alpha}{n} & 1 \end{array} \right)^n = \begin{pmatrix} \cos(\alpha) & \sin(\alpha) \\ -\sin(\alpha) & \cos(\alpha) \end{pmatrix}
+ 	\end{equation*}
+ \end{LnxRptaBox}
+ 
