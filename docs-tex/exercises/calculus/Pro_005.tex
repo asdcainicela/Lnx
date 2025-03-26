@@ -1,54 +1,90 @@
- \LnxPregunta{Evalúe el siguiente límite,\\
- 	\begin{equation*}
- 		\lim_{n \to \infty} \left( \begin{array}{cc} 1 &\quad \displaystyle\frac{\alpha}{n} \\ -\displaystyle\frac{\alpha}{n} & \quad 1 \end{array} \right)^n
- 	\end{equation*}
- }
+ \LnxPregunta{Calcule la integral\\
+ $$
+ 	\int_0^1 (x^x)^{(x^x)^{(x^x)^{(x^x)^{(x^x)^{\cdots}}}}} \dd{x} 
+ $$
+ } 
  
  \LnxSolucion{Solución}{
- 	La matriz
+ 	
+ 	Sea \( y = (x^x)^{(x^x)^{(x^x)^{\cdots}}} \), entonces
  	
  	$$
- 	 \left( \begin{array}{cc} 1 & \frac{\alpha}{n} \\ -\frac{\alpha}{n} & 1 \end{array} \right)
+ 		y = x^{xy}
  	$$
- 	Podemos reescribir  como,
- 	\begin{equation*}
- 		I + \frac{A}{n}, \quad \text{donde } A = \begin{pmatrix} 0 & \alpha \\ -\alpha & 0 \end{pmatrix}
- 	\end{equation*}
  	
- 	Se puede verificar que,
- 	\begin{equation*}
- 		A = -\alpha \begin{pmatrix} \cos\left(\frac{\pi}{2}\right) & -\sin\left(\frac{\pi}{2}\right) \\ \sin\left(\frac{\pi}{2}\right) & \cos\left(\frac{\pi}{2}\right) \end{pmatrix}
- 	\end{equation*}
+ 	Definimos \( y = \frac{t}{x} \), 
  	
- 	Para una potencia $k$ de $A$,
- 	\begin{equation*}
- 		A^k = (-\alpha)^k \begin{pmatrix} \cos\left(\frac{k\pi}{2}\right) & -\sin\left(\frac{k\pi}{2}\right) \\ \sin\left(\frac{k\pi}{2}\right) & \cos\left(\frac{k\pi}{2}\right) \end{pmatrix}
- 	\end{equation*}
+ 	$$
+ 		y = x^t, \quad x = t^{\frac{1}{1+t}}, \quad y = \frac{t}{x} = t^{\frac{t}{1+t}}
+ 	$$
+ 	 	
+ 	Ahora, consideremos la integral,
  	
- 	Aplicamos la exponencial de matrices,
- 	\begin{equation*}
- 		\lim_{n \to \infty} \left( I + \frac{A}{n} \right)^n = e^A = \sum_{k=0}^{\infty} \frac{A^k}{k!}
- 	\end{equation*}
+ 	$$
+ 		I = \int_0^1 (x^x)^{(x^x)^{(x^x)^{\cdots}}} dx = \int_0^1  y \dd{x}
+ 	$$
  	
- 	Expandiendo la serie,
- 	\begin{equation*}
- 		\sum_{k=0}^{\infty} \frac{(-\alpha)^k}{k!} \begin{pmatrix} \cos\left(\frac{k\pi}{2}\right) & -\sin\left(\frac{k\pi}{2}\right) \\ \sin\left(\frac{k\pi}{2}\right) & \cos\left(\frac{k\pi}{2}\right) \end{pmatrix}
- 	\end{equation*}
+ 	Usando el cambio de variable \( x = t^{1+t} \),
  	
- 	Calculando los t\'erminos, 
- 	\begin{align*}
- 		\sum_{k=0}^{\infty} \frac{(-\alpha)^k \cos\left(\frac{k\pi}{2}\right)}{k!} &= \cos(\alpha), \\
- 		\sum_{k=0}^{\infty} \frac{(-\alpha)^k \sin\left(\frac{k\pi}{2}\right)}{k!} &= -\sin(\alpha)
- 	\end{align*}
+ 	$$
+ 		I = \int_0^1 t^\frac{t}{1+t} \left( \frac{-\ln t}{(1+t)^2} + \frac{1}{(1+t)t} \right)t^\frac{1}{1+t} \dd{t}
+ 	$$
  	
- 	Por lo tanto, el límite de la matriz es,
+ 	$$
+ 	I	= \int_0^1 \left( \frac{1}{1+t} - \frac{t \ln t}{(1+t)^2} \right) dt
+ 	$$
  	
+ 	$$
+ 	I=\eval{\ln(1+t)}_{0}^{1}-\int_0^1 \frac{t \ln t}{(1+t)^2} dt
+ 	$$
+ 	
+ 	$$
+ 	I	= \ln(2) - \int_0^1 \frac{t \ln t}{(1+t)^2} \dd{t}$$
+ 	
+ 	$$
+ 	I= \ln(2)-\int_{0}^{1} \int_0^t \frac{t}{(1+t)^2 u} \dd{u} \dd{t} 
+ 	$$
+ 	
+ 	$$
+ 	I=\ln(2)+\int_0^1 \frac{1}{u} \int_{0}^{u} \frac{t}{(1+t)^2} \dd{t} \dd{u}
+ 	$$
+ 	
+ 		$$
+ 	I=\ln(2)+\int_0^1 \frac{1}{u} \int_{1}^{1+u} \frac{t-1}{t^2} \dd{t} \dd{u}
+ 	$$
+ 	
+$$
+ 	I=\ln(2)+\int_0^1 \frac{1}{u}
+ 	 \pqty{\ln(1+u)+\frac{1}{1+u}-1} \dd{u}
+ 	$$
+ 	
+ 	$$
+ 	I=\ln(2)+\int_0^1 \frac{\ln(1+u)}{u}\dd{u} -\ln(2)
+ 	$$
+ 	
+ 	
+ 	
+ 	Usando y expansión en series para $\ln(1+u)$,
+ $$
+I=  \int_0^1 \frac{1}{u} \sum_{k=1}^{\infty}  \frac{(-1)^{k+1} u^k }{k} \dd{u}
+$$
+
+ $$
+ I= \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} \int_0^1 u^{k-1} \dd{u}
+$$
+ 	
+ $$
+ 	I	= \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^2} = \eta(2) = \frac{\pi^2}{12}
+ $$
+  	
+  	Finalmente, el valor de $I$ es,
  }
+  
   
  
  \begin{LnxRptaBox}
- 	\begin{equation*}
- 			\lim_{n \to \infty} \left( \begin{array}{cc} 1 & \frac{\alpha}{n} \\ -\frac{\alpha}{n} & 1 \end{array} \right)^n = \begin{pmatrix} \cos(\alpha) & \sin(\alpha) \\ -\sin(\alpha) & \cos(\alpha) \end{pmatrix}
- 	\end{equation*}
+ 	 $$
+ 	\int_0^1 (x^x)^{(x^x)^{(x^x)^{(x^x)^{(x^x)^{\cdots}}}}} \dd{x} = \frac{\pi^2}{12}
+ 	$$
  \end{LnxRptaBox}
  
