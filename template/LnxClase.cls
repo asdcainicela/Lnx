@@ -13,6 +13,6 @@
 \RequirePackage{Lnx}  
  
  %size personalizado 
-\geometry{papersize={21cm,32cm}, top=1in, left=1in, right=1in, bottom=1in, includefoot}
+\geometry{papersize={21cm,32cm}, top=1in, left=1.4cm, right=1.4cm, bottom=1in, includefoot}
 
 \endinput

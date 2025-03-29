@@ -117,11 +117,11 @@
 
 % ----------------- Estilos Generales -----------------
 \doublespacing
-\renewcommand{\normalsize}{\fontsize{20}{24}\selectfont} % Tama\~no de letra predeterminado
+\renewcommand{\normalsize}{\fontsize{20}{16}\selectfont} % Tama\~no de letra predeterminado
 
 % ----------------- Comandos Personalizados -----------------
 \newcommand{\LnxTitulo}[1]{\begin{center}\fontsize{32}{28}\selectfont\textbf{#1}\end{center}}
-\newcommand{\LnxSubtitulo}[1]{\begin{center}\fontsize{24}{28}\selectfont\textbf{#1}\end{center}}
+\newcommand{\LnxSubtitulo}[1]{\begin{center}\fontsize{24}{24}\selectfont\textbf{#1}\end{center}}
 
 % ----------------- Entorno para Ecuaciones Resaltadas -----------------
 \definecolor{LnxEqBg}{gray}{0.05}   % Fondo oscuro (casi negro)
@@ -148,6 +148,7 @@
 	\definecolor{LnxRptaBg}{named}{#1}% 
 	\definecolor{LnxRptaFg}{named}{#2}% 
 }
+
 
 \newtcolorbox{LnxRptaBox}{
 	colback=LnxRptaBg,  % Color de fondo
@@ -190,15 +191,21 @@
 	\]
 	\vspace{2.5cm} % Espacio superior
 	\doublespacing
-	
-	{\fontsize{34}{30}\selectfont\textbf{#1}}
-	\vspace{-1.0cm}
+	\begin{LnxPregBox}
+		\vspace{0.8cm}
+		{  \fontsize{24}{32}\selectfont\textbf{#1}}
+		\vspace{-1.0cm}
+		\begin{center}
+			{\fontsize{32}{28}\selectfont\textbf{#2}} % T\'itulo de la pregunta
+		\end{center}
+		\vspace{0.8cm}
+	\end{LnxPregBox}
 	\begin{center}
-		{\fontsize{32}{28}\selectfont\textbf{#2}} % T\'itulo de la pregunta
-		
 		\vspace{1cm} % Espacio inferior
 		\LnxSize{0.25} % Logo escalado
 	\end{center}
+		
+	
 	\sinpiepagina % Aplicar estilo sin pie de p\'agina
 	\newpage % Salto de p\'agina
 }
@@ -246,5 +253,17 @@
 	%\SetLnxColors{LnxblackF}{white}  
 	\endgroup  
 }
+
+
+%-------pruebas
+\newtcolorbox{LnxPregBox}{
+	colback=LnxRptaBg,  % Color de fondo
+	coltext=white,  % Color del texto
+	%boxrule=0pt,      % Sin borde
+	%sharp corners,    % Esquinas sin redondear
+	width=\linewidth, % Ancho total
+	arc=5pt,            % Esquinas redondeadas (puedes aumentar el valor)
+}
+
 
 \endinput

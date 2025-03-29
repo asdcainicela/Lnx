@@ -1,0 +1,99 @@
+\LnxPregunta{		Evalue la integral,}{  
+	\vspace{1.5cm}
+	$$
+	\int_{0}^{\infty} \psi^{(2)} (1+x) \ln (x) \dd{x} 
+	$$
+	\vspace{0.1cm}
+		\begin{flushleft}
+		{\Huge donde $\psi$ es la función polygamma }
+	\end{flushleft}
+}
+
+\LnxSolucion{Solución}{ 
+
+Usamos la identidad de la función poligamma de orden 2,
+
+$$
+\psi^{(2)}(x) = -2 \sum_{n=0}^{\infty} \frac{1}{(n+x)^3}
+$$
+
+Aplicamos esto en la integral dada,
+
+$$
+I=\int_{0}^{\infty} \psi^{(2)}(x+1) \ln (x) \dd{x}
+$$
+
+Sustituyendo la serie para $\psi^{(2)}(x+1)$,
+
+$$
+I = -2\int_{0}^{\infty} \ln(x) \sum_{n=0}^{\infty} \frac{1}{(n+x+1)^3} \dd{x}
+$$
+ 
+$$
+I = -2 \sum_{n=0}^{\infty} \int_{0}^{\infty} \frac{\ln (x)}{(n+x+1)^{3}}  \dd{x}
+$$
+
+Sea $J(t)$ la integral,
+
+$$
+J_n(t) = \int_{0}^{\infty} \frac{x^t}{(n+x+1)^{3}}  \dd{x}
+$$
+
+Hacemos   cambio de variable y reescribimos la integral, 
+$
+x = (n+1)w \, \Rightarrow \, \dd{x} = (n+1)\dd{w}
+$ 
+
+$$
+J_n(t) =(n+1)^{t-2} \int_{0}^{\infty} \frac{w^t}{(1+w^3)} \dd{w}
+$$
+
+
+$$
+J_n(t) =(n+1)^{t-2}\,  \beta(t+1,2-t)
+$$
+
+Además $\beta(t+1,2-t) =-\frac{1}{2} \pi (t-1)t\csc(\pi t)$   [demostración para el lector] 
+$$
+-2 J_n(t) =   (n+1)^{t-2}\,\pi (t-1)t\csc(\pi t)
+$$
+
+
+Derivamos a $J_n(t)$ para encontrar una relación,
+
+$$
+ \int_{0}^{\infty} \frac{\ln(x)}{(n+x+1)^{3}}  \dd{x} =\lim\limits_{t \to 0^+} \pdv{t} \, J_n(t)
+$$
+
+$$
+ I=-2 \sum_{n=0}^{\infty} \int_{0}^{\infty} \frac{\ln (x)}{(n+x+1)^{3}}  \dd{x} = \lim\limits_{t \to 0^+} \pdv{t} \,\pqty{  \sum_{n=0}^{\infty} -2J_n(t) }
+$$
+
+Reemplazamos el valor de $-2J_n(t)$
+ 
+$$
+I=   \sum_{n=0}^{\infty} \; \lim\limits_{t \to 0^+} \pdv{t} \,\pqty{    (n+1)^{t-2}\,\pi (t-1)t\csc(\pi t) }
+$$
+
+Operando la derivada y limite [para el lector],  
+ 
+$$
+I = \sum_{n=0}^{\infty} \frac{1}{(n+1)^2} - \sum_{n=0}^{\infty} \frac{\ln(n+1)}{(n+1)^2}
+$$
+
+Reconociendo los sumatorios, tenemos
+
+%$$
+ %\sum_{n=0}^{\infty} \frac{1}{(n+1)^2}= \zeta(2) \quad \text{y}\quad
+ % \sum_{n=0}^{\infty} \frac{\ln(n+1)}{(n+1)^2}= -\zeta'(2) 
+%$$
+ 
+%	Por lo tanto,   
+}
+\begin{LnxRptaBox}
+	$$
+	 \int_{0}^{\infty} \psi^{(2)} (1+x) \ln (x) \dd{x} =  \zeta(2)+\zeta'(2)
+	$$
+\end{LnxRptaBox} 
+
+Donde $\zeta$ es la función zeta de Riemann.

@@ -1,0 +1,85 @@
+\LnxPregunta{}{ 
+	\begin{flushleft}  \Huge
+		Dado  $A \in \mathcal{M}_2(\mathbb{R})$ es una matriz con dos autovalores reales  $\lambda_1 \neq \lambda_2$ y $\lambda_1 \lambda_2 > 0$.\\
+		Evalue la integral,
+	\end{flushleft}
+	\vspace{1.5cm}
+	$$
+		I = \int_0^\infty \frac{\sin(Ax)}{x} dx
+	$$
+}
+
+\LnxSolucion{Solución}{ 
+
+Como $A$ es diagonalizable,
+
+$$
+A = P J_A P^{-1}, \quad \text{donde} \quad J_A = \begin{pmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}
+$$
+
+Aplicamos esta transformación a la integral,
+
+$$
+I = \int_0^\infty \frac{\sin(Ax)}{x} dx = P \left( \int_0^\infty \frac{\sin(J_A x)}{x} dx \right) P^{-1}
+$$
+
+Dado que $J_A$ es diagonal,
+
+$$
+\int_0^\infty \frac{\sin(J_A x)}{x} dx =
+\begin{pmatrix}
+\displaystyle \int_0^\infty \frac{\sin(\lambda_1 x)}{x} dx & 0 \\
+0 &\displaystyle \int_0^\infty \frac{\sin(\lambda_2 x)}{x} dx
+\end{pmatrix}
+$$
+
+Sabemos por Dirichlet’s integral que,
+
+$$
+\int_0^\infty \frac{\sin(\lambda x)}{x} dx = \operatorname{sign}(\lambda) \frac{\pi}{2}
+$$
+
+Por lo tanto,
+
+$$
+\int_0^\infty \frac{\sin(J_A x)}{x} dx =
+\begin{pmatrix}
+\operatorname{sign}(\lambda_1) \frac{\pi}{2} & 0 \\
+0 & \operatorname{sign}(\lambda_2) \frac{\pi}{2}
+\end{pmatrix}
+$$
+\newpage
+Dado que $\lambda_1$ y $\lambda_2$ tienen el mismo signo,
+
+$$
+\int_0^\infty \frac{\sin(J_A x)}{x} dx =	\operatorname{sign}(\lambda_1) \frac{\pi}{2} I_2.
+$$
+
+Finalmente, aplicamos la transformación inversa,
+
+$$
+I = P \left( \operatorname{sign}(\lambda_1) \frac{\pi}{2} I_2 \right) P^{-1}
+$$
+
+$$
+I = \operatorname{sign}(\lambda_1) \frac{\pi}{2}  P  I_2  P^{-1}
+$$
+
+Como la identidad conmuta con cualquier matriz,
+
+$$
+I = \operatorname{sign}(\lambda_1) \frac{\pi}{2} I_2
+$$
+
+Por lo tanto,   
+}
+\begin{LnxRptaBox}
+	$$
+	\int_0^\infty \frac{\sin(Ax)}{x} dx =
+	\begin{cases}
+		\frac{\pi}{2} I_2, & \text{si } \lambda_1, \lambda_2 > 0 \\
+		&\\
+		-\frac{\pi}{2} I_2, & \text{si } \lambda_1, \lambda_2 < 0
+	\end{cases}
+	$$
+\end{LnxRptaBox} 
