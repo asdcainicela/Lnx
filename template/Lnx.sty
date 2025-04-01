@@ -213,7 +213,11 @@
 
 % ----------------- Entorno para Soluciones -----------------
 \newcommand{\LnxSolucion}[2]{%
-	\LnxSubtitulo{#1}
+	%\LnxSubtitulo{{#1}}
+ 	\begin{center}
+ 		\fontsize{30}{24}\selectfont
+ 		\textbf{\solucion{\quad #1} }
+ 	\end{center}
 	\onehalfspacing 
 	{#2}
 }
@@ -231,7 +235,8 @@
 		font=\bfseries, % Texto en negrita
 		rounded corners=5pt,
 		inner sep=5pt,
-		text width=0.3*\linewidth,
+		text width=0.35*\linewidth,
+	%	text width=0.3*\linewidth,
 		align=left
 		] (box) {#1};
 	\end{tikzpicture}
