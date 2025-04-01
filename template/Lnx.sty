@@ -142,6 +142,7 @@
 
 % ----------------- Entorno para Respuestas -----------------
 \definecolor{LnxRptaBg}{gray}{0.05}   % Fondo oscuro (casi negro)
+\definecolor{LnxRptaBgg}{gray}{0.08}   % Fondo oscuro (casi negro)
 \definecolor{LnxRptaFg}{HTML}{feae7e}  
 
 \newcommand{\SetLnxRptaColors}[2]{%
@@ -193,10 +194,10 @@
 	\doublespacing
 	\begin{LnxPregBox}
 		\vspace{0.8cm}
-		{  \fontsize{24}{32}\selectfont\textbf{#1}}
+		{  \fontsize{24}{32}\selectfont\textbf{ #1}}  
 		\vspace{-1.0cm}
 		\begin{center}
-			{\fontsize{32}{28}\selectfont\textbf{#2}} % T\'itulo de la pregunta
+			{\fontsize{32}{28}\selectfont\textbf{ #2} } % T\'itulo de la pregunta
 		\end{center}
 		\vspace{0.8cm}
 	\end{LnxPregBox}
@@ -257,7 +258,8 @@
 
 %-------pruebas
 \newtcolorbox{LnxPregBox}{
-	colback=LnxRptaBg,  % Color de fondo
+	colback=LnxRptaBgg,  % Color de fondo
+	 colframe=yellow!40,     % Color del borde (amarillo)
 	coltext=white,  % Color del texto
 	%boxrule=0pt,      % Sin borde
 	%sharp corners,    % Esquinas sin redondear
