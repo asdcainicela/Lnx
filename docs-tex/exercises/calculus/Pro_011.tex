@@ -1,0 +1,65 @@
+\LnxPregunta{ Calcule el límite, }{  
+	\vspace{1.5cm}
+	 $$
+		 \lim_{x\rightarrow 1} \frac{\mbox{Li} _3 (x) -\frac{1}{2}\displaystyle \int_0^{\infty}\frac{u^2}{e^u -1} \dd{u} }{x-1} 
+	$$
+	\vspace{0.1cm}
+	\begin{flushleft}
+		{\Huge Si $ \text{Li}_3 $ es la función trilogarítmica. }
+	\end{flushleft}
+}
+
+\LnxSolucion{Solución}{ 
+Por definición, la función trilogarítmica está dada por,
+
+$$
+	\text{Li}_3 (x) = \sum_{k=1}^{\infty} \frac{x^k}{k^3}, \quad \abs{x}\leq 1
+$$
+
+Sustituyendo la expresión en el límite,
+$$
+	\lim_{x\to 1} \frac{\displaystyle \left(\sum_{k=1}^{\infty} \frac{x^k}{k^3} \right) -\frac{1}{2} \sum_{n=1}^{\infty} \int_0^{\infty} u^2 e^{-nu} \mathrm{d}u}{x-1}
+$$
+
+Sabemos, [demostración para el lector]
+$$
+	\int_0^{\infty} v^{p-1} e^{-nv} ,\mathrm{d}v = \frac{\Gamma(p)}{n^p}
+$$
+
+Para el caso particular $p=3$
+$$
+	\int_0^{\infty} u^2 e^{-nu} ,\mathrm{d}u = \frac{\Gamma(3)}{n^3}
+$$
+
+Reemplazando en la serie,
+
+$$
+	\frac{1}{2} \sum_{n=1}^{\infty} \frac{\Gamma(3)}{n^3} = \sum_{n=1}^{\infty} \frac{1}{n^3} = \zeta(3)
+$$
+
+Sustituyendo en el límite original,
+$$
+	\lim_{x\to 1} \frac{\displaystyle \sum_{k=1}^{\infty} \frac{x^k}{k^3} - \zeta(3)}{x-1}
+$$
+
+Evaluamos el límite, además $ \sum_{k=1}^{\infty} \frac{1}{k^3} = \zeta(3) $
+$$
+	\lim_{x\to 1} \frac{\displaystyle \sum_{k=1}^{\infty} \frac{x^k}{k^3} - \zeta(3)}{x-1}=	  \frac{\zeta(3) - \zeta(3)}{1-1}=\frac{0}{0}
+$$
+
+El límite tiene la forma indeterminada. Aplicamos la regla de L'Hôpital, 
+$$
+	\lim_{x\to 1} \frac{\displaystyle \sum_{k=1}^{\infty} \frac{k x^{k-1}}{k^3} }{1}=
+	\lim_{x\to 1} \sum_{k=1}^{\infty} \frac{x^{k-1}}{k^2}=
+	\sum_{k=1}^{\infty} \frac{1}{k^2} = \zeta(2)
+$$
+
+Además $\zeta(2)=\frac{\pi^2}{6}$. Por lo tanto, el límite final es,
+ 
+}
+\begin{LnxRptaBox} 
+	$$
+	 \lim_{x\rightarrow 1} \frac{\mbox{Li} _3 (x) -\frac{1}{2}\displaystyle \int_0^{\infty}\frac{u^2}{e^u -1} \dd{u} }{x-1} =\frac{\pi^2}{6}
+	$$
+\end{LnxRptaBox} 
+
