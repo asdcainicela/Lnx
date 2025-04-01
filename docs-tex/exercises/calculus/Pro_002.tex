@@ -6,50 +6,50 @@
 {\LARGE donde $\gamma$ es la constante de Euler-Mascheroni.}
 }
 
-\LnxSolucion{Solución}{
+ \LnxSolucion{Solución}{
 	
-	Sea $a \in \mathbb{R}$, $f(x)$ y $g_1(x)$ funciones polinómicas, que cumplen $\deg[f(x)] < \deg[g_1(x)]$, suponemos que $g_1(x)$ se puede descomponer de la forma:
-	\begin{equation}
-		g_1(x) = (x - a)^n g(x)
-	\end{equation}
-	Y cumplen que $f(a) \neq 0$, $g(a) \neq 0$. Demostraremos que la razón
-	\begin{equation}
-		\frac{f(x)}{g_1(x)} = \frac{f(x)}{(x - a)^n g(x)}
-	\end{equation}
-	se puede expresar como:
-	\begin{equation}
-		\frac{f(x)}{g_1(x)} = \frac{A}{(x - a)^n} + \frac{h(x)}{(x - a)^{n-1} g(x)}
-	\end{equation}
-	Donde $A \in \mathbb{R}$ y además $h(x)$ es una función polinómica que cumple con $\deg[h(x)] < \deg[(x - a)^{n-1} g(x)]$.
+	Resolvemos la integral, hacemos $\ln(t)=u \rightarrow \frac{\dd{t}}{t}=\dd{u}$
 	
-	\textbf{Demostración:} Reescribimos:
-	\begin{equation}
-		\frac{f(x)}{g_1(x)} = \frac{A}{(x - a)^n} + \frac{f(x) - A g(x)}{(x - a)^n g(x)}
-	\end{equation}
-	Hacemos que el término $f(x) - A g(x)$ sea divisible por $x - a$. Para ello, evaluamos en $x = a$, lo que nos da:
-	\begin{equation}
-		f(a) - A g(a) = 0 \quad \Rightarrow \quad A = \frac{f(a)}{g(a)}
-	\end{equation}
-	Ya encontrado el valor de $A$, podemos decir que $f(x) - A g(x)$ se puede descomponer de la forma:
-	\begin{equation}
-		f(x) - A g(x) = (x - a) h(x)
-	\end{equation}
-	Sustituyendo en la ecuación original:
-	\begin{equation}
-		\frac{f(x)}{g_1(x)} = \frac{A}{(x - a)^n} + \frac{h(x)}{(x - a)^{n-1} g(x)}
-	\end{equation}
-	Y así queda demostrado.
+	$$
+	I=\int_{1}^{\infty} \frac{\ln^x(t)}{t^{2\gamma}} \dd{t}=\int_{0}^{\infty} u^x e^{2(\gamma-1)u} \dd{u}
+	$$
 	
-	\textbf{Corolario:} Aplicando este resultado a $g_1(x) = (x - a)^2 g(x)$, obtenemos:
-	\begin{equation}
-		\frac{f(x)}{g_1(x)} = \frac{A}{(x - a)^2} + \frac{B}{x - a} + \frac{h(x)}{g(x)}
-	\end{equation}
-	Con:
-	\begin{equation}
-		A = \left.\frac{f(x)}{g(x)}\right|_{x=a}, \quad B = \left.\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)\right|_{x=a}
-	\end{equation}
+	Hacemos otro cambio de variable,	
+	$(2\gamma-1)u=v$ 
 	
-	Este resultado nos permite descomponer expresiones en fracciones parciales de manera eficiente.
+	\[
+	I= \frac{1}{(2\gamma-1)^{x+1}} \int_{0}^{\infty} v^x
+	e^{-v} \dd{v}	=\frac{\Gamma(x+1)}{(2\gamma-1)^{x+1}}
+	\]
+	
+	Sea $L$ el límite
+	
+	\[
+	L=\lim\limits_{x \to 0} 
+	\frac{\displaystyle I-(2\gamma-1)^{-x-1}}{e^x-1}
+	\]
+	
+	\[
+	L=\lim\limits_{x \to 0} 
+	\frac{\displaystyle (2\gamma-1)^{-x-1}\ \Gamma(x+1)-(2\gamma-1)^{-x-1}}{e^x-1}
+	\]
+	
+	\[
+	L=\lim\limits_{x \to 0} \frac{1}{(2\gamma-1)^{x+1}} \cdot
+	\frac{\displaystyle  \Gamma(x+1)-1}{e^x-1}
+	\]
+	
+	Sabemos que 
+	
+	\[
+	\lim\limits_{x \to 0}
+	\frac{e^x-1}{x}=1
+	\]
+	
+	\[
+	\lim\limits_{x \to 0}
+	\frac{\Gamma(x+1)-1}{x}=\Gamma^{'}(1)=-\gamma
+	\]
 	
 }
 
