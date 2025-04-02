@@ -1,0 +1,98 @@
+\LnxPregunta{ Calcule la integral, }{  
+	\vspace{1.5cm}
+	$$
+	 \int_0^1 \int_0^1 \frac{ \dd{x}\dd{y}}{(1 + \varphi xy) \ln (xy)}
+	$$
+	\vspace{0.1cm}
+	\begin{flushleft}
+		%	{\Huge Si $ \text{Li}_3 $ es la función trilogarítmica. }\\
+		{\Huge donde \( \varphi = \frac{1+\sqrt{5}}{2} \) es el número áureo.  }
+	\end{flushleft}
+}
+
+\LnxSolucion{Solución}{ 
+	$$
+	\int_0^1 \int_0^1 \frac{ \dd{x}\dd{y}}{(1 + \varphi xy) \ln (xy)}
+	$$
+	
+	Expandimos  $\frac{1}{1 + \varphi xy}$ usando una serie geométrica  ,
+	$$
+	\frac{1}{1 + \varphi xy} = \sum_{k=0}^\infty (-1)^k (\varphi xy)^k, \quad \text{para } |\varphi xy| < 1
+	$$  
+	
+		Sustituimos en $I$, 
+		
+	$$  
+	I =   \int_0^1 \int_0^1   \sum_{k=0}^\infty (-1)^k (\varphi xy)^k \frac{1}{\ln(xy)} \dd{x}\dd{y}
+	$$  
+	
+	Intercambiando suma e integral,
+	  
+	$$  
+	I =  \sum_{k=0}^\infty (-1)^k \varphi^k \int_0^1 \int_0^1 \frac{(xy)^k}{\ln(xy)} \dd{x}\dd{y}
+	$$  
+	
+	Aplicamos el cambio de variable $u = -\ln x$,\quad $v = -\ln y$, \\
+	 $\dd{x} = -e^{-u}\dd{u}$\quad y $\dd{y} = -e^{-v}\dd{v}$, \; obteniendo  
+	 
+	$$  
+	I =  \sum_{k=0}^\infty (-1)^k \varphi^k \int_0^\infty \int_0^\infty \frac{e^{-(k+1)(u+v)}}{-(u + v)} \dd{u}\dd{v}  
+	$$  
+	
+	Definimos nuevas variables $w = u + v$ y $t = u - v$.\\
+	 El \textit{ Jacobiano} es, 
+	 
+	$$  
+	\pdv{(u, v)}{(w, t)} = \begin{vmatrix}  
+		\frac{\partial u}{\partial w} & \frac{\partial u}{\partial t} \\  
+		&\\
+		\frac{\partial v}{\partial w} & \frac{\partial v}{\partial t}  
+	\end{vmatrix}  
+	= \begin{vmatrix}  
+		\frac{1}{2} & \frac{1}{2} \\  
+		&\\
+		\frac{1}{2} & -\frac{1}{2}  
+	\end{vmatrix}  
+	= -\frac{1}{2}, \quad \implies |J| = \frac{1}{2}  
+	$$  
+	
+	Por lo tanto, $\dd{u}\dd{v} = \frac{1}{2}\dd{w}\dd{t}$. \; Reescribimos la integral, 
+	 
+	$$  
+	I = - \sum_{k=0}^\infty \frac{(-1)^k \varphi^k}{2} \int_0^\infty \frac{e^{-(k+1)w}}{ w} \pqty{\int_{-w}^w \dd{t}} \dd{w} 
+	$$  
+	
+	La integral en $t$ es $\displaystyle \int_{-w}^w \dd{t} = 2w$, \; simplificando, 
+	 
+	$$
+	I= -\sum_{k=0}^\infty (-1)^k \varphi^k  \lim\limits_{s \to \infty} \int_0^s e^{-(k+1)w} \dd{w}
+	$$  
+	
+	$$  
+	I  =-\sum_{k=0}^\infty (-1)^k \varphi^k \lim\limits_{s \to \infty} \pqty{- \frac{ e^{-(k+1)s}}{(k+1)} +  \frac{1}{k+1} }  
+	$$
+	
+	$$
+	I=- \sum_{k=0}^\infty \frac{(-1)^k \varphi^k}{k + 1}  
+	$$  
+	Haciendo $n = k + 1$,   
+	
+	$$  
+	I = -\frac{1}{\varphi} \sum_{n=1}^\infty \frac{(-1)^{n-1} \varphi^n}{n} =- \frac{1}{\varphi} \ln(1 + \varphi)  
+	$$  
+	
+	Usando $\varphi^2 = \varphi + 1$, tenemos  
+	$$  
+	\ln(1 + \varphi) = \ln(\varphi^2) = 2\ln\varphi 
+	$$  
+	
+	 Finalmente,   
+	
+	
+}
+\begin{LnxRptaBox} 
+	\begin{equation*}
+		   \int_0^1 \int_0^1 \frac{ \dd{x}\dd{y}}{(1 + \varphi xy) \ln (xy)}=-\frac{2\ln\varphi}{\varphi}  
+	\end{equation*} 
+\end{LnxRptaBox} 
+Donde  \( \varphi = \frac{1+\sqrt{5}}{2} \) es el número áureo.
