@@ -8,7 +8,7 @@
 \RequirePackage{xcolor}     % Manejo de colores
 \RequirePackage{setspace}   % Espaciado
 \RequirePackage{afterpage}  % Asegura que afterpage está disponible
-\RequirePackage{tcolorbox}  % Cuadros de texto y ecuaciones
+
 \RequirePackage{tikz}
 \RequirePackage{geometry}
 \RequirePackage{etoolbox} % Para \AtEndDocument
@@ -51,6 +51,8 @@
 	{{\huge Ln-x} } % Si \LnxLogoPath est\'a vac\'io, muestra "Ln-x"
 	{\includegraphics[width=#1\textwidth]{\LnxLogoPath}} % Si hay ruta, muestra el logo escalado
 }
+
+% ----------------- Configuraci\'on de Colores -----------------
 
 % ----------------- Configuraci\'on de Colores -----------------
 \definecolor{colortitulo}{HTML}{9900CC} % Morado para t\'itulos
@@ -102,8 +104,29 @@
 \definecolor{LnxYellowB}{HTML}{eddfc0}
 \definecolor{LnxRedA}{HTML}{ff1c3f}
 
-\newcommand{\LnxBgColor}{defaultbg}  % Fondo por defecto (negro)
-\newcommand{\LnxFgColor}{defaultfg}  % Texto por defecto (blanco)
+\definecolor{LnxRedD}{HTML}{ff6079}
+
+
+% ----------------- Entorno para Ecuaciones Resaltadas -----------------
+\definecolor{LnxEqBg}{gray}{0.05}   % Fondo oscuro (casi negro)
+\definecolor{LnxEqFg}{HTML}{FFD966} % Texto amarillo tenue
+  
+% ----------------- Entorno para Respuestas -----------------
+\definecolor{LnxRptaBg}{gray}{0.05}   % Fondo oscuro (casi negro)
+\definecolor{LnxRptaBgg}{gray}{0.08}   % Fondo oscuro (casi negro)
+\definecolor{LnxRptaFg}{HTML}{feae7e}  
+ 
+ 
+  
+ \newcommand{\LnxBgColor}{defaultbg}  % Fondo por defecto (negro)
+ \newcommand{\LnxFgColor}{defaultfg}  % Texto por defecto (blanco)
+ 
+%------------------------- newcommand math u otros 
+
+\newcommand{\Li}{\text{Li}} % Polylogarithm shortcut
+\newcommand{\dint}{\int\limits} % Display-style integral
+
+%-----------otros 
 
 \newcommand{\SetLnxColors}[2]{%
 	\renewcommand{\LnxBgColor}{#1}%
@@ -111,166 +134,9 @@
 	\pagecolor{\LnxBgColor}%
 	\color{\LnxFgColor}%
 }
-
-\pagecolor{\LnxBgColor}
-\color{\LnxFgColor}
-
-% ----------------- Estilos Generales -----------------
-\doublespacing
-\renewcommand{\normalsize}{\fontsize{20}{16}\selectfont} % Tama\~no de letra predeterminado
-
-% ----------------- Comandos Personalizados -----------------
-\newcommand{\LnxTitulo}[1]{\begin{center}\fontsize{32}{28}\selectfont\textbf{#1}\end{center}}
-\newcommand{\LnxSubtitulo}[1]{\begin{center}\fontsize{24}{24}\selectfont\textbf{#1}\end{center}}
-
-% ----------------- Entorno para Ecuaciones Resaltadas -----------------
-\definecolor{LnxEqBg}{gray}{0.05}   % Fondo oscuro (casi negro)
-\definecolor{LnxEqFg}{HTML}{FFD966} % Texto amarillo tenue
-
-\newcommand{\SetLnxEqColors}[2]{%
-	\renewcommand{\LnxEqBg}{#1}% 
-	\renewcommand{\LnxEqFg}{#2}% 
-}
-
-\newtcolorbox{LnxEqBox}{
-	colback=LnxEqBg,  % Color de fondo
-	coltext=LnxEqFg,  % Color del texto
-	boxrule=0pt,      % Sin borde
-	sharp corners,    % Esquinas sin redondear
-	width=\linewidth, % Ancho total
-}
-
-% ----------------- Entorno para Respuestas -----------------
-\definecolor{LnxRptaBg}{gray}{0.05}   % Fondo oscuro (casi negro)
-\definecolor{LnxRptaBgg}{gray}{0.08}   % Fondo oscuro (casi negro)
-\definecolor{LnxRptaFg}{HTML}{feae7e}  
-
-\newcommand{\SetLnxRptaColors}[2]{%
-	\definecolor{LnxRptaBg}{named}{#1}% 
-	\definecolor{LnxRptaFg}{named}{#2}% 
-}
+ 
 
 
-\newtcolorbox{LnxRptaBox}{
-	colback=LnxRptaBg,  % Color de fondo
-	coltext=LnxRptaFg,  % Color del texto
-	%boxrule=0pt,      % Sin borde
-	%sharp corners,    % Esquinas sin redondear
-	width=\linewidth, % Ancho total
-	arc=5pt,            % Esquinas redondeadas (puedes aumentar el valor)
-}
-%/////////---------------- DEFINICION
-% Definir contador para proposiciones
-
-\newtcolorbox[auto counter, number within=section]{definicion}{
-	colframe=red!15!black, 
-	coltext=white,
-	colback=LnxblackE!100, 
-	coltitle=white,
-	%	fonttitle=\bfseries,
-	title=Definición,
-	fontupper=\Large,    % Cambia el tamaño del contenido
-	fonttitle= \LARGE
-}
-%/////////---------------- proposicion
-\newcounter{proposicion}
-\setcounter{proposicion}{1} % Asegurar que empieza en 1
-
-\newtcolorbox{proposicion}{
-	colframe=LnxblackA, 
-	coltext=white,
-	colback=LnxblackE!100, 
-	coltitle=white,
-	%	fonttitle=\bfseries,
-	title=Proposición~\theproposicion, % Título con numeración
-	 before upper={\refstepcounter{proposicion}} % Asegurar numeración correcta
-	}
-
-% ----------------- Entorno para Preguntas -----------------
-\newcommand{\LnxPregunta}[2]{%
-	\[%no tocar esta linea
-	\]
-	\vspace{2.5cm} % Espacio superior
-	\doublespacing
-	\begin{LnxPregBox}
-		\vspace{0.8cm}
-		{  \fontsize{24}{32}\selectfont\textbf{ #1}}  
-		\vspace{-1.0cm}
-		\begin{center}
-			{\fontsize{32}{28}\selectfont\textbf{ #2} } % T\'itulo de la pregunta
-		\end{center}
-		\vspace{0.8cm}
-	\end{LnxPregBox}
-	\begin{center}
-		\vspace{1cm} % Espacio inferior
-		\LnxSize{0.25} % Logo escalado
-	\end{center}
-		
-	
-	\sinpiepagina % Aplicar estilo sin pie de p\'agina
-	\newpage % Salto de p\'agina
-}
-
-% ----------------- Entorno para Soluciones -----------------
-\newcommand{\LnxSolucion}[2]{%
-	%\LnxSubtitulo{{#1}}
- 	\begin{center}
- 		\fontsize{30}{24}\selectfont
- 		\textbf{\solucion{\quad #1} }
- 	\end{center}
-	\onehalfspacing 
-	{#2}
-}
-
-
-%---------solucion-------- texto colorido
-\newcommand{\solucion}[1]{%
-	\noindent
-	\begin{tikzpicture}
-		\node[
-		draw=none,
-		fill=red!30!black,
-		fill opacity=1, % Nivel de transparencia (0 = totalmente transparente, 1 = opaco)
-		text=white, % Texto negro
-		font=\bfseries, % Texto en negrita
-		rounded corners=5pt,
-		inner sep=5pt,
-		text width=0.35*\linewidth,
-	%	text width=0.3*\linewidth,
-		align=left
-		] (box) {#1};
-	\end{tikzpicture}
-}
-
-% ----------------- Entorno para Exam -----------------
-
-\newcommand{\LnxExam}[1]{%
-	\begingroup  
-	%\newgeometry{papersize={21cm,20cm}, top=2cm, bottom=2cm, left=1cm, right=1cm}
-	\large
-	\onehalfspacing
-	
-	\SetLnxColors{white}{black}  
-	\sinpiepagina
-	
-	#1  % Contenido del examen
-	
-	%\AtEndDocument{\restoregeometry}  % Asegura que los márgenes vuelvan después de todo
-	%\SetLnxColors{LnxblackF}{white}  
-	\endgroup  
-}
-
-
-%-------pruebas
-\newtcolorbox{LnxPregBox}{
-	colback=LnxRptaBgg,  % Color de fondo
-	 colframe=yellow!40,     % Color del borde (amarillo)
-	coltext=white,  % Color del texto
-	%boxrule=0pt,      % Sin borde
-	%sharp corners,    % Esquinas sin redondear
-	width=\linewidth, % Ancho total
-	arc=5pt,            % Esquinas redondeadas (puedes aumentar el valor)
-}
 
 
 \endinput
