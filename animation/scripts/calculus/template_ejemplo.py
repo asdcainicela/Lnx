@@ -4,21 +4,18 @@ from LnxScene import *
 # Clase principal de animación
 class CompleteAnimation(Scene):
     def construct(self):
-        # Fondo personalizado (probablemente con color o imagen)
+        # Fondo personalizado  
         backgroundLnx(self)
+        self.camera.tex_template = MathPazoKpTemplate() #fonts PazoKp
 
-        # Establecer el template LaTeX con fuentes elegantes (mathpazo + kpfonts)
-        self.camera.tex_template = MathPazoKpTemplate()
-
-        box_anim = BoxAnimation( self, image_path="logo.png",  )
+        box_anim = BoxAnimation( self, image_path="logo.png",  ) #box start
         box_anim.on()
-        
-        # 2. Mover logo con ajustes
-        #logo_handler(  scene=self, image_path="logo.png" )
+         
+        logo_handler(  scene=self, image_path="logo.png" ) #Mover logo con ajustes
         
         # 4. El resto de tu lógica original
         self.wait(2)
-        box_anim.off()
+        #box_anim.off() # clear logo , si es que no hay logo_handler 
         
         #------------------------------------------
  
@@ -27,11 +24,10 @@ class CompleteAnimation(Scene):
             r"\text{Ejemplo de plantilla de Lnx} ",
             font_size=22
         )
- 
-        # ANIMACIONES de entrada: Escritura tipo "dibujado"
         self.play(Write(texto1),run_time=0.5)  # Escribir el enunciado
-        self.wait(0.5)  
-        #self.wait(1) 
+
+        self.wait(0.5)  # tiempo para cambiar a logo
+    
         animate_End( scene=self, svg_path="logo.svg" ) # finalizar con logo
  
 
