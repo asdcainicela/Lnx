@@ -54,13 +54,15 @@ class AreaBetweenCurve(Scene):
         )
 #----------------------------------------------------------------------------# title and labels
         # Title and labels
-        title = Tex("Cálcule el Área entre las Curvas", font_size=23).to_edge(UP).set_color_by_gradient(YELLOW, ORANGE, RED).set_stroke(width=1.5).shift(DOWN * 0.2)
+        title = Tex("Encuentre el Área entre las Curvas", font_size=23).to_edge(UP).set_color_by_gradient(YELLOW, ORANGE, RED).set_stroke(width=1.5).shift(DOWN * 0.2)
         funcTex1 = MathTex(r"f(x)", " = ", r"4x-x^2", font_size=20).next_to(title, DOWN, buff=0.3).set_color(GREEN).set_stroke(width=1.2)
         funcTex2 = MathTex(r"g(x)"," = ", r"\sin\left(\frac{\pi x}{3}\right) + x", font_size=20).next_to(funcTex1, DOWN, buff=0.3).set_color(BLUE).set_stroke(width=1.2)
         dashedLine2 = DashedLine(ax.c2p(3, 3), ax.c2p(3,0), stroke_width=1)  # Thinner dashed line
         label2 = Tex("3", font_size=20).next_to(dashedLine2, DOWN, buff=0.1)  # Smaller label
         origin_label = Tex("0", font_size=20).set_color(BLACK).move_to(ax.c2p(0, 0))
         question = Tex("?").move_to(area.get_center()).shift(UP * 1, RIGHT * 0.25)
+
+
 
         # Calculate intersection points
         intersection_x1 = 0  # Replace with actual calculation if needed
@@ -119,34 +121,52 @@ class AreaBetweenCurve(Scene):
         self.play(Transform(funcTex2_copy2, areaMath_eq1[9]), run_time=0.8)  # Cambiado a Transform
         self.play(Write(areaMath_eq1[10]), run_time = 0.05)
         self.play(Write(areaMath_eq1[11]), run_time = 0.05)
+ #----------------------------  
+        
+        areaMath_eq1.font_size = 18  # Set font size for areaMath_eq1
+        areaMath_eq1.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
+        
 #------------------------------- fadeout 
         self.play(AnimationGroup(
             #FadeOut(title),
             FadeOut(funcTex1), FadeOut(funcTex2),
-            FadeOut(ax, run_time=1),
+            FadeOut(ax, run_time=0.5),
             FadeOut(x_label), FadeOut(y_label), FadeOut(origin_label),
-            FadeOut(graph1), FadeOut(graph2, run_time=1),
+            FadeOut(graph1), FadeOut(graph2, run_time=0.3),
             FadeOut(area),
-            FadeOut(dot1), FadeOut(dot2, run_time=0.2),
-            FadeOut(dashedLine2, run_time=0.2),
-            FadeOut(label2, run_time=0.2),
+            FadeOut(dot1), FadeOut(dot2, run_time=0.3),
+            FadeOut(dashedLine2, run_time=0.3),
+            FadeOut(label2, run_time=0.3),
             FadeOut(question, run_time=0.3),
             FadeOut(areaMath, run_time=0.3),
-            FadeOut(funcTex1_copy2, run_time=0.3),
-            FadeOut(funcTex2_copy2, run_time=0.3),
-            FadeOut(funcTex2_copy, run_time=0.3),
-            FadeOut(funcTex1_copy, run_time=0.3),
-            FadeOut(origin_label_0, run_time=0.3),#
-            FadeOut(label2_3, run_time=0.3),
-            FadeOut(areaMath_eq1, run_time=0.1),
+            FadeOut(funcTex1_copy2, run_time=0.3),#
+            FadeOut(funcTex2_copy2, run_time=0.1), #
+            FadeOut(funcTex2_copy, run_time=0.1),
+            FadeOut(funcTex1_copy, run_time=0.1),
+            FadeOut(origin_label_0, run_time=0.1),#
+            FadeOut(label2_3, run_time=0.3),#
+            #FadeOut(areaMath_eq1, run_time=0.1),
             lag_ratio=0.1  # Optional: Add a slight delay between animations
         ))
 
-#-----------------------------------------------------------------------------# others
         areaMath_eq1.font_size = 18  # Set font size for areaMath_eq1
-        self.play(FadeIn(areaMath_eq1), run_time=0.1) 
-        areaMath_eq1.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT)
-        self.play(Animation(areaMath_eq1))
+        funcTex1_copy2.font_size = 18
+        funcTex2_copy2.font_size = 18
+        origin_label_0.font_size = 18
+        label2_3.font_size = 18
+
+        areaMath_eq1.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
+        #funcTex1_copy2.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
+        #funcTex2_copy2.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
+        #origin_label_0.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
+        #label2_3.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
+
+        self.play(Animation(areaMath_eq1), run_time=0.3)
+        #self.play(Animation(areaMath_eq1),Animation(funcTex2_copy2),Animation(origin_label_0),Animation(label2_3), Animation(funcTex1_copy2) ,run_time=0.3)
+
+
+#-----------------------------------------------------------------------------# others
+        
 
         areaMath_eq2 = MathTex(r"A=\int_0^3 \left( 3x-x^2- \sin\left(\frac{\pi x}{3}\right)\right)\, \mathrm{d}x", font_size=18).set_stroke(width=1.15)
         areaMath_eq2.next_to(areaMath_eq1, DOWN, buff=0.3)  # Position below areaMath_eq1
