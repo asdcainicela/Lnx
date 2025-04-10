@@ -1,64 +1,65 @@
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{Lnx}[2025/03/18 Configuraci\'on personalizada]
+\NeedsTeXFormat{LaTeX2e} % Specify the required LaTeX format
+\ProvidesPackage{Lnx}[2025/03/18 Configuraci\'on personalizada] % Define the package name and version info
 
 % ----------------- Paquetes Necesarios -----------------
-\RequirePackage{fancyhdr}   % Encabezados y pies de p\'agina
-\RequirePackage{graphicx}   % Manejo de im\'agenes
-\RequirePackage{ifthen}     % Evaluar si una variable est\'a vac\'ia
-\RequirePackage{xcolor}     % Manejo de colores
-\RequirePackage{setspace}   % Espaciado
-\RequirePackage{afterpage}  % Asegura que afterpage está disponible
-
-\RequirePackage{tikz}
-\RequirePackage{geometry}
-\RequirePackage{etoolbox} % Para \AtEndDocument
-\usetikzlibrary{shapes, backgrounds}
+% Load required packages for headers, images, colors, spacing, and more
+\RequirePackage{fancyhdr}   % Headers and footers
+\RequirePackage{graphicx}   % Image handling
+\RequirePackage{ifthen}     % Conditional statements
+\RequirePackage{xcolor}     % Color management
+\RequirePackage{setspace}   % Line spacing
+\RequirePackage{afterpage}  % Ensure afterpage is available
+\RequirePackage{tikz}       % Graphics with TikZ
+\RequirePackage{geometry}   % Page layout
+\RequirePackage{etoolbox}   % Advanced macros
+\usetikzlibrary{shapes, backgrounds} % Load TikZ libraries for shapes and backgrounds
 
 % ----------------- Configuraci\'on de P\'agina -----------------
-% Definir un nuevo estilo de p\'agina sin pie de p\'agina
+% Define a new page style without a footer
 \fancypagestyle{sinpie}{%
-	\fancyhf{} % Borra encabezados y pies
-	\renewcommand{\footrulewidth}{0pt} % Elimina la l\'inea del pie de p\'agina
+	\fancyhf{} % Clear headers and footers
+	\renewcommand{\footrulewidth}{0pt} % Remove footer line
 }
 
-% Comando para aplicar el estilo sin pie de p\'agina en la p\'agina actual
+% Command to apply the no-footer style to the current page
 \newcommand{\sinpiepagina}{%
-	\thispagestyle{sinpie} % Aplica el estilo solo en la p\'agina actual
+	\thispagestyle{sinpie} % Apply the style only to the current page
 }
 
 % ----------------- Configuraci\'on de Encabezados y Pies -----------------
-\pagestyle{fancy}
-\fancyhf{}
-\fancyfoot[C]{\textbf{\fontsize{16}{20}\selectfont P\'agina $\displaystyle \int_0^{\thepage} \dd{x}$ }}
-\fancyfoot[L]{\LnxLogo} % Se usará solo en lado izquierdo (evita twoside error)
-\renewcommand{\footrulewidth}{0.5mm} % L\'inea en el pie de p\'agina
-\renewcommand{\headrulewidth}{0pt} % Elimina la l\'inea de la cabecera
-\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}}
+% Set up headers and footers
+\pagestyle{fancy} % Use the 'fancy' page style
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot[C]{\textbf{\fontsize{16}{20}\selectfont P\'agina $\displaystyle \int_0^{\thepage} \dd{x}$ }} % Centered footer with page number
+\fancyfoot[L]{\LnxLogo} % Left footer with logo
+\renewcommand{\footrulewidth}{0.5mm} % Footer line thickness
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}} % Plain style without header line
 
 % ----------------- Configuraci\'on del Logo -----------------
-\newcommand{\LnxLogoPath}{} 
+% Commands to manage the logo
+\newcommand{\LnxLogoPath}{} % Variable to store the logo path
 
-\newcommand{\SetLnxLogo}[1]{\renewcommand{\LnxLogoPath}{#1}}
+\newcommand{\SetLnxLogo}[1]{\renewcommand{\LnxLogoPath}{#1}} % Command to set the logo path
 
 \newcommand{\LnxLogo}{%
 	\ifthenelse{\equal{\LnxLogoPath}{}}%
-	{{\huge Ln-x} } % Si \LnxLogoPath est\'a vac\'io, muestra "Ln-x"
-	{\includegraphics[width=0.12\textwidth]{\LnxLogoPath}} % Si hay ruta, muestra el logo
+	{{\huge Ln-x} } % If no path is set, display "Ln-x"
+	{\includegraphics[width=0.12\textwidth]{\LnxLogoPath}} % If a path is set, display the logo
 }
 
 \newcommand{\LnxSize}[1]{%
 	\ifthenelse{\equal{\LnxLogoPath}{}}%
-	{{\huge Ln-x} } % Si \LnxLogoPath est\'a vac\'io, muestra "Ln-x"
-	{\includegraphics[width=#1\textwidth]{\LnxLogoPath}} % Si hay ruta, muestra el logo escalado
+	{{\huge Ln-x} } % If no path is set, display "Ln-x"
+	{\includegraphics[width=#1\textwidth]{\LnxLogoPath}} % Display the logo scaled to the specified size
 }
 
 % ----------------- Configuraci\'on de Colores -----------------
-
-% ----------------- Configuraci\'on de Colores -----------------
-\definecolor{colortitulo}{HTML}{9900CC} % Morado para t\'itulos
-\definecolor{colorcurso}{HTML}{0A1AAA}  % Azul para subt\'itulos
-\definecolor{defaultbg}{RGB}{0,0,0}     % Negro (fondo por defecto)
-\definecolor{defaultfg}{RGB}{255,255,255} % Blanco (texto por defecto)
+% Define custom colors for titles, subtitles, and backgrounds
+\definecolor{colortitulo}{HTML}{9900CC} % Purple for titles
+\definecolor{colorcurso}{HTML}{0A1AAA}  % Blue for subtitles
+\definecolor{defaultbg}{RGB}{0,0,0}     % Black (default background)
+\definecolor{defaultfg}{RGB}{255,255,255} % White (default text)
 \definecolor{LnxblackA}{HTML}{222222}
 \definecolor{LnxblackB}{HTML}{212121}
 \definecolor{LnxblackC}{HTML}{1e1e1e}
@@ -108,35 +109,31 @@
 
 
 % ----------------- Entorno para Ecuaciones Resaltadas -----------------
-\definecolor{LnxEqBg}{gray}{0.05}   % Fondo oscuro (casi negro)
-\definecolor{LnxEqFg}{HTML}{FFD966} % Texto amarillo tenue
-  
-% ----------------- Entorno para Respuestas -----------------
-\definecolor{LnxRptaBg}{gray}{0.05}   % Fondo oscuro (casi negro)
-\definecolor{LnxRptaBgg}{gray}{0.06}   % Fondo oscuro (casi negro)
-\definecolor{LnxRptaFg}{HTML}{feae7e}  
- 
- 
-  
- \newcommand{\LnxBgColor}{defaultbg}  % Fondo por defecto (negro)
- \newcommand{\LnxFgColor}{defaultfg}  % Texto por defecto (blanco)
- 
-%------------------------- newcommand math u otros 
+% Define colors for highlighted equations
+\definecolor{LnxEqBg}{gray}{0.05}   % Dark background (almost black)
+\definecolor{LnxEqFg}{HTML}{FFD966} % Soft yellow text
 
+% ----------------- Entorno para Respuestas -----------------
+% Define colors for response environments
+\definecolor{LnxRptaBg}{gray}{0.05}   % Dark background (almost black)
+\definecolor{LnxRptaBgg}{gray}{0.06}  % Slightly lighter dark background
+\definecolor{LnxRptaFg}{HTML}{feae7e} % Light orange text
+
+% ----------------- Configuraci\'on de Colores Din\'amicos -----------------
+% Commands to dynamically set background and text colors
+\newcommand{\LnxBgColor}{defaultbg}  % Default background color (black)
+\newcommand{\LnxFgColor}{defaultfg}  % Default text color (white)
+
+\newcommand{\SetLnxColors}[2]{%
+	\renewcommand{\LnxBgColor}{#1}% Update background color
+	\renewcommand{\LnxFgColor}{#2}% Update text color
+	\pagecolor{\LnxBgColor}% Apply background color
+	\color{\LnxFgColor}% Apply text color
+}
+
+% ----------------- Comandos Matem\'aticos -----------------
+% Define custom math commands
 \newcommand{\Li}{\text{Li}} % Polylogarithm shortcut
 \newcommand{\dint}{\int\limits} % Display-style integral
 
-%-----------otros 
-
-\newcommand{\SetLnxColors}[2]{%
-	\renewcommand{\LnxBgColor}{#1}%
-	\renewcommand{\LnxFgColor}{#2}%
-	\pagecolor{\LnxBgColor}%
-	\color{\LnxFgColor}%
-}
- 
-
-
-
-
-\endinput
+\endinput % End of the package file
