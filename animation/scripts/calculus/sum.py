@@ -1,6 +1,6 @@
 from manim import *
 
-from LnxScene import backgroundLnx, BoxAnimation, SmartMathTex, MathPazoKpTemplate
+from LnxScene import *
 
 class SquareSummation(Scene):
 	def construct(self):
@@ -176,29 +176,10 @@ class SquareSummation(Scene):
 			Create(box),
 			run_time=0.5
 		)
-	
-		self.wait(1)
 
+		self.wait(1.5)
 
-		self.clear()
-        # Cargar el logo como SVG
-		# 
-		logo = SVGMobject("logo.svg").scale(0.5)
-
-        # Extraer los puntos del contorno del logo
-		outline_path = VMobject()
-		for submobject in logo:
-			outline_path.append_points(submobject.get_points())
-			outline_path.set_stroke(color=["#00F5FF", "#FF00F5"], width=2)  # Gradiente de amarillo a anaranjado
-
-		# Animar el trazo del contorno
-		self.play(Create(outline_path), run_time=0.5)
-		# Mostrar el logo completo con colores aplicados
-		self.play(FadeOut(outline_path), run_time=0.5)
-		self.play(FadeIn(logo), run_time=0.5)
-		# Finalizar la escena
-		self.wait(0.2)
-
+		animate_End( scene=self, svg_path="logo.svg" ) # finalizar con logo
 
 		#with tempconfig({"preview": True, "quality": "high_quality", "disable_caching": True}):
 		#   scene = CompleteAnimation()
