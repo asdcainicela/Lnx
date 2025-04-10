@@ -24,7 +24,7 @@ class CompleteAnimation(Scene):
  
         # TEXTO: Enunciado del problema
         texto1 = MathTex( 
-            r"\text{Calcule la integral:} ",
+            r"\text{Ejemplo de plantilla de Lnx} ",
             font_size=22
         )
  
