@@ -15,7 +15,7 @@ class MathPazoKpTemplate(TexTemplate):
 
 def backgroundLnx(scene, fondo="#111111"):
     scene.camera.background_color = fondo
-
+ 
 class BoxAnimation:
     def __init__(self, scene, **kwargs):
         self.scene = scene
@@ -24,14 +24,14 @@ class BoxAnimation:
         self.imagen = None
         self.tracer = None
         self.params = {
-            'width': 4.0,
+            'width': 4.2,
             'height': 2.5,
             'image_path': None,
             'image_scale': 1/4,
             'image_buff': 0.5,
             'box_display_time': 3.0,
             'box_fill_color': "#1f1f1f",
-            'box_stroke_color': "#ffff00",
+            'box_stroke_color': GOLD,
             'corner_radius': 0.15,
             'stroke_width': 2
         }
@@ -43,7 +43,7 @@ class BoxAnimation:
             self.imagen = ImageMobject(self.params['image_path'])
             self.imagen.scale(self.params['image_scale']).move_to(ORIGIN)
             self.scene.add(self.imagen)
-            self.scene.wait(0.5)
+            self.scene.wait(0.1)
         
         # Paso 2-3: Creación del rectángulo y posición de imagen
         self.box = RoundedRectangle(
@@ -64,9 +64,9 @@ class BoxAnimation:
         self.tracer.move_to(self.box.get_bottom())
         
         self.scene.play(
-            Create(self.box, run_time=0.8),
+            Create(self.box, run_time=0.5),
             UpdateFromFunc(self.tracer, lambda m: m.move_to(self.box.get_end())),
-            run_time=0.8
+            run_time=0.5
         )
         self.scene.play(FadeOut(self.tracer))
         
@@ -81,7 +81,7 @@ class BoxAnimation:
         
         # Cambio de color de borde inmediato
         self.box.set_stroke(color=self.params['box_stroke_color'])
-        self.scene.add(self.box)  # Refrescar render
+        self.scene.add(self.box)
     
     def off(self):
         if not self.box:
@@ -90,16 +90,94 @@ class BoxAnimation:
         self.scene.play(
             FadeOut(self.box),
             FadeOut(self.fill),
-            run_time=1.0
+            FadeOut(self.imagen),
+            run_time=0.8
         )
+
+def logo_handler(scene, existing_logo=None, image_path=None, corner=DR, 
+                animation_style="elastic", initial_scale=0.4, target_scale=0.4*0.4, 
+                buff=0.25, fade_in=True):
+    """
+    Función universal para manejo de logos:
+    
+    1. Si existe existing_logo: Lo mueve a la esquina
+    2. Si no existe: Carga image_path y lo anima desde el centro
+    
+    Parámetros:
+    - existing_logo: Objeto de imagen existente (opcional)
+    - image_path: Ruta si no hay logo existente (requerido si existing_logo es None)
+    - corner: DR (default), DL, UR, UL
+    - animation_style: "smooth", "elastic", "rush"
+    - initial_scale: Escala inicial (solo para nuevo logo)
+    - target_scale: Escala al finalizar animación
+    - buff: Espacio desde la esquina
+    - fade_in: Animación de entrada para nuevo logo
+    """
+    
+    # Validación básica
+    if existing_logo is None and image_path is None:
+        raise ValueError("Debe proveer existing_logo o image_path")
+
+    # Configuración de animación
+    anim_config = {
+        "smooth": {"rate_func": smooth, "run_time": 1.5},
+        "elastic": {"rate_func": rate_functions.ease_out_elastic, "run_time": 2.0},
+        "rush": {"rate_func": rate_functions.rush_into, "run_time": 0.8}
+    }
+    
+    # Caso 1: Logo existente
+    if existing_logo is not None:
+        logo = existing_logo
+        scene.play(
+            logo.animate.to_corner(corner, buff=buff).scale(target_scale),
+            **anim_config[animation_style]
+        )
+    
+    # Caso 2: Nuevo logo
+    else:
+        logo = ImageMobject(image_path).scale(initial_scale).move_to(ORIGIN)
         
-        if self.imagen:
-            self.scene.play(
-                self.imagen.animate.scale(0.4).to_corner(DL),
-                run_time=1
-            )
+        if fade_in:
+            scene.play(FadeIn(logo, shift=UP*0.3), run_time=0.1)
         
-        self.scene.wait(1)
+        scene.play(
+            logo.animate.to_corner(corner, buff=buff).scale(target_scale),
+            **anim_config[animation_style]
+        )
+    
+    return logo
+
+## finalizar el logo aquí va
+def animate_End(scene, svg_path="logo.svg", scale_factor=0.4, colors=[YELLOW, ORANGE]):
+    """
+    Función que anima un logo SVG en una escena de Manim.
+    
+    Args:
+        scene (Scene): Instancia de la escena Manim donde se añadirá la animación.
+        svg_path (str): Ruta del archivo SVG. Por defecto: "logo.svg".
+        scale_factor (float): Escala del logo. Por defecto: 0.5.
+        colors (list): Lista de colores para el gradiente del contorno. Por defecto: [YELLOW, ORANGE].
+    """
+    logo = SVGMobject(svg_path).scale(scale_factor)
+
+    scene.clear()
+    # Animación del contorno
+    outline_path = VMobject()
+    for submobject in logo:
+        outline_path.append_points(submobject.get_points())
+    outline_path.set_stroke(color=colors, width=2)
+    
+    scene.play(Create(outline_path), run_time=0.5) 
+    scene.play(
+        FadeOut(outline_path,run_time=0.5),
+        FadeIn(logo, run_time=0.5),
+        lag_ratio=0
+        )
+    scene.wait(0.5)
+
+
+
+
 
 class SmartMathTex(MathTex):
     def __init__(self, tex, target_width, target_height, **kwargs):
