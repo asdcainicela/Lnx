@@ -122,7 +122,8 @@ def logo_handler(scene, existing_logo=None, image_path=None, corner=DR,
     anim_config = {
         "smooth": {"rate_func": smooth, "run_time": 1.5},
         "elastic": {"rate_func": rate_functions.ease_out_elastic, "run_time": 2.0},
-        "rush": {"rate_func": rate_functions.rush_into, "run_time": 0.8}
+        "rush": {"rate_func": rate_functions.rush_into, "run_time": 0.8},
+        "fast": {"rate_func": rate_functions.ease_out_elastic, "run_time": 0.2},
     }
     
     # Caso 1: Logo existente
