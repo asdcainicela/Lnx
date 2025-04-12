@@ -1,5 +1,19 @@
 from manim import *
 
+def grillado(scene):
+    # Crear la grilla
+    grid = NumberPlane(
+        x_range=[-10, 10, 1],  # Rango del eje X
+        y_range=[-6, 6, 1],    # Rango del eje Y
+        background_line_style={
+            "stroke_color": BLUE,  # Color de las líneas
+            "stroke_width": 1,     # Grosor de las líneas
+            "stroke_opacity": 0.5, # Opacidad de las líneas
+        }
+    )
+    scene.add(grid)  # Agregar la grilla a la escena
+
+
 
 class LinearEquation(Scene):
     def construct(self):
@@ -14,17 +28,22 @@ class LinearEquation(Scene):
             corner_radius=0.1,
             color=[YELLOW]
             )
+        
+        grillado(self)
 
         self.play(Write(expr))
         self.wait(1) 
         self.play(
             Succession(
                 Wait(1.0), 
-                Add(question), 
+                Write(question), 
             ),
             Create(rect, run_time=1.0),
         ) 
         self.wait(2)  
+
+
+
 
 
  
