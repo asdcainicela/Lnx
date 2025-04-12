@@ -10,8 +10,8 @@ class LinearEquation(Scene):
 
         rect = SurroundingRectangle(
             question,
-            buff=0.2,
-            corner_radius=0.2,
+            buff=0.25,
+            corner_radius=0.1,
             )
 
         self.play(Write(expr))
