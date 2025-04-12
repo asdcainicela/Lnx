@@ -19,6 +19,7 @@ def grillado(scene):
 class LinearEquation(Scene):
     def construct(self):
         self.camera.background_color = "#111317" 
+        title = Text("Resuelve", font_size=50).shift(UP * 3.5).set_color([ORANGE,RED])
         expr = MathTex(r" \frac{2x+5}{3} = 7 ", font_size=55).shift(UP * 1)
 
         question = MathTex(r" x=?", font_size=50).next_to(expr, DOWN, buff=1.3)  
