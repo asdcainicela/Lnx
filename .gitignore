@@ -1,0 +1,310 @@
+## Core LaTeX/pdflatex auxiliary files:
+*.aux       # Auxiliary files
+*.lof       # List of figures
+*.log       # Log files
+*.lot       # List of tables
+*.fls       # File list
+*.out       # Output files
+*.toc       # Table of contents
+*.fmt       # Format files
+*.fot       # Font files
+*.cb        # Changebar files
+*.cb2       # Changebar files
+.*.lb       # Label files
+
+## Intermediate documents:
+*.dvi       # Device-independent files
+*.xdv       # Extended device-independent files
+*-converted-to.* # Converted files (e.g., images)
+# *.ps       # PostScript files (commented out to avoid excluding figures)
+# *.eps      # Encapsulated PostScript files (commented out to avoid excluding figures)
+*.pdf       # PDF files
+
+## Generated if empty string is given at "Please type another file name for output:"
+#.pdf
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl       # Bibliography files
+*.bbl-SAVE-ERROR # Saved error files
+*.bcf       # Biber configuration files
+*.bcf-SAVE-ERROR # Saved error files
+*.blg       # BibTeX log files
+*-blx.aux   # Auxiliary files for biblatex
+*-blx.bib   # Bibliography files for biblatex
+*.run.xml   # Run XML files
+
+## Build tool auxiliary files:
+*.fdb_latexmk # Latexmk build database
+*.synctex    # SyncTeX files
+*.synctex(busy) # Busy SyncTeX files
+*.synctex.gz # Compressed SyncTeX files
+*.synctex.gz(busy) # Busy compressed SyncTeX files
+*.pdfsync    # PDF synchronization files
+*.rubbercache # Rubber cache files
+rubber.cache # Rubber cache directory
+
+## Build tool directories for auxiliary files:
+latex.out/   # Output directory for latexrun
+
+## Auxiliary and intermediate files from other packages:
+# algorithms
+*.alg
+*.loa
+
+# achemso
+acs-*.bib
+
+# amsthm
+*.thm
+
+# beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+# changes
+*.soc
+
+# comment
+*.cut
+
+# cprotect
+*.cpt
+
+# elsarticle (documentclass of Elsevier journals)
+*.spl
+
+# endnotes
+*.ent
+
+# fixme
+*.lox
+
+# feynmf/feynmp
+*.mf
+*.mp
+*.t[1-9]
+*.t[1-9][0-9]
+*.tfm
+
+#(r)(e)ledmac/(r)(e)ledpar
+*.end
+*.?end
+*.[1-9]
+*.[1-9][0-9]
+*.[1-9][0-9][0-9]
+*.[1-9]R
+*.[1-9][0-9]R
+*.[1-9][0-9][0-9]R
+*.eledsec[1-9]
+*.eledsec[1-9]R
+*.eledsec[1-9][0-9]
+*.eledsec[1-9][0-9]R
+*.eledsec[1-9][0-9][0-9]
+*.eledsec[1-9][0-9][0-9]R
+
+# glossaries
+*.acn       # Acronym files
+*.acr       # Acronym files
+*.glg       # Glossary log files
+*.glo       # Glossary files
+*.gls       # Glossary files
+*.glsdefs   # Glossary definitions
+*.lzo       # Compressed glossary files
+*.lzs       # Compressed glossary files
+*.slg       # Glossary log files
+*.slo       # Glossary files
+*.sls       # Glossary files
+
+# uncomment this for glossaries-extra (will ignore makeindex's style files!)
+# *.ist
+
+# gnuplot
+*.gnuplot
+*.table
+
+# gnuplottex
+*-gnuplottex-*
+
+# gregoriotex
+*.gaux
+*.glog
+*.gtex
+
+# htlatex
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.trc
+*.xref
+
+# hypdoc
+*.hd
+
+# hyperref
+*.brf
+
+# knitr
+*-concordance.tex
+# TODO Uncomment the next line if you use knitr and want to ignore its generated tikz files
+# *.tikz
+*-tikzDictionary
+
+# listings
+*.lol
+
+# luatexja-ruby
+*.ltjruby
+
+# makeidx
+*.idx
+*.ilg
+*.ind
+
+# minitoc
+*.maf
+*.mlf
+*.mlt
+*.mtc[0-9]*
+*.slf[0-9]*
+*.slt[0-9]*
+*.stc[0-9]*
+
+# minted
+_minted*
+*.pyg
+
+# morewrites
+*.mw
+
+# newpax
+*.newpax
+
+# nomencl
+*.nlg
+*.nlo
+*.nls
+
+# pax
+*.pax
+
+# pdfpcnotes
+*.pdfpc
+
+# sagetex
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
+
+# scrwfile
+*.wrt
+
+# svg
+svg-inkscape/
+
+# sympy
+*.sout
+*.sympy
+sympy-plots-for-*.tex/
+
+# pdfcomment
+*.upa
+*.upb
+
+# pythontex
+*.pytxcode
+pythontex-files-*/
+
+# tcolorbox
+*.listing
+
+# thmtools
+*.loe
+
+# TikZ & PGF
+*.dpth
+*.md5
+*.auxlock
+
+# titletoc
+*.ptc
+
+# todonotes
+*.tdo
+
+# vhistory
+*.hst
+*.ver
+
+# easy-todo
+*.lod
+
+# xcolor
+*.xcp
+
+# xmpincl
+*.xmpi
+
+# xindy
+*.xdy
+
+# xypic precompiled matrices and outlines
+*.xyc
+*.xyd
+
+# endfloat
+*.ttt
+*.fff
+
+# Latexian
+TSWLatexianTemp*
+
+## Editors:
+# WinEdt
+*.bak
+*.sav
+
+# Texpad
+.texpadtmp
+
+# LyX
+*.lyx~
+
+# Kile
+*.backup
+
+# gummi
+.*.swp
+
+# KBibTeX
+*~[0-9]*
+
+# TeXnicCenter
+*.tps
+
+# auto folder when using emacs and auctex
+./auto/*
+*.el
+
+# expex forward references with \gathertags
+*-tags.tex
+
+# standalone packages
+*.sta
+
+# Makeindex log files
+*.lpz
+
+# xwatermark package
+*.xwm
+
+# REVTeX puts footnotes in the bibliography by default, unless the nofootinbib
+# option is specified. Footnotes are the stored in a file with suffix Notes.bib.
+# Uncomment the next line to have this generated file ignored.
+#*Notes.bib
+
+## Ignore all media and __pycache__ directories:
+media/       # Ignore all media directories
+__pycache__/ # Ignore all __pycache__ directories
