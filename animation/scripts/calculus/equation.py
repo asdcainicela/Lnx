@@ -8,8 +8,9 @@ def grillado(scene):
         background_line_style={
             "stroke_color": BLUE,  # Color de las líneas
             "stroke_width": 1,     # Grosor de las líneas
-            "stroke_opacity": 0.5, # Opacidad de las líneas
-        }
+            "stroke_opacity": 0.1, # Opacidad de las líneas
+        },
+        axis_config={"stroke_opacity": 0},  # Ocultar los ejes
     )
     scene.add(grid)  # Agregar la grilla a la escena
 
