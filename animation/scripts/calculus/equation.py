@@ -15,8 +15,8 @@ class LinearEquation(Scene):
             question,
             buff=0.25,
             corner_radius=0.1,
-            color=[YELLOW]
             )
+        rect.set_color_by_gradient(YELLOW,  ORANGE)  # Aplicar gradiente veo que no sirve xd
         
         grillado(self)
         self.add(title)
@@ -30,7 +30,7 @@ class LinearEquation(Scene):
             ),
             Create(rect, run_time=1.0),
         ) 
-        self.wait(2)  
+        self.wait(3)  
 
 
 
