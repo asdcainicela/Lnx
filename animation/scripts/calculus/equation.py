@@ -10,18 +10,18 @@ class LinearEquation(Scene):
 
         rect = SurroundingRectangle(
             question,
-            buff=0.5,
+            buff=0.2,
             corner_radius=0.2,
             )
 
         self.play(Write(expr))
         self.wait(1) 
         self.play(
-            Create(rect, run_time=1.0),
             Succession(
                 Wait(1.0), 
                 Add(question), 
             ),
+            Create(rect, run_time=1.0),
         ) 
         self.wait(2)  
 
