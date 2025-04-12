@@ -13,13 +13,11 @@ class LinearEquation(Scene):
         self.play(Write(expr))
         self.wait(1) 
         self.play(
-            Create(rect, run_time=3.0),
+            Create(rect, run_time=1.0),
             Succession(
                 Wait(1.0),
                 # You can Add a Mobject in the middle of an animation...
-                Add(question),
-                Wait(1.0),
-                # ...or multiple Mobjects at once! 
+                Add(question), 
             ),
         ) 
         self.wait(2)  
