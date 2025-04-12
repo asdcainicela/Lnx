@@ -12,7 +12,7 @@ class LinearEquation(Scene):
             question,
             buff=0.25,
             corner_radius=0.1,
-            color=[YELLOW_A]
+            color=[YELLOW]
             )
 
         self.play(Write(expr))
