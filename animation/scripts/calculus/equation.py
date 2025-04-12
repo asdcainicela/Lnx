@@ -8,15 +8,18 @@ class LinearEquation(Scene):
 
         question = MathTex(r"x=?", font_size=50).next_to(expr, DOWN, buff=1)  
 
-        rect = SurroundingRectangle(question, buff=0.5)
+        rect = SurroundingRectangle(
+            question,
+            buff=0.5,
+            corner_radius=0.2,
+            )
 
         self.play(Write(expr))
         self.wait(1) 
         self.play(
             Create(rect, run_time=1.0),
             Succession(
-                Wait(1.0),
-                # You can Add a Mobject in the middle of an animation...
+                Wait(1.0), 
                 Add(question), 
             ),
         ) 
