@@ -11,16 +11,17 @@ def listar_archivos(directorio, nivel=0, ignorar={".git"}):
             estructura.extend(listar_archivos(ruta_completa, nivel + 1, ignorar))
     return estructura
 
-ruta_base = r"C:\Users\asdCain\Desktop\Lnx"  # Cambia por tu ruta
+# Obtener la ruta de la carpeta "Lnx" automáticamente
+ruta_base = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 estructura = listar_archivos(ruta_base)
 
-ruta_salida = r"C:\Users\asdCain\Desktop\Lnx\estructura.txt"  
+# Guardar el archivo de texto en la misma carpeta del script
+ruta_salida = os.path.join(os.path.dirname(__file__), "estructura.txt")
 
 with open(ruta_salida, "w", encoding="utf-8") as f:
     f.write("\n".join(estructura))
 
-print(f"Archivo guardado en: {ruta_salida}")
-
+print(f"Archivo de estructura guardado en: {os.path.abspath(ruta_salida)}")
 
 def convertir_a_html(estructura):
     html = "<ul>\n"
@@ -32,9 +33,11 @@ def convertir_a_html(estructura):
     return html
 
 html_contenido = convertir_a_html(estructura)
-ruta_html = r"C:\Users\asdCain\Desktop\Lnx\index.html"
+
+# Guardar el archivo HTML en la misma carpeta del script
+ruta_html = os.path.join(os.path.dirname(__file__), "index.html")
 
 with open(ruta_html, "w", encoding="utf-8") as f:
     f.write(f"<html><body>{html_contenido}</body></html>")
 
-print(f"Archivo HTML guardado en: {ruta_html}")
+print(f"Archivo HTML guardado en: {os.path.abspath(ruta_html)}")
