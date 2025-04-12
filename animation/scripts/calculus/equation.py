@@ -3,8 +3,8 @@ from LnxScene import *
  
 
 class LinearEquation(Scene):
-    def construct(self):
-        self.camera.background_color = "#111317" 
+    def construct(self): 
+        backgroundLnx(self)
         title = Text("Resuelve", font_size=34).shift(UP * 3)
         title.set_color_by_gradient(ORANGE, YELLOW)  # Aplicar gradiente de colores
         expr = MathTex(r" \frac{2x+5}{3} = 7 ", font_size=55).shift(UP * 1)
