@@ -3,11 +3,11 @@ from manim import *
 def grillado(scene):
     # Crear la grilla
     grid = NumberPlane(
-        x_range=[-4, 4, 0.4],  # Rango del eje X
-        y_range=[-6, 6, 0.4],    # Rango del eje Y
+        x_range=[-4, 4, 0.3],  # Rango del eje X
+        y_range=[-6, 6, 0.3],    # Rango del eje Y
         background_line_style={
-            "stroke_color": BLUE,  # Color de las líneas
-            "stroke_width": 0.7,     # Grosor de las líneas
+            "stroke_color": GREEN,  # Color de las líneas
+            "stroke_width": 0.5,     # Grosor de las líneas
             "stroke_opacity": 0.1, # Opacidad de las líneas
         },
         axis_config={"stroke_opacity": 0},  # Ocultar los ejes
