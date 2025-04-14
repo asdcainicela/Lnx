@@ -24,7 +24,7 @@ class TrianguloSum180(Scene):
         config.line_stroke_width = 4
         config.line_stroke_joint_style = "round"
 
-        scaleValue = 1.4
+        scaleValue = 1.5
         radiusValue = 0.5 * scaleValue / 2
         radiusValueText = 1.4 * radiusValue
 
@@ -34,8 +34,8 @@ class TrianguloSum180(Scene):
 
         # Puntos del triángulo (equilátero para mejor visualización)
         punto_a = LEFT * scaleValue * 1.2
-        punto_b = RIGHT * scaleValue * 0.9
-        punto_c = UP * scaleValue * np.sqrt(3) / 2  # Altura para equilátero
+        punto_b = RIGHT * scaleValue * 1
+        punto_c = UP * scaleValue * np.sqrt(3) / 1.3  # Altura para equilátero
 
         punto_paralelo = RIGHT * scaleValue * 0.9 / 1.4 
 
