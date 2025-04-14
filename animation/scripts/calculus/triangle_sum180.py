@@ -5,17 +5,19 @@ class TrianguloSum180(Scene):
     def construct(self):
 
         # Variables de colores
-        triangle_color_ab =  BLUE
+        triangle_color_ab = TEAL # "#22dbe8"
         triangle_color_bc = RED
         triangle_color_ca = GREEN
         triangle_color_secondary = GREEN  # Para las líneas reversas
         line_parallel_color = WHITE
         label_color = WHITE
 
-        angle_color_alpha =  GOLD
-        angle_color_beta =  YELLOW
+        angle_color_alpha =  RED
+        angle_color_beta =  GREEN
         angle_color_theta = TEAL
         rectangle_color = BLUE
+
+        gradient_colors = [YELLOW, "#FF8C00", ORANGE]  # Amarillo -> Naranja oscuro -> Naranja
 
         backgroundLnx(self)
         grillado(self)
@@ -55,8 +57,8 @@ class TrianguloSum180(Scene):
         parallel_line = Line(
             punto_c - (punto_b - punto_a) / 2,
             punto_c + (punto_b - punto_a) / 2,
-            color=line_parallel_color
-        )
+            color=line_parallel_color, 
+        ) 
         parallel_line_1 = Line(
             punto_c,
             punto_c - (punto_b - punto_a) / 2,
@@ -194,7 +196,13 @@ class TrianguloSum180(Scene):
 
         self.wait(1)
 
-        rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.25, corner_radius=0.1)
+        rect = SurroundingRectangle(suma_angulos,
+                                    color=rectangle_color,
+                                    buff=0.25,
+                                    corner_radius=0.1
+                                    ).set_color_by_gradient(*gradient_colors)
+        
+
         self.play(
             Create(rect),
             run_time=1,
