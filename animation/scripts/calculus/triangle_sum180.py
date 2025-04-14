@@ -1,7 +1,7 @@
 from manim import *
 from LnxScene import *
 
-class TrianguloAngulosInternosCorrectos(Scene):
+class TrianguloSum180(Scene):
     def construct(self):
 
         # Variables de colores
