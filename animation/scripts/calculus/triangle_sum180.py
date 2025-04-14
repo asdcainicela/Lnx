@@ -171,7 +171,8 @@ class TrianguloAngulosInternosCorrectos(Scene):
             radius=radiusValue * 2,
             start_angle=PI,  # Ajusta la orientación según lo requieras
             angle=PI,           # 180° en radianes
-            color=WHITE
+            color=WHITE,
+            stroke_width=0.5  # Temporario para crear el objeto base
         )
         label_180 = MathTex(r"180^\circ", font_size=small_font_size, color=WHITE).move_to(
             arc_180.point_from_proportion(0.5)
@@ -182,7 +183,7 @@ class TrianguloAngulosInternosCorrectos(Scene):
         self.wait(1)
 
         self.play(Transform(label_180,suma_angulos[1]),
-                  FadeOut(arc_180),
+                  Transform(suma_angulos[1],angulo_180),
                   run_time=1,
                   lag_ratio=0.0
         )
