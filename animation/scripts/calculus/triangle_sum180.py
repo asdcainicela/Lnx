@@ -23,6 +23,8 @@ class TrianguloAngulosInternosCorrectos(Scene):
         punto_b = RIGHT * scaleValue*0.9
         punto_c = UP *scaleValue* np.sqrt(3)/2  # Altura para equilátero
 
+        punto_paralelo = RIGHT*scaleValue*0.9 /1.4 
+
         # Líneas del triángulo
         linea_ab = Line(punto_a, punto_b, color=BLUE)
         linea_bc = Line(punto_b, punto_c, color=RED)
@@ -44,11 +46,11 @@ class TrianguloAngulosInternosCorrectos(Scene):
 
         # Etiqueta "//" en la línea paralela, posicionada un poco a la derecha
         parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(parallel_line, LEFT, buff=0.1).scale(0.5)
-        parallel_label.shift(RIGHT*0.9)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
+        parallel_label.shift(punto_paralelo)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
         
         # Etiqueta "//" en la línea AB, posicionada un poco a la derecha
         ab_parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(linea_ab, LEFT, buff=0.1).scale(0.5)
-        ab_parallel_label.shift(RIGHT*0.9)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
+        ab_parallel_label.shift(punto_paralelo)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
 
         # --- Ángulos INTERNOS (arcos hacia adentro) ---
         
