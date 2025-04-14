@@ -1,7 +1,21 @@
 from manim import *
 from LnxScene import *
+
 class TrianguloAngulosInternosCorrectos(Scene):
     def construct(self):
+
+        # Variables de colores
+        triangle_color_ab = BLUE
+        triangle_color_bc = RED
+        triangle_color_ca = GREEN
+        triangle_color_secondary = GREEN  # Para las líneas reversas
+        line_parallel_color = WHITE
+        label_color = WHITE
+
+        angle_color_alpha = "#ba1583"
+        angle_color_beta = "#15a4ba"
+        angle_color_theta = "#baba15"
+        rectangle_color = BLUE
 
         backgroundLnx(self)
         grillado(self)
@@ -10,79 +24,74 @@ class TrianguloAngulosInternosCorrectos(Scene):
         config.line_stroke_width = 4
         config.line_stroke_joint_style = "round"
 
-        scaleValue= 1.4
-        radiusValue = 0.5*scaleValue/2
-        radiusValueText = 1.4*radiusValue
+        scaleValue = 1.4
+        radiusValue = 0.5 * scaleValue / 2
+        radiusValueText = 1.4 * radiusValue
 
         # Definir variables para los tamaños de fuente
         small_font_size = 25
         big_font_size = 30
 
         # Puntos del triángulo (equilátero para mejor visualización)
-        punto_a = LEFT * scaleValue*1.2
-        punto_b = RIGHT * scaleValue*0.9
-        punto_c = UP *scaleValue* np.sqrt(3)/2  # Altura para equilátero
+        punto_a = LEFT * scaleValue * 1.2
+        punto_b = RIGHT * scaleValue * 0.9
+        punto_c = UP * scaleValue * np.sqrt(3) / 2  # Altura para equilátero
 
-        punto_paralelo = RIGHT*scaleValue*0.9 /1.4 
+        punto_paralelo = RIGHT * scaleValue * 0.9 / 1.4 
 
         # Líneas del triángulo
-        linea_ab = Line(punto_a, punto_b, color=BLUE)
-        linea_bc = Line(punto_b, punto_c, color=RED)
-        linea_ca = Line(punto_c, punto_a, color=GREEN)
+        linea_ab = Line(punto_a, punto_b, color=triangle_color_ab)
+        linea_bc = Line(punto_b, punto_c, color=triangle_color_bc)
+        linea_ca = Line(punto_c, punto_a, color=triangle_color_ca)
 
-        linea_ba = Line(punto_b, punto_a, color=GREEN)
-        linea_cb = Line(punto_c, punto_b, color=GREEN)
-        linea_ac = Line(punto_a, punto_c, color=GREEN)
+        linea_ba = Line(punto_b, punto_a, color=triangle_color_secondary)
+        linea_cb = Line(punto_c, punto_b, color=triangle_color_secondary)
+        linea_ac = Line(punto_a, punto_c, color=triangle_color_secondary)
 
         # Grupo del triángulo
         triangulo = VGroup(linea_ab, linea_bc, linea_ca)
 
-        # Línea paralela a linea_ab que pasa por punto_c, de color blanco
+        # Línea paralela a linea_ab que pasa por punto_c
         parallel_line = Line(
             punto_c - (punto_b - punto_a) / 2,
             punto_c + (punto_b - punto_a) / 2,
-            color=WHITE
+            color=line_parallel_color
         )
         parallel_line_1 = Line(
             punto_c,
-            punto_c  - (punto_b - punto_a) / 2,
-            color=WHITE
+            punto_c - (punto_b - punto_a) / 2,
+            color=line_parallel_color
         )
-
         parallel_line_2 = Line(
             punto_c,
-            punto_c  + (punto_b - punto_a) / 2,
-            color=WHITE
+            punto_c + (punto_b - punto_a) / 2,
+            color=line_parallel_color
         )
 
         # Etiqueta "//" en la línea paralela, posicionada un poco a la derecha
-        parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(parallel_line, LEFT, buff=0.1).scale(0.5)
-        parallel_label.shift(punto_paralelo)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
-        
+        parallel_label = MathTex(r"//", font_size=small_font_size, color=label_color).next_to(parallel_line, LEFT, buff=0.1).scale(0.5)
+        parallel_label.shift(punto_paralelo)
+
         # Etiqueta "//" en la línea AB, posicionada un poco a la derecha
-        ab_parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(linea_ab, LEFT, buff=0.1).scale(0.5)
-        ab_parallel_label.shift(punto_paralelo)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
+        ab_parallel_label = MathTex(r"//", font_size=small_font_size, color=label_color).next_to(linea_ab, LEFT, buff=0.1).scale(0.5)
+        ab_parallel_label.shift(punto_paralelo)
 
         # --- Ángulos INTERNOS (arcos hacia adentro) ---
-        
-        arc_alpha = Angle(linea_ab, linea_ac, radius=radiusValue, color="#ba1583")
-        alpha_label = MathTex(r"\alpha", font_size=small_font_size, color="#ba1583").move_to(
+        arc_alpha = Angle(linea_ab, linea_ac, radius=radiusValue, color=angle_color_alpha)
+        alpha_label = MathTex(r"\alpha", font_size=small_font_size, color=angle_color_alpha).move_to(
             Angle(linea_ab, linea_ac, radius=radiusValueText).point_from_proportion(0.5)
         )
 
-        # Ángulo β en B (entre AB y BC, arco hacia adentro)
-        arc_beta = Angle(linea_bc, linea_ba, radius=radiusValue, color="#15a4ba")
-        beta_label = MathTex(r"\beta", font_size=small_font_size, color="#15a4ba").move_to(
+        arc_beta = Angle(linea_bc, linea_ba, radius=radiusValue, color=angle_color_beta)
+        beta_label = MathTex(r"\beta", font_size=small_font_size, color=angle_color_beta).move_to(
             Angle(linea_bc, linea_ba, radius=radiusValueText).point_from_proportion(0.5)
         )
 
-        # Ángulo θ en C (entre BC y CA, arco hacia adentro)
-        arc_theta = Angle(linea_ca, linea_cb, radius=radiusValue, color="#baba15")
-        theta_label = MathTex(r"\theta", font_size=small_font_size, color="#baba15").move_to(
+        arc_theta = Angle(linea_ca, linea_cb, radius=radiusValue, color=angle_color_theta)
+        theta_label = MathTex(r"\theta", font_size=small_font_size, color=angle_color_theta).move_to(
             Angle(linea_ca, linea_cb, radius=radiusValueText).point_from_proportion(0.5)
         )
 
-        # Ecuación de suma de ángulos
         suma_angulos = MathTex(r"\alpha + \beta + \theta = 180^\circ", font_size=big_font_size)
         suma_angulos.next_to(triangulo, DOWN, buff=1.2)
 
@@ -116,51 +125,46 @@ class TrianguloAngulosInternosCorrectos(Scene):
         self.wait(1)
 
         # Destacar ecuación
-        rect = SurroundingRectangle(suma_angulos, color=BLUE, buff=0.3)
+        rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.3)
         self.play(Create(rect))
         self.wait(1)
 
-         # Mostrar línea paralela a AB pasando por C (color blanco) y sus etiquetas
+        # Mostrar línea paralela a AB pasando por C y sus etiquetas
         self.play(Create(parallel_line), Write(parallel_label), Write(ab_parallel_label))
         self.wait(1)
 
         # -------- Demostración: Copia y transformación de α a su ángulo alterno --------
-        # Crear el ángulo opuesto usando la misma medida de α:
-        # Se construye usando la recta AC (invertida, de C a A) y la línea paralela que pasa por C.
+        # Se construye usando la recta AC invertida (de C a A) y la línea paralela que pasa por C.
         arc_alpha_opuesto = Angle(
             parallel_line_1,
-            Line(punto_c, punto_a),  # la reversa de AC (vértice en C)            
+            Line(punto_c, punto_a),
             radius=radiusValue,
-            color="#ba1583"
+            color=angle_color_alpha
         )
-        alpha_opuesto_label = MathTex(r"\alpha", font_size=small_font_size, color="#ba1583").move_to(
-            Angle(parallel_line_1,Line(punto_c, punto_a),  radius=radiusValueText).point_from_proportion(0.5)
+        alpha_opuesto_label = MathTex(r"\alpha", font_size=small_font_size, color=angle_color_alpha).move_to(
+            Angle(parallel_line_1, Line(punto_c, punto_a), radius=radiusValueText).point_from_proportion(0.5)
         )
 
-        # Animar la transformación de una copia de α al ángulo opuesto
         self.play(
             Transform(arc_alpha.copy(), arc_alpha_opuesto),
             Transform(alpha_label.copy(), alpha_opuesto_label),
             run_time=2
         )
-
         self.wait(1)
 
-        #-------------------
-
         arc_beta_opuesto = Angle(
-            Line(punto_c, punto_b),  # la reversa de AC (vértice en C)    
-            parallel_line_2,        
+            Line(punto_c, punto_b),
+            parallel_line_2,
             radius=radiusValue,
-            color="#15a4ba"
+            color=angle_color_beta
         )
-        beta_opuesto_label = MathTex(r"\beta", font_size=small_font_size, color="#15a4ba").move_to(
-            Angle(Line(punto_c, punto_b),parallel_line_2,  radius=radiusValueText).point_from_proportion(0.5)
+        beta_opuesto_label = MathTex(r"\beta", font_size=small_font_size, color=angle_color_beta).move_to(
+            Angle(Line(punto_c, punto_b), parallel_line_2, radius=radiusValueText).point_from_proportion(0.5)
         )
 
-        # Animar la transformación de una copia de α al ángulo opuesto
         self.play(
             Transform(arc_beta.copy(), arc_beta_opuesto),
             Transform(beta_label.copy(), beta_opuesto_label),
             run_time=2
         )
+        self.wait(1)
