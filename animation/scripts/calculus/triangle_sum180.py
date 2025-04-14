@@ -92,7 +92,8 @@ class TrianguloAngulosInternosCorrectos(Scene):
             Angle(linea_ca, linea_cb, radius=radiusValueText).point_from_proportion(0.5)
         )
 
-        suma_angulos = MathTex(r"\alpha + \beta + \theta = 180^\circ", font_size=big_font_size)
+        suma_angulos = MathTex(r"\alpha + \beta + \theta =","?" , font_size=big_font_size)
+        angulo_180 = MathTex(r" 180^\circ", font_size=big_font_size)
         suma_angulos.next_to(triangulo, DOWN, buff=1.2)
 
         # ---- Animaciones ----------------
@@ -123,12 +124,7 @@ class TrianguloAngulosInternosCorrectos(Scene):
         # Mostrar ecuación
         self.play(Write(suma_angulos))
         self.wait(1)
-
-        # Destacar ecuación
-        rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.3)
-        self.play(Create(rect))
-        self.wait(1)
-
+ 
         # Mostrar línea paralela a AB pasando por C y sus etiquetas
         self.play(Create(parallel_line), Write(parallel_label), Write(ab_parallel_label))
         self.wait(1)
@@ -148,9 +144,9 @@ class TrianguloAngulosInternosCorrectos(Scene):
         self.play(
             Transform(arc_alpha.copy(), arc_alpha_opuesto),
             Transform(alpha_label.copy(), alpha_opuesto_label),
-            run_time=2
+            run_time=1
         )
-        self.wait(1)
+        self.wait(0.5)
 
         arc_beta_opuesto = Angle(
             Line(punto_c, punto_b),
@@ -165,6 +161,34 @@ class TrianguloAngulosInternosCorrectos(Scene):
         self.play(
             Transform(arc_beta.copy(), arc_beta_opuesto),
             Transform(beta_label.copy(), beta_opuesto_label),
-            run_time=2
+            run_time=1
         )
+        self.wait(1)
+
+        # En el punto C: ángulo de 180° con radio = radiusValue * 2 y etiqueta
+        arc_180 = Arc(
+            arc_center=punto_c,
+            radius=radiusValue * 2,
+            start_angle=PI,  # Ajusta la orientación según lo requieras
+            angle=PI,           # 180° en radianes
+            color=WHITE
+        )
+        label_180 = MathTex(r"180^\circ", font_size=small_font_size, color=WHITE).move_to(
+            arc_180.point_from_proportion(0.5)
+        )
+        label_180.shift(DOWN * 0.25)
+
+        self.play(Create(arc_180), Write(label_180))
+        self.wait(1)
+
+        self.play(Transform(label_180,suma_angulos[1]),
+                  FadeOut(arc_180),
+                  run_time=1,
+                  lag_ratio=0.0
+        )
+
+        self.wait(1)
+
+        rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.3)
+        self.play(Create(rect))
         self.wait(1)
