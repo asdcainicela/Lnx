@@ -1,0 +1,176 @@
+\LnxPregunta{  Calcule  la integral, }{  
+	\vspace{1.5cm}
+	\[
+	\int_0^1 x^m \left\{ \frac{1}{x} \right\}^b \ln^n{x} \, dx
+	\]
+	\vspace{0.1cm}
+	\begin{flushleft}
+		%	{\Huge Si $ \text{Li}_3 $ es la función trilogarítmica. }\\
+		{\Huge	donde \( m \geq b \), \( m, b \in \mathbb{Z}^+ \) y \( n \in \mathbb{Z}^{+} \cup \{0\} \)  \\
+		además, $ \{y\} = y - \lfloor y \rfloor$. }
+	\end{flushleft}
+}
+
+\LnxSolucion{Solución}{  
+	
+	vemos que 
+	$$
+	I(m,b,n)=	\int_0^1 x^m \left\{ \frac{1}{x} \right\}^b \ln^n{x} \, dx = \left. \frac{\partial^n}{\partial a^n}  \left( \int_0^1 x^a \left\{ \frac{1}{x} \right\}^b dx \right)\right|_{a=m}
+	$$
+	
+	Calculamos $I(a,b,0)$, \( \{x\} = x - \lfloor x \rfloor \), hacemos \( x = 1/y \), 
+	
+	
+	\[
+	I(a,b,0)=\int_0^1 x^a \left\{ \frac{1}{x} \right\}^b dx = \int_1^\infty y^{-a-2} \{y\}^b dy
+	\]
+	Dividimos la integral en intervalos \( [k, k+1] \):
+	\[
+	= \sum_{k=1}^\infty \int_k^{k+1} y^{-a-2} \{y\}^b dy = \sum_{k=1}^\infty \int_k^{k+1} y^{-a-2} (y - \lfloor y \rfloor)^b dy
+	\]
+	Como \( y \in [k, k+1] \), reemplazamos \( \lfloor y \rfloor \) por \( k \):
+	\[
+	= \sum_{k=1}^\infty \int_k^{k+1} y^{-a-2} (y - k)^b dy \equiv I_{a,b,k}
+	\]
+	donde denotamos la integral por \( I_{a,b,k} \). Aplicando integraci\'on por partes,
+
+	\[
+	= -\left. \frac{y^{-a-1}}{a + 1} (y - k)^b \right|_{y=k}^{y=k+1} + \frac{b}{a + 1} \underbrace{ \int_k^{k+1} y^{-a-1} (y - k)^{b-1} dy}_{I_{a-1,b-1,k}}.
+	\]
+	Multiplicando por \( a + 1 \),
+	\begin{equation}
+		(a + 1) I_{a,b,k} = -\frac{1}{(k + 1)^{a+1}} + b I_{a-1,b-1,k}
+		\label{eq1}
+	\end{equation}
+	
+	
+	
+	*{Caso \( b = 1 \)},
+	\[
+	\int_0^1 x^a \left\{ \frac{1}{x} \right\} dx = \int_1^\infty \frac{\{y\}}{y^{a+2}} dy
+	\]
+	Dividiendo en intervalos:
+	\[
+	= \sum_{k=1}^\infty \int_k^{k+1} \frac{y - k}{y^{a+2}} dy = \sum_{k=1}^\infty \left( \int_k^{k+1} \frac{1}{y^{a+1}} dy - \int_k^{k+1} \frac{k}{y^{a+2}} dy \right)
+	\]
+	\[
+	= \frac{1}{a} \sum_{k=1}^\infty \left( \frac{1}{k^a} - \frac{1}{(k + 1)^a} \right) - \frac{1}{a + 1} \sum_{k=1}^\infty \left( \frac{1}{k^a} - \frac{k}{(k + 1)^{a+1}} \right)
+	\]
+	\begin{equation}
+	\int_0^1 x^a \left\{ \frac{1}{x} \right\} dx 	= \frac{1}{a} - \frac{\zeta(a + 1)}{a + 1}
+		\label{eq5}
+	\end{equation}
+	
+	
+	*{Caso  \( a = b = p \)},
+	\begin{equation}
+		(p + 1) I_{p,p,k} - p I_{p-1,p-1,k} = -\frac{1}{(k + 1)^{p+1}}
+		\label{eq2}
+	\end{equation}
+	
+	\begin{equation}
+		I_{p,p,k} = \frac{1}{k(k + 1)(p + 1)} - \frac{1}{p + 1} \sum_{i=1}^p \frac{1}{(k + 1)^{i+1}}
+		\label{eq3}
+	\end{equation}
+	
+	Usando esto en la integral original:
+	\[
+	\int_0^1 x^p \left\{ \frac{1}{x} \right\}^p dx = \sum_{k=1}^\infty I_{p,p,k}
+	\]
+	
+	\[ = \sum_{k=1}^\infty \left( \frac{1}{k(k + 1)(p + 1)} - \frac{1}{p + 1} \sum_{i=1}^p \frac{1}{(k + 1)^{i+1}} \right)
+	\]
+	$$
+	= \frac{1}{p + 1} \sum_{k=1}^\infty \frac{1}{k(k + 1)} - \frac{1}{p + 1} \sum_{i=1}^p \left( \zeta(i + 1) - 1 \right)
+	$$
+	\begin{equation}
+		\int_0^1 x^p \left\{ \frac{1}{x} \right\}^p dx  = 1 - \frac{1}{p + 1} \sum_{i=1}^p \zeta(i + 1)
+		\label{eq4}
+	\end{equation}
+	
+	
+	
+	*{Caso  \( a > b > 1 \)}
+	Multiplicando ambos lados de \eqref{eq1} por \( a!/b! \),
+	\[
+	\frac{(a + 1)!}{b!} I_{a,b,k} = -\frac{a!}{b!(k + 1)^{a+1}} + \frac{a!}{(b - 1)!} I_{a-1,b-1,k}
+	\]
+	Iterando esta relaci\'on,
+	
+	\begin{equation*}
+		\scalebox{0.8}{$\displaystyle
+			\frac{(a + 1)!}{b!} I_{a,b,k} = (a - b + 2)! I_{a-b+1,1,k} - \sum_{i=1}^{b-1} \frac{(a - b + i + 1)!}{(i + 1)! (k + 1)^{a - b + i + 2}}
+			$}
+	\end{equation*}
+ 
+	Sumando sobre \( k \geq 1 \) y usando la definici\'on de \( I_{a,b,k} \):
+	
+	\begin{equation*}
+		\scalebox{0.7}{$\displaystyle
+			 \frac{(a + 1)!}{b!} \int_0^1 x^a \left\{ \frac{1}{x} \right\}^b dx = (a - b + 2)! \int_0^1 x^{a - b + 1} \left\{ \frac{1}{x} \right\} dx - \sum_{k=1}^\infty \sum_{i=1}^{b-1} \frac{(a - b + i + 1)!}{(i + 1)! (k + 1)^{a - b + i + 2}}
+			$}
+	\end{equation*}
+ 
+	
+	Usando \eqref{eq5} y simplificando,
+	
+		\begin{equation}
+		\scalebox{0.55}{$\displaystyle
+				\int_0^1 x^a \left\{ \frac{1}{x} \right\}^b dx = \frac{(a - b + 2)! b!}{(a - b + 1)(a + 1)!} - \frac{(a - b + 1)! b!}{(a + 1)!} \zeta(a - b + 2)  - \frac{b!}{(a + 1)!} \sum_{j=1}^{b-1} \frac{(a - j + 1)!}{(b - j + 1)!} \left( \zeta(a - j + 2) - 1 \right) 
+			$}
+			\label{eq8}
+	\end{equation}
+	
+	  
+	Finalmente, combinando los resultados de (\ref{eq4}), (\ref{eq5}) y (\ref{eq8}), obtenemos para \( a, b \) enteros positivos, \( a \geq b \), que
+	
+		\begin{equation*}
+		\scalebox{0.9}{$\displaystyle
+			 	I(a,b,0) =\frac{b!}{(a + 1)!} \left( (a - b)! - \sum_{j=1}^b \frac{(a - j + 1)!}{(b - j + 1)!} \left( \zeta(a - j + 2) - 1 \right) \right) 
+			$} 
+	\end{equation*}
+ 
+	Además 
+	$$
+	I(m,b,n)=	  \left. \frac{\partial^n}{\partial a^n}  \left( \int_0^1 x^a \left\{ \frac{1}{x} \right\}^b dx \right)\right|_{a=m}
+	$$
+	
+
+ 
+	
+}
+\begin{LnxRptaBox}   
+\begin{equation*}
+\scalebox{0.6}{$\displaystyle
+	\int_0^1 x^m \left\{ \frac{1}{x} \right\}^b \ln^n{x} \, dx = \left. \frac{\partial^n}{\partial a^n} \left( \frac{b!}{(a + 1)!} \left( (a - b)! - \sum_{j=1}^b \frac{(a - j + 1)!}{(b - j + 1)!} \left( \zeta(a - j + 2) - 1 \right) \right) \right)  \right|_{a=m} 
+	$} 
+\end{equation*}
+\end{LnxRptaBox} 
+donde \( \zeta(.) \) es la función zeta de Riemann
+.\\
+
+
+\begin{itemize}
+	\item Ejemplo1, del caso  \eqref{eq5} 
+	
+	$$
+	\int_0^1 x^2 \left\{ \frac{1}{x} \right\} \ln^2(x) \, dx  =\left. \frac{\partial^2 }{\partial s^2} \right|_{s=2} \left( \int_0^1 x^s \left\{ \frac{1}{x} \right\}  \, dx  \right) 
+	$$
+	
+	\[
+	=  \left.  \frac{d^2}{ds^2} \right|_{s=2} \left( \frac{1}{s} - \frac{\zeta(s+1)}{s+1} \right)
+	\]
+	
+	\[
+=\left.  \frac{2}{s^3} - \frac{(s+1)^2 \zeta''(s+1) - 2(s+1)\zeta'(s+1) + 2\zeta(s+1)}{(s+1)^3} \right|_{s=2} 
+	\]
+	
+	\[
+	\int_0^1 x^2 \left\{ \frac{1}{x} \right\} \ln^2{x} \, dx = \frac{1}{4} - \frac{2}{27}\zeta(3) + \frac{2}{9}\zeta'(3) - \frac{1}{3}\zeta''(3)
+	\]
+	
+	
+	
+\end{itemize}
+
+
