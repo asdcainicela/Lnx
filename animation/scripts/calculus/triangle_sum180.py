@@ -6,7 +6,7 @@ class TrianguloSum180(Scene):
 
         # Variables de colores
         triangle_color_ab = "#00FFFF"  # Cian
-        triangle_color_bc = "#00FF7F"  # Rojo (reemplaza al magenta)
+        triangle_color_bc = RED  # Rojo (reemplaza al magenta)
         triangle_color_ca = "#FFFF00"  # Amarillo
         triangle_color_secondary = GREEN  # Para las líneas reversas
         line_parallel_color = WHITE
