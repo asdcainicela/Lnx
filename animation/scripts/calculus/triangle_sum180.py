@@ -43,6 +43,17 @@ class TrianguloAngulosInternosCorrectos(Scene):
             punto_c + (punto_b - punto_a) / 2,
             color=WHITE
         )
+        parallel_line_1 = Line(
+            punto_c,
+            punto_c  - (punto_b - punto_a) / 2,
+            color=WHITE
+        )
+
+        parallel_line_2 = Line(
+            punto_c,
+            punto_c  + (punto_b - punto_a) / 2,
+            color=WHITE
+        )
 
         # Etiqueta "//" en la línea paralela, posicionada un poco a la derecha
         parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(parallel_line, LEFT, buff=0.1).scale(0.5)
@@ -112,3 +123,44 @@ class TrianguloAngulosInternosCorrectos(Scene):
          # Mostrar línea paralela a AB pasando por C (color blanco) y sus etiquetas
         self.play(Create(parallel_line), Write(parallel_label), Write(ab_parallel_label))
         self.wait(1)
+
+        # -------- Demostración: Copia y transformación de α a su ángulo alterno --------
+        # Crear el ángulo opuesto usando la misma medida de α:
+        # Se construye usando la recta AC (invertida, de C a A) y la línea paralela que pasa por C.
+        arc_alpha_opuesto = Angle(
+            parallel_line_1,
+            Line(punto_c, punto_a),  # la reversa de AC (vértice en C)            
+            radius=radiusValue,
+            color="#ba1583"
+        )
+        alpha_opuesto_label = MathTex(r"\alpha", font_size=small_font_size, color="#ba1583").move_to(
+            Angle(parallel_line_1,Line(punto_c, punto_a),  radius=radiusValueText).point_from_proportion(0.5)
+        )
+
+        # Animar la transformación de una copia de α al ángulo opuesto
+        self.play(
+            Transform(arc_alpha.copy(), arc_alpha_opuesto),
+            Transform(alpha_label.copy(), alpha_opuesto_label),
+            run_time=2
+        )
+
+        self.wait(1)
+
+        #-------------------
+
+        arc_beta_opuesto = Angle(
+            Line(punto_c, punto_b),  # la reversa de AC (vértice en C)    
+            parallel_line_2,        
+            radius=radiusValue,
+            color="#15a4ba"
+        )
+        beta_opuesto_label = MathTex(r"\beta", font_size=small_font_size, color="#15a4ba").move_to(
+            Angle(Line(punto_c, punto_b),parallel_line_2,  radius=radiusValueText).point_from_proportion(0.5)
+        )
+
+        # Animar la transformación de una copia de α al ángulo opuesto
+        self.play(
+            Transform(arc_beta.copy(), arc_beta_opuesto),
+            Transform(beta_label.copy(), beta_opuesto_label),
+            run_time=2
+        )
