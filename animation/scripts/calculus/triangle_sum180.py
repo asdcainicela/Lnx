@@ -5,22 +5,25 @@ class TrianguloSum180(Scene):
     def construct(self):
 
         # Variables de colores
-        triangle_color_ab = TEAL # "#22dbe8"
-        triangle_color_bc = RED
-        triangle_color_ca = GREEN
+        triangle_color_ab = "#00FFFF"  # Cian
+        triangle_color_bc = "#FF0000"  # Rojo (reemplaza al magenta)
+        triangle_color_ca = "#FFFF00"  # Amarillo
         triangle_color_secondary = GREEN  # Para las líneas reversas
         line_parallel_color = WHITE
         label_color = WHITE
 
-        angle_color_alpha =  RED
-        angle_color_beta =  GREEN
-        angle_color_theta = TEAL
+        angle_color_alpha =  triangle_color_bc
+        angle_color_beta =  triangle_color_ca
+        angle_color_theta = triangle_color_ab
         rectangle_color = BLUE
 
         gradient_colors = [YELLOW, "#FF8C00", ORANGE]  # Amarillo -> Naranja oscuro -> Naranja
 
         backgroundLnx(self)
         grillado(self)
+        self.camera.tex_template = MathPazoKpTemplate()
+        logo_handler(  scene=self, image_path="logo.png", animation_style="fast", target_scale=0.5*0.6 ) #Mover logo con ajustes
+
 
         # Configuración para líneas suaves
         config.line_stroke_width = 4
@@ -200,7 +203,11 @@ class TrianguloSum180(Scene):
                                     color=rectangle_color,
                                     buff=0.25,
                                     corner_radius=0.1
-                                    ).set_color_by_gradient(*gradient_colors)
+                                    ) 
+        rect.set_stroke(
+            width=2, 
+            color=[ ORANGE, RED]  # Gradient colors
+        )
         
 
         self.play(
