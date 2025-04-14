@@ -95,6 +95,7 @@ class TrianguloSum180(Scene):
         suma_angulos = MathTex(r"\alpha + \beta + \theta =","?" , font_size=big_font_size)
         angulo_180 = MathTex(r" 180^\circ", font_size=big_font_size)
         suma_angulos.next_to(triangulo, DOWN, buff=1.2)
+        angulo_180.next_to(suma_angulos[0], RIGHT, buff=0.1)
 
         # ---- Animaciones ----------------
         # Dibujar triángulo
@@ -182,14 +183,22 @@ class TrianguloSum180(Scene):
         self.play(Create(arc_180), Write(label_180))
         self.wait(1)
 
-        self.play(Transform(label_180,suma_angulos[1]),
-                  Transform(suma_angulos[1],angulo_180),
-                  run_time=1,
-                  lag_ratio=0.0
+        self.play(
+            Transform(suma_angulos[1], angulo_180),
+            #Transform(angulo_180, angulo_180.copy().move_to(suma_angulos[1])),
+            FadeOut(arc_180),
+            FadeOut(label_180),
+            run_time=1,
+            lag_ratio=0.0
         )
 
         self.wait(1)
 
         rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.3)
-        self.play(Create(rect))
+        self.play(
+            Create(rect),
+            run_time=1,
+            lag_ratio=0.0
+        )
+
         self.wait(1)
