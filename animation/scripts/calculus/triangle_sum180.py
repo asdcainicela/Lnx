@@ -5,16 +5,16 @@ class TrianguloSum180(Scene):
     def construct(self):
 
         # Variables de colores
-        triangle_color_ab =GREEN # BLUE
-        triangle_color_bc = GREEN #RED
+        triangle_color_ab =  BLUE
+        triangle_color_bc = RED
         triangle_color_ca = GREEN
         triangle_color_secondary = GREEN  # Para las líneas reversas
         line_parallel_color = WHITE
         label_color = WHITE
 
-        angle_color_alpha = ORANGE #"#ba1583"
-        angle_color_beta = RED#"#15a4ba"
-        angle_color_theta = "#baba15"
+        angle_color_alpha =  GOLD
+        angle_color_beta =  YELLOW
+        angle_color_theta = TEAL
         rectangle_color = BLUE
 
         backgroundLnx(self)
