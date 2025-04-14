@@ -5,15 +5,15 @@ class TrianguloSum180(Scene):
     def construct(self):
 
         # Variables de colores
-        triangle_color_ab = BLUE
-        triangle_color_bc = RED
+        triangle_color_ab =GREEN # BLUE
+        triangle_color_bc = GREEN #RED
         triangle_color_ca = GREEN
         triangle_color_secondary = GREEN  # Para las líneas reversas
         line_parallel_color = WHITE
         label_color = WHITE
 
-        angle_color_alpha = "#ba1583"
-        angle_color_beta = "#15a4ba"
+        angle_color_alpha = ORANGE #"#ba1583"
+        angle_color_beta = RED#"#15a4ba"
         angle_color_theta = "#baba15"
         rectangle_color = BLUE
 
@@ -194,7 +194,7 @@ class TrianguloSum180(Scene):
 
         self.wait(1)
 
-        rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.3)
+        rect = SurroundingRectangle(suma_angulos, color=rectangle_color, buff=0.25, corner_radius=0.1)
         self.play(
             Create(rect),
             run_time=1,
