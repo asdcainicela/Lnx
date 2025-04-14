@@ -12,7 +12,7 @@ class TrianguloAngulosInternosCorrectos(Scene):
 
         scaleValue= 1.4
         radiusValue = 0.5*scaleValue/2
-        radiusValueText = 1.3*radiusValue
+        radiusValueText = 1.4*radiusValue
 
         # Definir variables para los tamaños de fuente
         small_font_size = 25
@@ -35,22 +35,35 @@ class TrianguloAngulosInternosCorrectos(Scene):
         # Grupo del triángulo
         triangulo = VGroup(linea_ab, linea_bc, linea_ca)
 
+        # Línea paralela a linea_ab que pasa por punto_c, de color blanco
+        parallel_line = Line(
+            punto_c - (punto_b - punto_a) / 2,
+            punto_c + (punto_b - punto_a) / 2,
+            color=WHITE
+        )
+
+        # Etiqueta "//" en la línea paralela, posicionada un poco a la derecha
+        parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(parallel_line, RIGHT, buff=0.1)
+        
+        # Etiqueta "//" en la línea AB, posicionada un poco a la derecha
+        ab_parallel_label = MathTex(r"//", font_size=small_font_size, color=BLUE).next_to(linea_ab, RIGHT, buff=0.1)
+
         # --- Ángulos INTERNOS (arcos hacia adentro) ---
         
-        arc_alpha = Angle(linea_ab, linea_ac, radius=radiusValue, color=YELLOW)
-        alpha_label = MathTex(r"\alpha", font_size=small_font_size).move_to(
+        arc_alpha = Angle(linea_ab, linea_ac, radius=radiusValue, color="#ba1583")
+        alpha_label = MathTex(r"\alpha", font_size=small_font_size, color="#ba1583").move_to(
             Angle(linea_ab, linea_ac, radius=radiusValueText).point_from_proportion(0.5)
         )
 
         # Ángulo β en B (entre AB y BC, arco hacia adentro)
-        arc_beta = Angle(linea_bc, linea_ba, radius=radiusValue, color=YELLOW)
-        beta_label = MathTex(r"\beta", font_size=small_font_size).move_to(
+        arc_beta = Angle(linea_bc, linea_ba, radius=radiusValue, color="#15a4ba")
+        beta_label = MathTex(r"\beta", font_size=small_font_size, color="#15a4ba").move_to(
             Angle(linea_bc, linea_ba, radius=radiusValueText).point_from_proportion(0.5)
         )
 
         # Ángulo θ en C (entre BC y CA, arco hacia adentro)
-        arc_theta = Angle(linea_ca, linea_cb, radius=radiusValue, color=YELLOW)
-        theta_label = MathTex(r"\theta", font_size=small_font_size).move_to(
+        arc_theta = Angle(linea_ca, linea_cb, radius=radiusValue, color="#baba15")
+        theta_label = MathTex(r"\theta", font_size=small_font_size, color="#baba15").move_to(
             Angle(linea_ca, linea_cb, radius=radiusValueText).point_from_proportion(0.5)
         )
 
@@ -90,4 +103,8 @@ class TrianguloAngulosInternosCorrectos(Scene):
         # Destacar ecuación
         rect = SurroundingRectangle(suma_angulos, color=BLUE, buff=0.3)
         self.play(Create(rect))
-        self.wait(3)
+        self.wait(1)
+
+         # Mostrar línea paralela a AB pasando por C (color blanco) y sus etiquetas
+        self.play(Create(parallel_line), Write(parallel_label), Write(ab_parallel_label))
+        self.wait(1)
