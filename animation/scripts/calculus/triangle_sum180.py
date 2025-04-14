@@ -43,10 +43,12 @@ class TrianguloAngulosInternosCorrectos(Scene):
         )
 
         # Etiqueta "//" en la línea paralela, posicionada un poco a la derecha
-        parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(parallel_line, RIGHT, buff=0.1)
+        parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(parallel_line, LEFT, buff=0.1).scale(0.5)
+        parallel_label.shift(RIGHT*0.9)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
         
         # Etiqueta "//" en la línea AB, posicionada un poco a la derecha
-        ab_parallel_label = MathTex(r"//", font_size=small_font_size, color=BLUE).next_to(linea_ab, RIGHT, buff=0.1)
+        ab_parallel_label = MathTex(r"//", font_size=small_font_size, color=WHITE).next_to(linea_ab, LEFT, buff=0.1).scale(0.5)
+        ab_parallel_label.shift(RIGHT*0.9)  # Ajustar la posición de la etiqueta para que no se superponga con la línea
 
         # --- Ángulos INTERNOS (arcos hacia adentro) ---
         
