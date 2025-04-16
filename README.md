@@ -21,7 +21,7 @@ Este proyecto tiene como objetivo facilitar la creación de contenido visual mat
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/Lnx.git
+   git clone https://github.com/asdcainicela/Lnx.git 
    cd Lnx
    ```
 
