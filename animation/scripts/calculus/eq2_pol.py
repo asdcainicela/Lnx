@@ -5,10 +5,10 @@ from LnxScene import *
 class Equation(Scene):
     def construct(self): 
         backgroundLnx(self)
-        
-        title = Text("Calcule", font_size=34).shift(UP * 2)
+
+        title = Text("Calcule", font_size=34).shift(UP * 2.3)
         title.set_color_by_gradient(ORANGE, YELLOW)  # Aplicar gradiente de colores
-        expr = MathTex(r" E= 6\div  \frac{1}{2} (1+2)", font_size=50).shift(UP * 1)
+        expr = MathTex(r" E= 6\div  \frac{1}{2} (1+2)", font_size=50).shift(UP * 0.5)
 
         question = MathTex(r" E=?", font_size=40).next_to(expr, DOWN, buff=1.3)  
 
