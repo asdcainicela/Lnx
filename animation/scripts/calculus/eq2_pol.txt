@@ -2,7 +2,7 @@ from manim import *
 from LnxScene import *
  
 
-class LinearEquation(Scene):
+class Equation(Scene):
     def construct(self): 
         backgroundLnx(self)
         title = Text("Resuelve", font_size=34).shift(UP * 3)
