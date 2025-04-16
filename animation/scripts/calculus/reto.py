@@ -70,16 +70,7 @@ class MathProblems(Scene):
             font_size=25
         )
         
-        prob10 = MathTex(
-            r"\lim_{x \to \infty} \left[ \frac{1}{x} \left( \frac{\riemannZeta(1 + \frac{1}{x})}{x} \right)^{\frac{x}{\eulerGamma}} \left( \frac{(2x)!}{x!} \right^{\frac{1}{x}} - 4 \right] x",
-            font_size=25
-        )
         
-        prob10_explanation = MathTex(
-            r"\text{Donde } \riemannZeta(s) \text{ es la función zeta de Riemann}",
-            r"\eulerGamma \text{ es la constante de Euler-Mascheroni}",
-            font_size=20
-        )
         
         # Add animations here
         self.play(Write(prob1))
