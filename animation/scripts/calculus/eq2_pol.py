@@ -7,9 +7,9 @@ class Equation(Scene):
         backgroundLnx(self)
         title = Text("Resuelve", font_size=34).shift(UP * 3)
         title.set_color_by_gradient(ORANGE, YELLOW)  # Aplicar gradiente de colores
-        expr = MathTex(r" E= 6\div  \frac{1}{2} (1+2)", font_size=55).shift(UP * 1)
+        expr = MathTex(r" E= 6\div  \frac{1}{2} (1+2)", font_size=50).shift(UP * 1)
 
-        question = MathTex(r" E=?", font_size=50).next_to(expr, DOWN, buff=1.3)  
+        question = MathTex(r" E=?", font_size=40).next_to(expr, DOWN, buff=1.3)  
 
         rect = SurroundingRectangle(
             question,
