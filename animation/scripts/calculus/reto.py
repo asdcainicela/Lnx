@@ -3,13 +3,8 @@ from LnxScene import *
 
 
 class MathProblems(Scene):
-    def construct(self):
-        # Set font size
-        tex_template = TexTemplate()
-        tex_template.add_to_preamble(r"\usepackage{amsmath, amssymb, physics}")
-        tex_template.add_to_preamble(r"\newcommand{\eulerGamma}{\gamma}")
-        tex_template.add_to_preamble(r"\newcommand{\riemannZeta}{\zeta}")
-        tex_template.add_to_preamble(r"\newcommand{\polylog}[2]{\text{Li}_{#1}(#2)}")
+    def construct(self): 
+         
         
         # Basic Level
         basic_title = Tex(r"\textbf{Nivel Básico}", font_size=30)
