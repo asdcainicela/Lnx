@@ -5,7 +5,8 @@ from LnxScene import *
 class Equation(Scene):
     def construct(self): 
         backgroundLnx(self)
-        title = Text("Calcule", font_size=34).shift(UP * 3)
+        
+        title = Text("Calcule", font_size=34).shift(UP * 2)
         title.set_color_by_gradient(ORANGE, YELLOW)  # Aplicar gradiente de colores
         expr = MathTex(r" E= 6\div  \frac{1}{2} (1+2)", font_size=50).shift(UP * 1)
 
