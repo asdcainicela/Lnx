@@ -58,12 +58,12 @@ class MathProblems(Scene):
         )
         
         prob8 = MathTex(
-            r"\int_0^1 \polylog{5}{x} \polylog{6}{x} \, dx",
+            r"\int_0^1 \text{Li}_{5}{(x)}   \text{Li}_{6}{(x)}  \, dx",
             font_size=25
         )
         
         polylog_def = MathTex(
-            r"\text{Donde } \polylog{n}{x} = \sum_{k=1}^\infty \frac{x^k}{k^n} \text{ para } |x| \leq 1",
+            r"\text{Donde }  \text{Li}_{n}{(x)}  = \sum_{k=1}^\infty \frac{x^k}{k^n} \text{ para } |x| \leq 1",
             font_size=25
         )
         
