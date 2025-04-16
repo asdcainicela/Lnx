@@ -5,7 +5,7 @@ from LnxScene import *
 class MathProblems(Scene):
     def construct(self): 
          
-        
+        title= Text( "")
         # Basic Level
         basic_title = Tex(r"\textbf{Nivel Básico}", font_size=30)
         self.play(Write(basic_title))
