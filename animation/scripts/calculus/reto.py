@@ -8,7 +8,7 @@ class MathProblems(Scene):
         self.camera.tex_template = MathPazoKpTemplate()
          
         title=  Tex(r"\textbf{Desafío a la Comunidad}", font_size=28).shift(UP * 2.6)
-        title.set_color_by_gradient(YELLOW, ORANGE) 
+        title.set_color_by_gradient(GOLD, ORANGE) 
         self.play(Write(title))
 
         # Basic Level
@@ -18,12 +18,12 @@ class MathProblems(Scene):
         self.wait(0.5)
         
         prob1 = MathTex(
-            r"\otimes \int_0^{\pi} \frac{\sin x}{\sqrt{\sin x} + 1} \, \mathrm{d}x",
+            r"\circ \int_0^{\pi} \frac{\sin x}{\sqrt{\sin x} + 1} \, \mathrm{d}x",
             font_size=22
         ).next_to(basic_title, DOWN, buff=0.8) 
         
         prob2 = MathTex(
-            r"\otimes \int_0^1 \ln^2(1+x^2) \, \mathrm{d}x",
+            r"\circ \int_0^1 \ln^2(1+x^2) \, \mathrm{d}x",
             font_size=22
         ).next_to(prob1, DOWN, buff=0.8) 
 
@@ -42,18 +42,18 @@ class MathProblems(Scene):
         
         # Agrupar y organizar verticalmente
         prob3 = MathTex(
-            r"\otimes \lim_{n \to \infty} \begin{pmatrix} 1-\frac{1}{n^2} & \frac{1}{n} \\ \frac{1}{n} & 1+\frac{1}{n} \end{pmatrix}^n",
+            r"\circ \lim_{n \to \infty} \begin{pmatrix} 1-\frac{1}{n^2} & \frac{1}{n} \\ \frac{1}{n} & 1+\frac{1}{n} \end{pmatrix}^n",
             font_size=22  # Corrección: "font_size" en lugar de "font_siz"
         ).next_to(intermediate_title, DOWN, buff=0.7)
                 
         
         prob4 = MathTex(
-            r"\otimes \int_{0}^{\infty} \frac{\ln^2(x)}{\cosh(x)  } \mathrm{d}x", 
+            r"\circ \int_{0}^{\infty} \frac{\ln^2(x)}{\cosh(x)  } \mathrm{d}x", 
             font_size=20
         ).next_to(prob3, DOWN, buff=0.4) 
         
         prob5 = MathTex(
-            r"	\otimes \int_0^{\infty} \frac{\ln(1+x^2)}{(1+x^3)^3} \mathrm{d}x",
+            r"	\circ \int_0^{\infty} \frac{\ln(1+x^2)}{(1+x^3)^3} \mathrm{d}x",
             font_size=20
         ).next_to(prob4, DOWN, buff=0.4) 
 
@@ -74,19 +74,19 @@ class MathProblems(Scene):
        
 
         prob6 = MathTex(
-            r"\otimes  \text{Dada }A = \begin{pmatrix} a & b \\ b & a \end{pmatrix}.\, \,  \text{Calcule,}\\[10pt]",  # 10pt de espacio extra
+            r"\circ \, \text{ Dada }A = \begin{pmatrix} a & b \\ b & a \end{pmatrix}.\, \,  \text{Calcule,}\\[10pt]",  # 10pt de espacio extra
             r"\int_0^\infty \frac{\cos(Ax) + x \sin(Ax)}{x^2 + 1} \, \mathrm{d}x",
             #tex_environment="align*",  # Entorno alineado (opcional)
             font_size=18
         ).next_to(advanced_title, DOWN, buff=0.5)
         
         prob7 = MathTex(
-            r"\otimes \int_{-1}^1 \frac{\ln^2(1+x^2)}{\sqrt{1-x^2}} \, \mathrm{d}x",
+            r"\circ \int_{-1}^1 \frac{\ln^2(1+x^2)}{\sqrt{1-x^2}} \, \mathrm{d}x",
             font_size=20
         ).next_to(prob6, DOWN, buff=0.4) 
         
         prob8 = MathTex(
-            r"\otimes \int_0^1 \frac{(\text{Li}_{6}{(x)} +x\text{Li}_{5}{(x)})  \text{Li}_{5}{(x)} }{x}  \, \mathrm{d}x",
+            r"\circ \int_0^1 \frac{(\text{Li}_{6}{(x)} +x\text{Li}_{5}{(x)})  \text{Li}_{5}{(x)} }{x}  \, \mathrm{d}x",
             font_size=20
         ).next_to(prob7, DOWN, buff=0.4) 
         
@@ -115,12 +115,12 @@ class MathProblems(Scene):
         expert_title = Tex(r"\textbf{Nivel Experto}", font_size=25).next_to(title, DOWN, buff=0.7) .set_color(YELLOW_E) 
         
         prob9 = MathTex(
-            r"\otimes \lim_{n \to \infty} \left[ n^2 \ln \left( \lim_{t \to 0^+} \left( \int_0^1 \frac{\mathrm{d}x}{\sqrt[n]{x^n + t^n}} + \ln t \right) \right) \right]",
+            r"\circ \lim_{n \to \infty} \left[ n^2 \ln \left( \lim_{t \to 0^+} \left( \int_0^1 \frac{\mathrm{d}x}{\sqrt[n]{x^n + t^n}} + \ln t \right) \right) \right]",
             font_size=20
         ).next_to(advanced_title, DOWN, buff=0.7) 
         
         prob10 = MathTex(
-            r"\otimes \lim_{x \to \infty} \left[ \frac{1}{x} \left( \frac{\zeta\left(1 + \frac{1}{x}\right)}{x} \right)^{\frac{x}{\gamma}}"
+            r"\circ \lim_{x \to \infty} \left[ \frac{1}{x} \left( \frac{\zeta\left(1 + \frac{1}{x}\right)}{x} \right)^{\frac{x}{\gamma}}"
             r"\left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}} - 4 \right] x",
             font_size=21
         ).next_to(prob9, DOWN, buff=0.7) 
