@@ -7,12 +7,12 @@ class MathProblems(Scene):
         backgroundLnx(self) 
         self.camera.tex_template = MathPazoKpTemplate()
          
-        title=  Tex(r"\textbf{Desafío a la Comunidad}", font_size=25).shift(UP * 2.3)
-        title.set_color_by_gradient(ORANGE, RED) 
+        title=  Tex(r"\textbf{Desafío a la Comunidad}", font_size=28).shift(UP * 2.6)
+        title.set_color_by_gradient(YELLOW, ORANGE, RED) 
         self.play(Write(title))
 
         # Basic Level
-        basic_title = Tex(r"\textbf{Nivel Básico}", font_size=30).next_to(title, DOWN, buff=0.5)  
+        basic_title = Tex(r"\textbf{Nivel Básico}", font_size=25).next_to(title, DOWN, buff=0.5)  
         basic_title.set_color(YELLOW) # Aplicar gradiente de colores
         self.play(Write(basic_title))
         self.wait(0.5)
@@ -34,18 +34,18 @@ class MathProblems(Scene):
         self.wait(1)
         
         # Intermediate Level
-        intermediate_title = Tex(r"\textbf{Nivel Intermedio}", font_size=30).next_to(title, DOWN, buff=0.5)  
-        intermediate_title.set_color(YELLOW)
+        intermediate_title = Tex(r"\textbf{Nivel Intermedio}", font_size=25).next_to(title, DOWN, buff=0.5)  
+        intermediate_title.set_color(ORANGE)
         #-----------------
         
 
-        prob3 = MathTex(
-            r"A(x) = \begin{pmatrix} x^{x^{x^{x^x}}} & \sin^5(x-1) \\ (x-1)^5 & x^{x^{x^x}} \end{pmatrix} \\[10pt]",  # 10pt de espacio extra
-            r"\lim_{x \to 1} \frac{(a_n(x) - d_n(x))b_n(x)}{c_n^2(x)}",
-            #tex_environment="align*",  # Entorno alineado (opcional)
-            font_size=18
-        ).next_to(intermediate_title, DOWN, buff=0.5)
         
+        # Agrupar y organizar verticalmente
+        prob3 = MathTex(
+            r"\lim_{n \to \infty} \begin{pmatrix} 1-\frac{1}{n^2} & \frac{1}{n} \\ \frac{1}{n} & 1+\frac{1}{n} \end{pmatrix}^n",
+            font_size=18  # Corrección: "font_size" en lugar de "font_siz"
+        ).next_to(intermediate_title, DOWN, buff=0.5)
+                
         
         prob4 = MathTex(
             r"\int_{0}^{\infty} \frac{\ln^2(x)}{\cosh(x)  } dx", 
@@ -69,8 +69,8 @@ class MathProblems(Scene):
         self.wait(1)
  #------------------------------       
         # Advanced Level
-        advanced_title = Tex(r"\textbf{Nivel Avanzado}", font_size=30).next_to(title, DOWN, buff=0.4)  
-        
+        advanced_title = Tex(r"\textbf{Nivel Avanzado}", font_size=25).next_to(title, DOWN, buff=0.8)  
+        advanced_title.set_color(RED)
        
 
         prob6 = MathTex(
@@ -109,25 +109,28 @@ class MathProblems(Scene):
         self.wait(1)
 
         # Expert Level
-        expert_title = Tex(r"\textbf{Nivel Experto}", font_size=30).next_to(title, DOWN, buff=0.4)  
+        expert_title = Tex(r"\textbf{Nivel Experto}", font_size=25).next_to(title, DOWN, buff=0.7)  
         
         prob9 = MathTex(
             r"\lim_{n \to \infty} \left[ n^2 \ln \left( \lim_{t \to 0^+} \left( \int_0^1 \frac{dx}{\sqrt[n]{x^n + t^n}} + \ln t \right) \right) \right]",
-            font_size=18
-        ).next_to(advanced_title, DOWN, buff=0.4) 
+            font_size=20
+        ).next_to(advanced_title, DOWN, buff=0.7) 
         
         prob10 = MathTex(
             r"\lim_{x \to \infty} \left[ \frac{1}{x} \left( \frac{\zeta\left(1 + \frac{1}{x}\right)}{x} \right)^{\frac{x}{\gamma}}"
             r"\left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}} - 4 \right] x",
-            font_size=18
-        ).next_to(prob9, DOWN, buff=0.4) 
+            font_size=21
+        ).next_to(prob9, DOWN, buff=0.7) 
 
         
         prob10_explanation = MathTex(
             r"\text{Donde } \zeta(s) \text{ es la función zeta de Riemann}",
-            r"\gamma \text{ es la constante de Euler-Mascheroni}",
-            font_size=20
-        ).next_to(advanced_title, DOWN, buff=0.4) 
+            font_size=18
+        ).next_to(prob10, DOWN, buff=0.7).set_color(GOLD) 
+        prob10_explanation_2 = MathTex(
+            r"\gamma \text{ es la constante de Euler-Mascheroni, y } x! \text{ el factorial.}",
+            font_size=18
+        ).next_to(prob10_explanation, DOWN, buff=0.2).set_color(GOLD) 
         
         self.play(Transform( advanced_title, expert_title  ),
                         FadeOut(prob6),
@@ -138,5 +141,7 @@ class MathProblems(Scene):
         self.play(Write(prob9))
         self.wait(1)
         self.play(Write(prob10))
+        self.play(Write(prob10_explanation))
+        self.play(Write(prob10_explanation_2))
         
         self.wait(5)
