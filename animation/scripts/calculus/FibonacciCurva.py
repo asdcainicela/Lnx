@@ -5,7 +5,7 @@ from LnxScene import *
 class FibonacciCurve(MovingCameraScene):
     def construct(self):
         # Background and camera
-        backgroundLnx(self)
+        #backgroundLnx(self)
         frame = self.camera.frame
 
         # Recursive Fibonacci function
@@ -17,11 +17,11 @@ class FibonacciCurve(MovingCameraScene):
                 return 1 if n else 0
             return Fibonacci(n - 1) + Fibonacci(n - 2)
 
-        # Initial square with yellow stroke and fill
+        # Initial square with yellow stroke 
+        
         last_square = (
             Square(1)
-            .set_stroke(color=YELLOW, width=4)
-            .set_fill(color=YELLOW, opacity=0.05)
+            .set_stroke(color=YELLOW, width=4)           
         )
         # Initial arc in a contrasting bright color (e.g., BLUE)
         arc = ArcBetweenPoints(
@@ -53,7 +53,7 @@ class FibonacciCurve(MovingCameraScene):
 
             # Create and style the square
             square = Square(side).next_to(squares, direction, buff=0)
-            square.set_stroke(color=YELLOW, width=4).set_fill(color=YELLOW, opacity=0.05)
+            square.set_stroke(color=YELLOW, width=4)
             squares.add(square)
 
             # Label for the square
@@ -92,12 +92,12 @@ class FibonacciCurve(MovingCameraScene):
             # Moderate stroke growth to maintain visual consistency
             if 10 <= i < 20:
                 self.play(
-                    squares.animate.set_stroke(width=squares.get_stroke_width() + 15),
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + 20),
                     run_time=0.3
                 )
             elif i >= 20:
                 self.play(
-                    squares.animate.set_stroke(width=squares.get_stroke_width() + 250),
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + 300),
                     run_time=0.3
                 )
 
