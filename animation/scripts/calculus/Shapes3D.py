@@ -1,7 +1,9 @@
 from manim import *
 from LnxScene import *
 
-
+colorTitle= ORANGE
+colorFormula= BLUE
+colorNameF = DARK_BLUE
  
 
 class Intro(ThreeDScene):
@@ -44,7 +46,7 @@ class CuboidVolume(ThreeDScene):
 		self.add(imagen)
 		 
 
-		title = MathTex(r"\text{Paralelepipedo}", font_size=35).shift(UP*2.7).set_color( BLUE)
+		title = MathTex(r"\text{Paralelepipedo}", font_size=35).shift(UP*2.7).set_color( colorTitle)
 
 		scaleValue= 0.1
 		sizeCubo = 2
@@ -97,7 +99,7 @@ class CuboidVolume(ThreeDScene):
 class SphereVolume(ThreeDScene):
 	def construct(self): 
   
-		title = MathTex(r"\text{Esfera}", font_size=35).shift(UP*2.7).set_color_by_gradient(BLUE_A,   BLUE)
+		title = MathTex(r"\text{Esfera}", font_size=35).shift(UP*2.7).set_color(colorTitle)
 
 		radius = MathTex("r", font_size=20 ).next_to(title, DOWN, buff=1)
 		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=20 ).next_to(title, DOWN, buff=1)
@@ -143,7 +145,7 @@ class CylinderVolume(ThreeDScene):
 	def construct(self):
 		 
   
-		title = MathTex(r"\text{Cilindro}", font_size=35).shift(UP*2.7).set_color_by_gradient(BLUE_A,   BLUE)
+		title = MathTex(r"\text{Cilindro}", font_size=35).shift(UP*2.7).set_color(colorTitle)
 
 
 		radius = MathTex("r", font_size=20 ).next_to(title, DOWN, buff=1)
@@ -151,9 +153,9 @@ class CylinderVolume(ThreeDScene):
 		volume = MathTex(r"\pi", r"\cdot", "r^{2}", "\cdot", "h", font_size=20 ).next_to(title, DOWN, buff=1)
 
 		label = [
-				MathTex("\text{radio}", font_size=20, color=BLUE_E).next_to(radius, UP, buff=0.3),
-				MathTex("\text{área}", font_size=20, color=LIGHT_GRAY).next_to(area, UP, buff=0.3),
-				MathTex("\text{volumen}", font_size=20, color=BLUE_D).next_to(volume, UP, buff=0.3),
+				MathTex(r"\text{radio}", font_size=20, color=BLUE_E).next_to(radius, UP, buff=0.3),
+				MathTex(r"\text{área}", font_size=20, color=LIGHT_GRAY).next_to(area, UP, buff=0.3),
+				MathTex(r"\text{volumen}", font_size=20, color=BLUE_D).next_to(volume, UP, buff=0.3),
 		]
 
 		dot = Dot().shift([0, -1/2, 0])
