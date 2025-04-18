@@ -1,10 +1,12 @@
 from manim import *
+from LnxScene import *
+
 
  
 
 class Intro(ThreeDScene):
 	def construct(self):
-		 
+		
 					
 		title = Title("Volúmen en 3D", font_size=30).shift(DOWN*0.5)
 		title.set_color_by_gradient(ORANGE, YELLOW)
@@ -26,19 +28,35 @@ class Intro(ThreeDScene):
 
 class CuboidVolume(ThreeDScene):
 	def construct(self):
+
+		backgroundLnx(self) 
+		self.camera.tex_template = MathPazoKpTemplate()
+		grillado(self)
+		imagen = ImageMobject("logo.png")
+
+		# Escalar imagen (horizontal x vertical)
+		imagen.scale(0.4*0.4)  # primero escalar proporcionalmente
+
+		# Mover imagen 2.8 unidades abajo del centro
+		imagen.shift(DOWN * 2.9)
+
+		# Mostrar imagen sin animación
+		self.add(imagen)
+		 
+
 		title = MathTex(r"\text{Paralelepipedo}", font_size=35).shift(UP*2.7).set_color( BLUE)
 
 		scaleValue= 0.1
 		sizeCubo = 2
 		
 
-		length = MathTex("l", font_size=20, color=BLUE_C).next_to(title, DOWN, buff=1)
-		area = MathTex("l", r"\cdot", "b", font_size=20, color=BLUE_E).next_to(title, DOWN, buff=1)
-		volume = MathTex("l", r"\cdot", "b", r"\cdot", "h", font_size=20, color=BLUE_A).next_to(title, DOWN, buff=1) 
+		length = MathTex("l", font_size=20 ).next_to(title, DOWN, buff=1)
+		area = MathTex("l", r"\cdot", "b", font_size=20 ).next_to(title, DOWN, buff=1)
+		volume = MathTex("l", r"\cdot", "b", r"\cdot", "h", font_size=20 ).next_to(title, DOWN, buff=1) 
 		label = [
-			MathTex(r"\text{longitud}", font_size=20, color=BLUE_A).next_to(length, UP, buff=0.3),
-			MathTex(r"\text{área}", font_size=20, color=BLUE_E).next_to(area, UP, buff=0.3),
-			MathTex(r"\text{volumen}", font_size=20, color=BLUE_D).next_to(volume, UP, buff=0.3),
+			MathTex(r" \text{longitud}", font_size=20, color=BLUE_A).next_to(length, UP, buff=0.3),
+			MathTex(r" \text{{área}", font_size=20, color=BLUE_E).next_to(area, UP, buff=0.3),
+			MathTex(r" \text{{volumen}", font_size=20, color=BLUE_D).next_to(volume, UP, buff=0.3),
         ]
 		
 		dot = Dot()
@@ -73,7 +91,7 @@ class CuboidVolume(ThreeDScene):
 		self.play(FadeOut(title, volume, label[2]))
 		self.remove(cuboid, rect)
 		self.wait(2)
-		#SphereVolume.construct(self)
+		SphereVolume.construct(self)
 
 
 class SphereVolume(ThreeDScene):
@@ -81,14 +99,14 @@ class SphereVolume(ThreeDScene):
   
 		title = MathTex(r"\text{Esfera}", font_size=35).shift(UP*2.7).set_color_by_gradient(BLUE_A,   BLUE)
 
-		radius = MathTex("r", font_size=20, color=BLUE_A).next_to(title, DOWN, buff=1.2)
-		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=20, color=BLUE_B).next_to(title, DOWN, buff=1.2)
-		volume = MathTex(r"\frac{4}{3}", "\pi", "r^{3}", font_size=20, color=BLUE_C).next_to(title, DOWN, buff=1.2)
+		radius = MathTex("r", font_size=20 ).next_to(title, DOWN, buff=1)
+		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=20 ).next_to(title, DOWN, buff=1)
+		volume = MathTex(r"\frac{4}{3}", "\pi", "r^{3}", font_size=20 ).next_to(title, DOWN, buff=1)
 
 		label = [
-				MathTex("radio", font_size=20, color=BLUE_E).next_to(radius,UP, buff=0.3),
-				MathTex("area", font_size=20, color=BLUE_D).next_to(area, UP, buff=0.3),
-				MathTex("volumen", font_size=20, color=BLUE_A).next_to(volume, UP, buff=0.3),
+				MathTex(r"\text{radio}", font_size=20, color=BLUE_E).next_to(radius,UP, buff=0.3),
+				MathTex(r"\text{área}", font_size=20, color=BLUE_D).next_to(area, UP, buff=0.3),
+				MathTex(r"\text{volumen}", font_size=20, color=BLUE_A).next_to(volume, UP, buff=0.3),
 		]
 
 		radiusValue=1
@@ -119,7 +137,7 @@ class SphereVolume(ThreeDScene):
 		self.wait(2)
 		self.play(FadeOut(VGroup(title, volume, label[2], sphere, circle)))
 		self.wait(2)
-	#CylinderVolume.construct(self)
+		CylinderVolume.construct(self)
 
 class CylinderVolume(ThreeDScene):
 	def construct(self):
@@ -128,14 +146,14 @@ class CylinderVolume(ThreeDScene):
 		title = MathTex(r"\text{Cilindro}", font_size=35).shift(UP*2.7).set_color_by_gradient(BLUE_A,   BLUE)
 
 
-		radius = MathTex("r", font_size=20, color=BLUE_B).next_to(title, DOWN, buff=1)
-		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=20, color=LIGHT_GRAY).next_to(title, DOWN, buff=1)
-		volume = MathTex(r"\pi", r"\cdot", "r^{2}", "\cdot", "h", font_size=20, color=BLUE_C).next_to(title, DOWN, buff=1)
+		radius = MathTex("r", font_size=20 ).next_to(title, DOWN, buff=1)
+		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=20 ).next_to(title, DOWN, buff=1)
+		volume = MathTex(r"\pi", r"\cdot", "r^{2}", "\cdot", "h", font_size=20 ).next_to(title, DOWN, buff=1)
 
 		label = [
-				MathTex("radius", font_size=20, color=BLUE_E).next_to(radius, UP, buff=0.3),
-				MathTex("area", font_size=20, color=LIGHT_GRAY).next_to(area, UP, buff=0.3),
-				MathTex("volume", font_size=20, color=BLUE_D).next_to(volume, UP, buff=0.3),
+				MathTex("\text{radio}", font_size=20, color=BLUE_E).next_to(radius, UP, buff=0.3),
+				MathTex("\text{área}", font_size=20, color=LIGHT_GRAY).next_to(area, UP, buff=0.3),
+				MathTex("\text{volumen}", font_size=20, color=BLUE_D).next_to(volume, UP, buff=0.3),
 		]
 
 		dot = Dot().shift([0, -1/2, 0])
