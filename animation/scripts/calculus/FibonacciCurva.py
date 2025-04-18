@@ -53,7 +53,7 @@ class FibonacciCurve(MovingCameraScene):
 
             # Create and style the square
             square = Square(side).next_to(squares, direction, buff=0)
-            square.set_stroke(color=YELLOW, width=4).set_fill(color=YELLOW, opacity=0.3)
+            square.set_stroke(color=YELLOW, width=4).set_fill(color=YELLOW, opacity=0.05)
             squares.add(square)
 
             # Label for the square
