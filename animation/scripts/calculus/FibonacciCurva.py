@@ -5,7 +5,7 @@ from LnxScene import *
 class FibonacciCurve(MovingCameraScene):
     def construct(self):
         # Background and camera
-        backgroundLnx(self)
+        #backgroundLnx(self)
         frame = self.camera.frame
 
         base_stroke = 4  # stroke inicial
@@ -48,7 +48,7 @@ class FibonacciCurve(MovingCameraScene):
         self.play(Create(last_square), Create(arc), Create(tex))
 
         # Build Fibonacci squares and colorful arcs
-        for i in range(2, 5):
+        for i in range(2, 21):
             direction = directions[i - 2]
             side = Fibonacci(i)
 
@@ -64,7 +64,7 @@ class FibonacciCurve(MovingCameraScene):
                 color=WHITE
             ).move_to(square.get_center())
 
-            stroke_factor1=base_stroke*square.side_length*0.5/i 
+            stroke_factor1=base_stroke*square.side_length*0.4/i 
 
             self.play(
                 Create(square, run_time=0.5),
@@ -119,5 +119,5 @@ class FibonacciCurve(MovingCameraScene):
                  .set(width=last_square.width * 1.5),
             squares.animate.set_stroke(width=base_stroke),
             run_time=3
-        )
-        self.wait(2)
+        ) 
+        self.wait(1)
