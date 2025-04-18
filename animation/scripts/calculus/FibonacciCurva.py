@@ -4,7 +4,7 @@ from LnxScene import *
 
 class FibonacciCurve(MovingCameraScene):
     def construct(self):
-        # Setup background and camera frame
+        # Background and camera
         backgroundLnx(self)
         frame = self.camera.frame
 
@@ -12,47 +12,62 @@ class FibonacciCurve(MovingCameraScene):
         def Fibonacci(n):
             if n < 0:
                 print("Incorrect input")
-            elif n in (0, 1, 2):
+                return 0
+            if n in (0, 1, 2):
                 return 1 if n else 0
             return Fibonacci(n - 1) + Fibonacci(n - 2)
 
-        # Initial square and arc
-        last_square = Square(1)
+        # Initial square with yellow stroke and fill
+        last_square = (
+            Square(1)
+            .set_stroke(color=YELLOW, width=4)
+            .set_fill(color=YELLOW, opacity=0.05)
+        )
+        # Initial arc in a contrasting bright color (e.g., BLUE)
         arc = ArcBetweenPoints(
             last_square.get_vertices()[2],
-            last_square.get_vertices()[0]
+            last_square.get_vertices()[0],
+            color=BLUE,
+            stroke_width=4
         )
-        tex = Tex("1", font_size=20).move_to(last_square.get_center())
+        # Label in white for visibility
+        tex = Tex("1", font_size=20, color=WHITE).move_to(last_square.get_center())
         squares = VGroup(last_square)
 
-        # Directions for placing new squares
-        directions = [UP, LEFT, DOWN, RIGHT] * 12  # repeated pattern
+        # Directions for placing subsequent squares
+        directions = [UP, LEFT, DOWN, RIGHT] * 12
 
-        # Scale factor for text and sizes
+        # Text scale
         scale_val = 0.5
 
-        # Camera updater: maintain a bit of margin around the group
+        # Camera updater: keep a margin around the squares group
         frame.add_updater(lambda f: f.set(width=squares.width * 1.2))
 
-        # Draw the first square and arc
+        # Display initial square, arc, and label
         self.play(Create(last_square), Create(arc), Create(tex))
 
-        # Build Fibonacci squares and arcs
-        for i in range(2, 5): #21
+        # Build Fibonacci squares and colorful arcs
+        for i in range(2, 21):
             direction = directions[i - 2]
             side = Fibonacci(i)
+
+            # Create and style the square
             square = Square(side).next_to(squares, direction, buff=0)
+            square.set_stroke(color=YELLOW, width=4).set_fill(color=YELLOW, opacity=0.3)
             squares.add(square)
 
-            # Create square and label
-            label = MathTex(f"{side}", font_size=square.side_length * 20 * scale_val)
-            label.move_to(square.get_center())
+            # Label for the square
+            label = MathTex(
+                f"{side}",
+                font_size=square.side_length * 20 * scale_val,
+                color=WHITE
+            ).move_to(square.get_center())
             self.play(
                 Create(square, run_time=0.5),
                 Create(label, run_time=0.5)
             )
 
-            # Smooth camera pan & zoom to fit new group
+            # Smooth camera pan & zoom
             self.play(
                 frame.animate
                      .move_to(squares.get_center())
@@ -61,43 +76,39 @@ class FibonacciCurve(MovingCameraScene):
                 rate_func=smooth
             )
 
-            # Draw the connecting arc
+            # Draw arc in a secondary bright color (e.g., TEAL) for contrast
             verts = square.get_vertices()
             if direction is UP:
-                arc = ArcBetweenPoints(verts[3], verts[1])
+                arc = ArcBetweenPoints(verts[3], verts[1], color=TEAL, stroke_width=4)
             elif direction is LEFT:
-                arc = ArcBetweenPoints(verts[0], verts[2])
+                arc = ArcBetweenPoints(verts[0], verts[2], color=TEAL, stroke_width=4)
             elif direction is DOWN:
-                arc = ArcBetweenPoints(verts[1], verts[3])
+                arc = ArcBetweenPoints(verts[1], verts[3], color=TEAL, stroke_width=4)
             else:  # RIGHT
-                arc = ArcBetweenPoints(verts[2], verts[0])
+                arc = ArcBetweenPoints(verts[2], verts[0], color=TEAL, stroke_width=4)
             squares.add(arc)
             self.play(Create(arc, run_time=0.3))
 
-            # Moderate stroke growth to avoid abrupt zoom illusion
+            # Moderate stroke growth to maintain visual consistency
             if 10 <= i < 20:
                 self.play(
-                    squares.animate.set_stroke(
-                        width=squares.get_stroke_width() + 5
-                    ),
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + 15),
                     run_time=0.3
                 )
             elif i >= 20:
                 self.play(
-                    squares.animate.set_stroke(
-                        width=squares.get_stroke_width() + 15
-                    ),
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + 250),
                     run_time=0.3
                 )
 
-        # Pause, then reset camera to focus back on the first square
+        # Pause, then reset camera to initial square
         self.wait(2)
         frame.clear_updaters()
         self.play(
             frame.animate
                  .move_to(last_square.get_center())
                  .set(width=last_square.width * 1.5),
-            squares.animate.set_stroke(width=10),
+            squares.animate.set_stroke(width=4),
             run_time=3
         )
         self.wait(2)
