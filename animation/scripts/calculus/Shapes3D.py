@@ -6,7 +6,7 @@ colorFormula= "#33deea"  # Azul intenso (profundidad)
 colorNameF = "#E1F5FE"  # Blanco azulado (legibilidad)
 colornc = "#00B4D8"  # Turquesa brillante (énfasis)
 
-fontSize1 = 22
+fontSize1 = 25
 
 class Intro(ThreeDScene):
 	def construct(self):
@@ -48,7 +48,7 @@ class CuboidVolume(ThreeDScene):
 		self.add(imagen)
 		 
 
-		title = MathTex(r"\text{Paralelepipedo}", font_size=35).shift(UP*2.7).set_color( colorTitle)
+		title = MathTex(r"\text{Paralelepipedo}", font_size=40).shift(UP*2.7).set_color( colorTitle)
 
 		scaleValue= 0.1
 		sizeCubo = 2
@@ -58,9 +58,9 @@ class CuboidVolume(ThreeDScene):
 		area = MathTex("l", r"\cdot", "b", font_size=fontSize1 , color=colorFormula).next_to(title, DOWN, buff=1)
 		volume = MathTex("l", r"\cdot", "b", r"\cdot", "h", font_size=fontSize1, color=colorFormula ).next_to(title, DOWN, buff=1) 
 		label = [
-			MathTex(r" \text{longitud}", font_size=fontSize1, color=colorNameF).next_to(length, UP, buff=0.3),
-			MathTex(r" \text{{área}", font_size=fontSize1, color=colorNameF).next_to(area, UP, buff=0.3),
-			MathTex(r" \text{{volumen}", font_size=fontSize1, color=colorNameF).next_to(volume, UP, buff=0.3),
+			MathTex(r" \text{Longitud}", font_size=fontSize1, color=colorNameF).next_to(length, UP, buff=0.3),
+			MathTex(r" \text{Área}", font_size=fontSize1, color=colorNameF).next_to(area, UP, buff=0.3),
+			MathTex(r" \text{Volumen}", font_size=fontSize1, color=colorNameF).next_to(volume, UP, buff=0.3),
         ]
 		
 		dot = Dot()
@@ -101,16 +101,16 @@ class CuboidVolume(ThreeDScene):
 class SphereVolume(ThreeDScene):
 	def construct(self): 
   
-		title = MathTex(r"\text{Esfera}", font_size=35).shift(UP*2.7).set_color(colorTitle)
+		title = MathTex(r"\text{Esfera}", font_size=40).shift(UP*2.7).set_color(colorTitle)
 
 		radius = MathTex("r", font_size=fontSize1 , color=colorFormula).next_to(title, DOWN, buff=1)
 		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=fontSize1, color=colorFormula ).next_to(title, DOWN, buff=1)
 		volume = MathTex(r"\frac{4}{3}", "\pi", "r^{3}", font_size=fontSize1 , color=colorFormula).next_to(title, DOWN, buff=1)
 
 		label = [
-				MathTex(r"\text{radio}", font_size=fontSize1, color=colorNameF).next_to(radius,UP, buff=0.3),
-				MathTex(r"\text{área}", font_size=fontSize1, color=colorNameF).next_to(area, UP, buff=0.3),
-				MathTex(r"\text{volumen}", font_size=fontSize1, color=colorNameF).next_to(volume, UP, buff=0.3),
+				MathTex(r"\text{Radio}", font_size=fontSize1, color=colorNameF).next_to(radius,UP, buff=0.3),
+				MathTex(r"\text{Área}", font_size=fontSize1, color=colorNameF).next_to(area, UP, buff=0.3),
+				MathTex(r"\text{Volumen}", font_size=fontSize1, color=colorNameF).next_to(volume, UP, buff=0.3),
 		]
 
 		radiusValue=1
@@ -124,6 +124,7 @@ class SphereVolume(ThreeDScene):
 		self.play(Create(title))
 		self.wait(0.5)
 		self.play(Create(dot))
+		self.wait(0.5)
 		self.play(Create(line), Write(radius), Write(label[0]))
 		self.wait(1)
 		self.play(Create(circle, run_time=1),
@@ -147,7 +148,7 @@ class CylinderVolume(ThreeDScene):
 	def construct(self):
 		 
   
-		title = MathTex(r"\text{Cilindro}", font_size=35).shift(UP*2.7).set_color(colorTitle)
+		title = MathTex(r"\text{Cilindro}", font_size=40).shift(UP*2.7).set_color(colorTitle)
 
 
 		radius = MathTex("r", font_size=fontSize1 , color=colorFormula).next_to(title, DOWN, buff=1)
@@ -155,9 +156,9 @@ class CylinderVolume(ThreeDScene):
 		volume = MathTex(r"\pi", r"\cdot", "r^{2}", "\cdot", "h", font_size=fontSize1 , color=colorFormula).next_to(title, DOWN, buff=1)
 
 		label = [
-				MathTex(r"\text{radio}", font_size=fontSize1, color=colorNameF).next_to(radius, UP, buff=0.3),
-				MathTex(r"\text{área}", font_size=fontSize1, color=colorNameF).next_to(area, UP, buff=0.3),
-				MathTex(r"\text{volumen}", font_size=fontSize1, color=colorNameF).next_to(volume, UP, buff=0.3),
+				MathTex(r"\text{Radio}", font_size=fontSize1, color=colorNameF).next_to(radius, UP, buff=0.3),
+				MathTex(r"\text{Área}", font_size=fontSize1, color=colorNameF).next_to(area, UP, buff=0.3),
+				MathTex(r"\text{Volumen}", font_size=fontSize1, color=colorNameF).next_to(volume, UP, buff=0.3),
 		]
 
 		dot = Dot().shift([0, -1/2, 0])
@@ -180,7 +181,7 @@ class CylinderVolume(ThreeDScene):
 		          TransformMatchingShapes(label[0], label[1]))
 		self.wait(1)
 		self.play(FadeOut(line, dot))
-		self.wait(1)
+		self.wait(0.5)
 		self.play(circle.animate.shift([0, -2/2, 0]))
 		self.play(Rotate(circle, -90 * DEGREES, X_AXIS))
 		self.wait(0.000000001)
