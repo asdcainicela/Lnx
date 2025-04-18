@@ -201,7 +201,7 @@ def grillado(scene):
         x_range=[-4, 4, 0.3],  # Rango del eje X
         y_range=[-6, 6, 0.3],    # Rango del eje Y
         background_line_style={
-            "stroke_color": RED,  # Color de las líneas
+            "stroke_color": YELLOW,  # Color de las líneas
             "stroke_width": 0.5,     # Grosor de las líneas
             "stroke_opacity": 0.1, # Opacidad de las líneas
         },
