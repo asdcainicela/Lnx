@@ -2,11 +2,11 @@ from manim import *
 from LnxScene import *
 
 colorTitle= "#4FC3F7"  # Azul turquesa claro (para destacar)
-colorFormula= "#1565C0"  # Azul intenso (profundidad)
+colorFormula= "#33deea"  # Azul intenso (profundidad)
 colorNameF = "#E1F5FE"  # Blanco azulado (legibilidad)
 colornc = "#00B4D8"  # Turquesa brillante (énfasis)
 
-fontSize1 = 21
+fontSize1 = 22
 
 class Intro(ThreeDScene):
 	def construct(self):
@@ -94,7 +94,7 @@ class CuboidVolume(ThreeDScene):
 		self.wait(1.5)
 		self.play(FadeOut(title, volume, label[2]))
 		self.remove(cuboid, rect)
-		self.wait(2)
+		#self.wait(2)
 		SphereVolume.construct(self)
 
 
@@ -119,7 +119,7 @@ class SphereVolume(ThreeDScene):
 		line = Line([0, -0.5, 0], [radiusValue, -0.5, 0], color=BLUE_A)
 		circle = Circle(radius=radiusValue, color=BLUE).shift([0,  -0.5, 0])
 
-		sphere = Sphere(center=[0, -0.5, 0], radius=radiusValue, resolution=(10, 10)).rotate(40 * DEGREES, X_AXIS) #150,150
+		sphere = Sphere(center=[0, -0.5, 0], radius=radiusValue, resolution=(30, 30)).rotate(40 * DEGREES, X_AXIS) #150,150
 
 		self.play(Create(title))
 		self.wait(0.5)
@@ -138,9 +138,9 @@ class SphereVolume(ThreeDScene):
 		          Create(sphere, run_time=1))
 		self.play(TransformMatchingTex(area, volume),
 		          TransformMatchingShapes(label[1], label[2]))
-		self.wait(2)
+		self.wait(1)
 		self.play(FadeOut(VGroup(title, volume, label[2], sphere, circle)))
-		self.wait(2)
+		#self.wait(2)
 		CylinderVolume.construct(self)
 
 class CylinderVolume(ThreeDScene):
