@@ -5,8 +5,10 @@ from LnxScene import *
 class FibonacciCurve(MovingCameraScene):
     def construct(self):
         # Background and camera
-        #backgroundLnx(self)
+        backgroundLnx(self)
         frame = self.camera.frame
+
+        base_stroke = 4  # stroke inicial
 
         # Recursive Fibonacci function
         def Fibonacci(n):
@@ -17,11 +19,10 @@ class FibonacciCurve(MovingCameraScene):
                 return 1 if n else 0
             return Fibonacci(n - 1) + Fibonacci(n - 2)
 
-        # Initial square with yellow stroke 
-        
+        # Initial square with yellow stroke and fill
         last_square = (
             Square(1)
-            .set_stroke(color=YELLOW, width=4)           
+            .set_stroke(color=YELLOW, width=4)
         )
         # Initial arc in a contrasting bright color (e.g., BLUE)
         arc = ArcBetweenPoints(
@@ -47,13 +48,13 @@ class FibonacciCurve(MovingCameraScene):
         self.play(Create(last_square), Create(arc), Create(tex))
 
         # Build Fibonacci squares and colorful arcs
-        for i in range(2, 21):
+        for i in range(2, 5):
             direction = directions[i - 2]
             side = Fibonacci(i)
 
             # Create and style the square
             square = Square(side).next_to(squares, direction, buff=0)
-            square.set_stroke(color=YELLOW, width=4)
+            square.set_stroke(color=YELLOW, width=4) 
             squares.add(square)
 
             # Label for the square
@@ -62,6 +63,9 @@ class FibonacciCurve(MovingCameraScene):
                 font_size=square.side_length * 20 * scale_val,
                 color=WHITE
             ).move_to(square.get_center())
+
+            stroke_factor1=base_stroke*square.side_length*0.5/i 
+
             self.play(
                 Create(square, run_time=0.5),
                 Create(label, run_time=0.5)
@@ -90,16 +94,21 @@ class FibonacciCurve(MovingCameraScene):
             self.play(Create(arc, run_time=0.3))
 
             # Moderate stroke growth to maintain visual consistency
-            if 10 <= i < 20:
+            self.play(
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + stroke_factor1),
+                    run_time=0.3
+                )
+            """if 10 <= i < 20:
                 self.play(
-                    squares.animate.set_stroke(width=squares.get_stroke_width() + 20),
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + 15),
                     run_time=0.3
                 )
             elif i >= 20:
                 self.play(
-                    squares.animate.set_stroke(width=squares.get_stroke_width() + 300),
+                    squares.animate.set_stroke(width=squares.get_stroke_width() + 250),
                     run_time=0.3
                 )
+                """
 
         # Pause, then reset camera to initial square
         self.wait(2)
@@ -108,7 +117,7 @@ class FibonacciCurve(MovingCameraScene):
             frame.animate
                  .move_to(last_square.get_center())
                  .set(width=last_square.width * 1.5),
-            squares.animate.set_stroke(width=4),
+            squares.animate.set_stroke(width=base_stroke),
             run_time=3
         )
         self.wait(2)
