@@ -74,3 +74,64 @@ class CuboidVolume(ThreeDScene):
 		self.remove(cuboid, rect)
 		self.wait(2)
 		#SphereVolume.construct(self)
+
+class CylinderVolume(ThreeDScene):
+	def construct(self):
+		rect_style = {
+							"stroke_width": 4,
+							"fill_opacity": 0
+					}
+   
+      # Crear rectángulos con parámetros específicos
+		rectangles = VGroup(
+            Rectangle(width=4, height=7.6, color=YELLOW, **rect_style),
+            Rectangle(width=3.5, height=6, color=GREEN, **rect_style)
+        )
+		self.add(rectangles)
+  
+		title = MathTex(r"\text{Cilindro}", font_size=35).shift(UP*2.7).set_color_by_gradient(BLUE_A,   BLUE)
+
+
+		radius = MathTex("r", font_size=25, color=BLUE_B).next_to(title, DOWN, buff=1)
+		area = MathTex(r"\pi", r"\cdot", "r^{2}", font_size=25, color=LIGHT_GRAY).next_to(title, DOWN, buff=1)
+		volume = MathTex(r"\pi", r"\cdot", "r^{2}", "\cdot", "h", font_size=25, color=BLUE_C).next_to(title, DOWN, buff=1)
+
+		label = [
+				Text("radius", font_size=25, color=BLUE_E).next_to(radius, UP, buff=0.3),
+				Text("area", font_size=25, color=LIGHT_GRAY).next_to(area, UP, buff=0.3),
+				Text("volume", font_size=25, color=BLUE_D).next_to(volume, UP, buff=0.3),
+		]
+
+		dot = Dot().shift([0, -1/2, 0])
+		line = Line([0, -1/2, 0], [1.3/2, -1/2, 0], color= DARK_BLUE)
+		circle = Circle(radius=1.3/2, color=BLUE_B).shift([0, -1/2, 0])
+  
+  
+
+		cylinder = Cylinder(1.3/2, 4/2, Y_AXIS).shift([0, -1/2, 0])
+		 
+
+		self.play(Create(title))
+		self.wait(0.5)
+		self.play(Create(dot))
+		self.play(Create(line), Write(radius), Write(label[0]))
+		self.wait(1)
+		self.play(Create(circle, run_time=1),
+		          Rotate(line, 360 * DEGREES, run_time=1, about_point=[0, -1/2, 0]),
+		          TransformMatchingTex(radius, area),
+		          TransformMatchingShapes(label[0], label[1]))
+		self.wait(1)
+		self.play(FadeOut(line, dot))
+		self.wait(1)
+		self.play(circle.animate.shift([0, -2/2, 0]))
+		self.play(Rotate(circle, -90 * DEGREES, X_AXIS))
+		self.wait(0.000000001)
+		self.play(Rotate(circle, 45 * DEGREES, Y_AXIS))
+		self.wait(1)
+		self.play(Transform(circle, cylinder),
+		          TransformMatchingTex(area, volume),
+		          TransformMatchingShapes(label[1], label[2]))
+		self.wait(2)
+		self.play(FadeOut(VGroup(title, volume, label[2], cylinder, circle)))
+		self.wait(2)
+		
