@@ -33,21 +33,21 @@ class CuboidVolume(ThreeDScene):
 		
 
 		length = MathTex("l", font_size=20, color=YELLOW).next_to(title, DOWN, buff=1.2)
-		area = MathTex("l", r"\cdot", "b", font_size=20, color=RED).next_to(title, DOWN, buff=1.2)
+		area = MathTex("l", r"\cdot", "b", font_size=20, color=GOLD).next_to(title, DOWN, buff=1.2)
 		volume = MathTex("l", r"\cdot", "b", r"\cdot", "h", font_size=20, color=ORANGE).next_to(title, DOWN, buff=1.2) 
 		label = [
 			MathTex(r"\text{longitud}", font_size=20, color=YELLOW_D).next_to(length, UP, buff=0.3),
-			MathTex(r"\text{área}", font_size=20, color=RED_D).next_to(area, UP, buff=0.3),
+			MathTex(r"\text{área}", font_size=20, color=GOLD_B).next_to(area, UP, buff=0.3),
 			MathTex(r"\text{volumen}", font_size=20, color=GOLD_D).next_to(volume, UP, buff=0.3),
         ]
 		
 		dot = Dot()
-		line = Rectangle(width=sizeCubo, height=0.0000001, color=YELLOW)
-		rect = Rectangle(width=sizeCubo, height=sizeCubo/2 , color=YELLOW)
+		line = Rectangle(width=sizeCubo, height=0.0000001, color=BLUE_A)
+		rect = Rectangle(width=sizeCubo, height=sizeCubo/2 , color=BLUE_D)
 		cuboid = Prism(
             dimensions=[sizeCubo, sizeCubo/2, sizeCubo/2],  # Ancho, profundidad, altura
             fill_opacity=0.3,      # Opacidad del relleno (0 para solo borde)
-            fill_color=RED,       # Color del relleno
+            #fill_color=RED,       # Color del relleno
             stroke_color=WHITE,   # Color del borde
             stroke_width=2,      # Grosor del borde
         )
