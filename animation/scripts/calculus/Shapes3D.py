@@ -48,7 +48,7 @@ class CuboidVolume(ThreeDScene):
 		self.add(imagen)
 		 
 
-		title = MathTex(r"\text{Paralelepipedo}", font_size=45).shift(UP*2.7).set_color( colorTitle)
+		title = MathTex(r"\text{Paralelepípedo}", font_size=45).shift(UP*2.7).set_color( colorTitle)
 
 		scaleValue= 0.1
 		sizeCubo = 2
