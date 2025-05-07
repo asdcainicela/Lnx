@@ -1,16 +1,24 @@
 from manim import *
 from math import sin, pi
 from scipy.optimize import minimize_scalar
-
 from LnxScene import backgroundLnx, BoxAnimation, SmartMathTex, MathPazoKpTemplate
-
-
 
 class AreaBetweenCurve(Scene):
     def construct(self):
         # Configuración inicial
         backgroundLnx(self)
         self.camera.tex_template = MathPazoKpTemplate()
+        imagen = ImageMobject("logo.png")
+
+        # Escalar imagen (horizontal x vertical)
+        imagen.scale(0.4*0.4)  # primero escalar proporcionalmente
+
+        # Mover imagen x unidades abajo del centro
+        imagen.shift(DOWN * 3.2)
+
+        # Mostrar imagen sin animación
+        self.add(imagen)
+
         # Funciones matemáticas
         def func1(x):
             return 4*x - x**2
@@ -40,12 +48,11 @@ class AreaBetweenCurve(Scene):
 
         # Add labels for x and y axes
         x_label = Tex("x", font_size=20).next_to(ax.x_axis.get_end(), 0.5*RIGHT, buff=0.2)
-        y_label = Tex("y", font_size=20).next_to(ax.y_axis.get_end(), 0.5*UP, buff=0.2)
+        y_label = Tex("y", font_size=20).next_to(ax.y_axis.get_end(), 0.5*LEFT, buff=0.2)
         
         # Gráficas con estilos mejorados
-        graph1 = ax.plot(func1, color=GREEN_D, stroke_width=3, x_range=(-0.2, 4.1))
-        graph2 = ax.plot(func2, color=BLUE_D, stroke_width=3, x_range=(-0.3, 4.1))
-
+        graph1 = ax.plot(func1, color=GREEN_D, stroke_width=1.5, x_range=(-0.2, 4.1))
+        graph2 = ax.plot(func2, color=BLUE_D, stroke_width =1.5, x_range=(-0.3, 4.1))
         area = ax.get_area(
             graph1,
             x_range=(0, 3),
@@ -54,9 +61,9 @@ class AreaBetweenCurve(Scene):
         )
 #----------------------------------------------------------------------------# title and labels
         # Title and labels
-        title = Tex("Encuentre el Área entre las Curvas", font_size=23).to_edge(UP).set_color_by_gradient(YELLOW, ORANGE, RED).set_stroke(width=1.5).shift(DOWN * 0.2)
-        funcTex1 = MathTex(r"f(x)", " = ", r"4x-x^2", font_size=20).next_to(title, DOWN, buff=0.3).set_color(GREEN).set_stroke(width=1.2)
-        funcTex2 = MathTex(r"g(x)"," = ", r"\sin\left(\frac{\pi x}{3}\right) + x", font_size=20).next_to(funcTex1, DOWN, buff=0.3).set_color(BLUE).set_stroke(width=1.2)
+        title = Tex("Encuentre el Área entre las Curvas", font_size=25).to_edge(UP).set_color_by_gradient(YELLOW, ORANGE, RED).set_stroke(width=1).shift(DOWN * 0.2)
+        funcTex1 = MathTex(r"f(x)", " = ", r"4x-x^2", font_size=20).next_to(title, DOWN, buff=0.3).set_color(GREEN).set_stroke(width=1)
+        funcTex2 = MathTex(r"g(x)"," = ", r"\sin\left(\frac{\pi x}{3}\right) + x", font_size=20).next_to(funcTex1, DOWN, buff=0.3).set_color(BLUE).set_stroke(width=1)
         dashedLine2 = DashedLine(ax.c2p(3, 3), ax.c2p(3,0), stroke_width=1)  # Thinner dashed line
         label2 = Tex("3", font_size=20).next_to(dashedLine2, DOWN, buff=0.1)  # Smaller label
         origin_label = Tex("0", font_size=20).set_color(BLACK).move_to(ax.c2p(0, 0))
@@ -72,8 +79,8 @@ class AreaBetweenCurve(Scene):
         dot1 = Dot(ax.c2p(intersection_x1, intersection_y1), color=RED, radius=0.05)
         dot2 = Dot(ax.c2p(intersection_x2, intersection_y2), color=RED, radius=0.05)
 
-#----------------------------------------------------------------------------# animation
-        self.play(Write(title))  
+#----------------------------------------------------------------------------# animation the curves
+        self.play(FadeIn(title))
         self.play(Create(funcTex1), Create(funcTex2))
         self.play(DrawBorderThenFill(ax, run_time=1))
         self.play(Write(x_label), Write(y_label), FadeIn(origin_label))
@@ -90,7 +97,7 @@ class AreaBetweenCurve(Scene):
         funcTex1_copy = funcTex1[0].copy()  # Corregido: usar .copy() como método
         funcTex2_copy = funcTex2[0].copy()  # Corregido: usar .copy() como método
 
-        areaMath = MathTex(r"A=\int", r"_{a}",r"^{b}",r"\left(",r"f(x)", "-", r"g(x)", r"\right) \, \mathrm{d}x" , font_size=20).set_stroke(width=1.15)
+        areaMath = MathTex(r"A=\int", r"_{a}",r"^{b}",r"\left(",r"f(x)", "-", r"g(x)", r"\right) \, \mathrm{d}x" , font_size=20).set_stroke(width=1)
         areaMath.next_to(ax, 0.6*DOWN, buff=0.5)
         self.play(Write(areaMath[0]), run_time = 0.05) 
         self.play(Write(areaMath[1]), run_time = 0.05)
@@ -102,7 +109,7 @@ class AreaBetweenCurve(Scene):
         self.play(Write(areaMath[7]), run_time = 0.8) 
 
 
-        areaMath_eq1 = MathTex(r"A=\int", r"_{0}",r"^{3}",r"\left(",r"\left(",r"4x-x^2", r"\right)", "-",r"\left(", r"\sin\left(\frac{\pi x}{3}\right) + x", r"\right)", r"\right) \, \mathrm{d}x" , font_size=20).set_stroke(width=1.15)
+        areaMath_eq1 = MathTex(r"A=\int", r"_{0}",r"^{3}",r"\left(",r"\left(",r"4x-x^2", r"\right)", "-",r"\left(", r"\sin\left(\frac{\pi x}{3}\right) + x", r"\right)", r"\right) \, \mathrm{d}x" , font_size=20).set_stroke(width=1)
         areaMath_eq1.next_to(areaMath, 0.2*DOWN, buff=0.5)
         funcTex1_copy2 = funcTex1[2].copy()
         funcTex2_copy2 = funcTex2[2].copy() 
@@ -121,68 +128,58 @@ class AreaBetweenCurve(Scene):
         self.play(Transform(funcTex2_copy2, areaMath_eq1[9]), run_time=0.8)  # Cambiado a Transform
         self.play(Write(areaMath_eq1[10]), run_time = 0.05)
         self.play(Write(areaMath_eq1[11]), run_time = 0.05)
- #----------------------------  
-        
-        areaMath_eq1.font_size = 18  # Set font size for areaMath_eq1
-        areaMath_eq1.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
-        
+
 #------------------------------- fadeout 
         self.play(AnimationGroup(
             #FadeOut(title),
             FadeOut(funcTex1), FadeOut(funcTex2),
-            FadeOut(ax, run_time=0.5),
+            lag_ratio=0.1  # Optional: Add a slight delay between animations
+        ))
+
+        area_Math_eq1_aux = MathTex(r"A=\int_{0}^{3}\left(\left(4x-x^2\right) -\left(\sin\left(\frac{\pi x}{3}\right) + x\right)\right) \, \mathrm{d}x" , font_size=18).set_stroke(width=1) 
+        area_Math_eq1_aux.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT)
+       
+        self.play(FadeIn(area_Math_eq1_aux))
+#-----------------------------------------------------------------------------# others
+        areaMath_eq2 = MathTex(r"A=\int_0^3 \left( 3x-x^2- \sin\left(\frac{\pi x}{3}\right)\right)\, \mathrm{d}x", font_size=18).set_stroke(width=1)
+        areaMath_eq2.next_to(area_Math_eq1_aux, DOWN, buff=0.3)  # Position below areaMath_eq1
+
+        #self.play(Write(areaMath_eq2))
+        self.play(AnimationGroup(
+            #FadeOut(title),
+            Write(areaMath_eq2),
+            FadeOut(ax, run_time=0.3),
             FadeOut(x_label), FadeOut(y_label), FadeOut(origin_label),
             FadeOut(graph1), FadeOut(graph2, run_time=0.3),
             FadeOut(area),
             FadeOut(dot1), FadeOut(dot2, run_time=0.3),
             FadeOut(dashedLine2, run_time=0.3),
             FadeOut(label2, run_time=0.3),
-            FadeOut(question, run_time=0.3),
-            FadeOut(areaMath, run_time=0.3),
-            FadeOut(funcTex1_copy2, run_time=0.3),#
+            FadeOut(question, run_time=0.1),
+            FadeOut(areaMath, run_time=0.1),
+            FadeOut(funcTex1_copy2, run_time=0.1),#
             FadeOut(funcTex2_copy2, run_time=0.1), #
             FadeOut(funcTex2_copy, run_time=0.1),
             FadeOut(funcTex1_copy, run_time=0.1),
             FadeOut(origin_label_0, run_time=0.1),#
-            FadeOut(label2_3, run_time=0.3),#
-            #FadeOut(areaMath_eq1, run_time=0.1),
-            lag_ratio=0.1  # Optional: Add a slight delay between animations
+            FadeOut(label2_3, run_time=0.1),#
+            FadeOut(areaMath_eq1, run_time=0.1),
+            lag_ratio=0  # Optional: Add a slight delay between animations
         ))
-
-        areaMath_eq1.font_size = 18  # Set font size for areaMath_eq1
-        funcTex1_copy2.font_size = 18
-        funcTex2_copy2.font_size = 18
-        origin_label_0.font_size = 18
-        label2_3.font_size = 18
-
-        areaMath_eq1.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
-        #funcTex1_copy2.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
-        #funcTex2_copy2.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
-        #origin_label_0.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
-        #label2_3.next_to(title, DOWN, buff=0.4, aligned_edge=LEFT) 
-
-        self.play(Animation(areaMath_eq1), run_time=0.3)
-        #self.play(Animation(areaMath_eq1),Animation(funcTex2_copy2),Animation(origin_label_0),Animation(label2_3), Animation(funcTex1_copy2) ,run_time=0.3)
-
-
-#-----------------------------------------------------------------------------# others
-        
-
-        areaMath_eq2 = MathTex(r"A=\int_0^3 \left( 3x-x^2- \sin\left(\frac{\pi x}{3}\right)\right)\, \mathrm{d}x", font_size=18).set_stroke(width=1.15)
-        areaMath_eq2.next_to(areaMath_eq1, DOWN, buff=0.3)  # Position below areaMath_eq1
-
-        self.play(Write(areaMath_eq2))
 
         # Problema original
         problema = MathTex(
             r"A =", r" \int_0^3 (3x - x^2) dx", "-", r" \int_0^3 \sin\left(\frac{\pi x}{3}\right) dx",
             font_size=18
-        ).set_stroke(width=1.15)
+        ).set_stroke(width=1)
 
         problema.next_to(areaMath_eq2, DOWN, buff=0.5)
-        
-        problema[1].set_color(BLUE)  # Color for (3x - x^2)
-        problema[3].set_color(GREEN)  # Color for sin(pi x / 3)
+        #----------------
+        color_int1 =YELLOW
+        color_int2 = ORANGE
+        #-------------
+        problema[1].set_color(color_int1)  # Color for (3x - x^2)
+        problema[3].set_color(color_int2)  # Color for sin(pi x / 3)
         
         
         self.play(Write(problema))
@@ -192,15 +189,15 @@ class AreaBetweenCurve(Scene):
         paso2a = MathTex(
             r"\bullet \int_0^3 (3x - x^2) dx =\left. \frac{3x^2}{2} - \frac{x^3}{3} \bigg\rvert_0^3 =\frac{9}{2}",
             font_size=18
-        ).set_stroke(width=1.15)   
-        paso2a.set_color(BLUE)   
+        ).set_stroke(width=1)   
+        paso2a.set_color(color_int1)   
         paso2a.next_to(problema, DOWN, buff=0.4, aligned_edge=LEFT)
         # Paso 3: Resolver segunda parte (trigonométrica)
         paso3a = MathTex(
             r"\bullet \int_0^3 \sin\left(\tfrac{\pi x}{3}\right) dx = \left. -\frac{3}{\pi}\cos\left(\tfrac{\pi x}{3}\right) \bigg\rvert_0^3 =\frac{6}{\pi} ",
             font_size=18
-        ).set_stroke(width=1.15)
-        paso3a.set_color(GREEN)  # Color for sin(pi x / 3)
+        ).set_stroke(width=1)
+        paso3a.set_color(color_int2)  # Color for sin(pi x / 3)
         paso3a.next_to(paso2a, DOWN, buff=0.4, aligned_edge=LEFT)
          
         
@@ -213,8 +210,8 @@ class AreaBetweenCurve(Scene):
         paso4 = MathTex(
             r"A = \frac{9}{2} - \frac{6}{\pi} \approx 2.735 \text{ u}^2",
             font_size=18,
-            color=YELLOW
-        ).set_stroke(width=1.15)
+            color=RED
+        ).set_stroke(width=1)
         
         paso4.next_to(paso3a, DOWN, buff=0.6)
         
@@ -225,7 +222,7 @@ class AreaBetweenCurve(Scene):
         )
         box.set_stroke(
             width=3, 
-            color=[ ORANGE, RED]  # Gradient colors
+            color=[ ORANGE, YELLOW]  # Gradient colors
         )
         
         self.play(
@@ -234,25 +231,3 @@ class AreaBetweenCurve(Scene):
             run_time=0.5
         )
         self.wait(2)  
-        # Limpiar todo lo que está en la pantalla
-        self.clear()
-#--------------------------------------------- 
-        # Cargar el logo como SVG
-        logo = SVGMobject("logo.svg").scale(0.5)
-
-        # Extraer los puntos del contorno del logo
-        outline_path = VMobject()
-        for submobject in logo:
-            outline_path.append_points(submobject.get_points())
-            outline_path.set_stroke(color=[YELLOW, ORANGE], width=2)  # Gradiente de amarillo a anaranjado
-
-        # Animar el trazo del contorno
-        self.play(Create(outline_path), run_time=1)
-        self.wait(0.2)
-
-        # Mostrar el logo completo con colores aplicados
-        self.play(FadeOut(outline_path), run_time=0.3)
-        self.play(FadeIn(logo))
-        # Finalizar la escena
-        self.wait(0.5)
-
