@@ -1,3 +1,9 @@
+## Others
+.animation/scripts/calculus/media/Tex/*.tex
+
+**/scripts/calculus/media/Tex/*.tex
+**/scripts/calculus/media/Tex/*.svg
+
 ## Core LaTeX/pdflatex auxiliary files:
 *.aux       # Auxiliary files
 *.lof       # List of figures
