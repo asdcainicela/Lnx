@@ -1,74 +1,74 @@
 \LnxPregunta{Calcule el  limite,}{
 \begin{equation*}
-	\lim\limits_{x \to 0} 
+	\lim\limits_{x \to 0}
 	\frac{\displaystyle \int_{1}^{\infty} \frac{\ln^x(t)}{t^{2\gamma}} \dd{t}-(2\gamma-1)^{-x-1}}{e^x-1}
 \end{equation*}\\
 {\LARGE donde $\gamma$ es la constante de Euler-Mascheroni.}
 }
 
- \LnxSolucion{Solución}{
-	
+\LnxSolucion{Solución}{
+
 	Resolvemos la integral, hacemos $\ln(t)=u \rightarrow \frac{\dd{t}}{t}=\dd{u}$
-	
+
 	$$
-	I=\int_{1}^{\infty} \frac{\ln^x(t)}{t^{2\gamma}} \dd{t}=\int_{0}^{\infty} u^x e^{2(\gamma-1)u} \dd{u}
+		I=\int_{1}^{\infty} \frac{\ln^x(t)}{t^{2\gamma}} \dd{t}=\int_{0}^{\infty} u^x e^{2(\gamma-1)u} \dd{u}
 	$$
-	
-	Hacemos otro cambio de variable,	
-	$(2\gamma-1)u=v$ 
-	
+
+	Hacemos otro cambio de variable,
+	$(2\gamma-1)u=v$
+
 	\[
-	I= \frac{1}{(2\gamma-1)^{x+1}} \int_{0}^{\infty} v^x
-	e^{-v} \dd{v}	=\frac{\Gamma(x+1)}{(2\gamma-1)^{x+1}}
+		I= \frac{1}{(2\gamma-1)^{x+1}} \int_{0}^{\infty} v^x
+		e^{-v} \dd{v}	=\frac{\Gamma(x+1)}{(2\gamma-1)^{x+1}}
 	\]
-	
+
 	Sea $L$ el límite
-	
+
 	\[
-	L=\lim\limits_{x \to 0} 
-	\frac{\displaystyle I-(2\gamma-1)^{-x-1}}{e^x-1}
+		L=\lim\limits_{x \to 0}
+		\frac{\displaystyle I-(2\gamma-1)^{-x-1}}{e^x-1}
 	\]
-	
+
 	\[
-	L=\lim\limits_{x \to 0} 
-	\frac{\displaystyle (2\gamma-1)^{-x-1}\ \Gamma(x+1)-(2\gamma-1)^{-x-1}}{e^x-1}
+		L=\lim\limits_{x \to 0}
+		\frac{\displaystyle (2\gamma-1)^{-x-1}\ \Gamma(x+1)-(2\gamma-1)^{-x-1}}{e^x-1}
 	\]
-	
+
 	\[
-	L=\lim\limits_{x \to 0} \frac{1}{(2\gamma-1)^{x+1}} \cdot
-	\frac{\displaystyle  \Gamma(x+1)-1}{e^x-1}
+		L=\lim\limits_{x \to 0} \frac{1}{(2\gamma-1)^{x+1}} \cdot
+		\frac{\displaystyle  \Gamma(x+1)-1}{e^x-1}
 	\]
-	
-	Sabemos que 
-	
+
+	Sabemos que
+
 	\[
-	\lim\limits_{x \to 0}
-	\frac{e^x-1}{x}=1
+		\lim\limits_{x \to 0}
+		\frac{e^x-1}{x}=1
 	\]
-	
+
 	\[
-	\lim\limits_{x \to 0}
-	\frac{\Gamma(x+1)-1}{x}=\Gamma^{'}(1)=-\gamma
+		\lim\limits_{x \to 0}
+		\frac{\Gamma(x+1)-1}{x}=\Gamma^{'}(1)=-\gamma
 	\]
-	
+
 }
 
 Reemplazando los límites en L
 $$
 	L=\lim\limits_{x \to 0} \frac{1}{(2\gamma-1)^{x+1}} \cdot
-\frac{\displaystyle \frac{ \Gamma(x+1)-1}{x}}{\displaystyle\frac{{e^x-1}}{x}}
+	\frac{\displaystyle \frac{ \Gamma(x+1)-1}{x}}{\displaystyle\frac{{e^x-1}}{x}}
 $$
 
-	$$
-L= \frac{1}{(2\gamma-1)} \cdot
-\frac{-\gamma}{1}
+$$
+	L= \frac{1}{(2\gamma-1)} \cdot
+	\frac{-\gamma}{1}
 $$
 
 Entonces el valor del límite es,
 
 \begin{LnxRptaBox}
 	$$
-	 \lim\limits_{x \to 0} 
-	 \frac{\displaystyle \int_{1}^{\infty} \frac{\ln^x(t)}{t^{2\gamma}} \dd{t}-(2\gamma-1)^{-x-1}}{e^x-1}=\frac{\gamma}{1-2\gamma} 
+		\lim\limits_{x \to 0}
+		\frac{\displaystyle \int_{1}^{\infty} \frac{\ln^x(t)}{t^{2\gamma}} \dd{t}-(2\gamma-1)^{-x-1}}{e^x-1}=\frac{\gamma}{1-2\gamma}
 	$$
 \end{LnxRptaBox}

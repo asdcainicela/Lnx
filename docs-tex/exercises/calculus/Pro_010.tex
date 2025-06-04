@@ -1,133 +1,132 @@
-\LnxPregunta{ Calcule la serie si $\abs{x}<\frac{1}{4}$, }{  
-	\vspace{1.5cm}
-	$$
-	\sum_{k\ge0}\frac{(4k+1)!}{[(2k)!]^2}x^{2k} 
-	$$
-	\vspace{0.1cm}
-	\begin{flushleft}
-		{\Huge Propuesto por \textcolor{yellow}{Kav Maths}.  }
-	\end{flushleft}
+\LnxPregunta{ Calcule la serie si $\abs{x}<\frac{1}{4}$, }{
+\vspace{1.5cm}
+$$
+	\sum_{k\ge0}\frac{(4k+1)!}{[(2k)!]^2}x^{2k}
+$$
+\vspace{0.1cm}
+\begin{flushleft}
+	{\Huge Propuesto por \textcolor{yellow}{Kav Maths}.  }
+\end{flushleft}
 }
 
-\LnxSolucion{Solución}{ 
-	 
-	 Sea $S(x)$ la serie y podemos reescribir,
-	 
-	 $$
-	 S(x)=\sum_{k\ge0}\frac{(4k+1)!}{[(2k)!]^2}x^{2k} =\sum_{k\ge0}(4k+1)\frac{(4k)!}{[(2k)!]^2}x^{2k}
-	 $$
-	 
-	 %$$
-	 %S(x)=\sum_{k\ge0}(4k+1)\binom{4k}{2k}x^{2k}
-	 %$$ 
-	 
-	 Distribuimos las series,
-	 
-	 $$
-	 S(x)=2x\sum_{k\ge0}2k\frac{(4k)!}{[(2k)!]^2}x^{2k-1}+\sum_{k\ge0}\frac{(4k)!}{[(2k)!]^2}x^{2k}
-	 $$ 
-	 
-	 $$
-	 S(x)=2x \pdv{x}\pqty{\sum_{k\ge0}\frac{(4k)!}{[(2k)!]^2}x^{2k}}+\sum_{k\ge0} \frac{(4k)!}{[(2k)!]^2} x^{2k}
-	 $$ 
-	 
-	 
-	 %$$
-	 %S(x)=2x\sum_{k\ge0}2k\binom{4k}{2k}x^{2k-1}+\sum_{k\ge0}\binom{4k}{2k}x^{2k}
-	 %$$ 
-	 
-	 %$$
-	 %S(x)=2x \pdv{x}\pqty{\sum_{k\ge0}\binom{4k}{2k}x^{2k}}+\sum_{k\ge0}\binom{4k}{2k}x^{2k}
-	 %$$ 
-	 
-	 
-	 Sea $M(x)$ la siguiente serie,
-	 
-	 $$
-	 M(x)=\sum_{k\ge0} \frac{(4k)!}{[(2k)!]^2}  x^{2k} = \sum_{k\ge0} \frac{2^{4k}}{(2k)!}\cdot\frac{(4k)!}{2^{4k}(2k)!}x^{2k} 
-	 $$ 
-	 
-	 Simplificamos $ {(4k)!}/{ (2k)!} $
-	 $$
-	 M(x)=\sum_{k\ge0} \frac{2^{4k}}{(2k)!}\cdot \frac{1\cdot3\cdots(4k-1)}{2^{4k} }x^{2k} 
-	 $$ 
-	 
-	 $$
+\LnxSolucion{Solución}{
+
+Sea $S(x)$ la serie y podemos reescribir,
+
+$$
+	S(x)=\sum_{k\ge0}\frac{(4k+1)!}{[(2k)!]^2}x^{2k} =\sum_{k\ge0}(4k+1)\frac{(4k)!}{[(2k)!]^2}x^{2k}
+$$
+
+%$$
+%S(x)=\sum_{k\ge0}(4k+1)\binom{4k}{2k}x^{2k}
+%$$ 
+
+Distribuimos las series,
+
+$$
+	S(x)=2x\sum_{k\ge0}2k\frac{(4k)!}{[(2k)!]^2}x^{2k-1}+\sum_{k\ge0}\frac{(4k)!}{[(2k)!]^2}x^{2k}
+$$
+
+$$
+	S(x)=2x \pdv{x}\pqty{\sum_{k\ge0}\frac{(4k)!}{[(2k)!]^2}x^{2k}}+\sum_{k\ge0} \frac{(4k)!}{[(2k)!]^2} x^{2k}
+$$
+
+
+%$$
+%S(x)=2x\sum_{k\ge0}2k\binom{4k}{2k}x^{2k-1}+\sum_{k\ge0}\binom{4k}{2k}x^{2k}
+%$$ 
+
+%$$
+%S(x)=2x \pdv{x}\pqty{\sum_{k\ge0}\binom{4k}{2k}x^{2k}}+\sum_{k\ge0}\binom{4k}{2k}x^{2k}
+%$$ 
+
+
+Sea $M(x)$ la siguiente serie,
+
+$$
+	M(x)=\sum_{k\ge0} \frac{(4k)!}{[(2k)!]^2}  x^{2k} = \sum_{k\ge0} \frac{2^{4k}}{(2k)!}\cdot\frac{(4k)!}{2^{4k}(2k)!}x^{2k}
+$$
+
+Simplificamos $ {(4k)!}/{ (2k)!} $
+$$
+	M(x)=\sum_{k\ge0} \frac{2^{4k}}{(2k)!}\cdot \frac{1\cdot3\cdots(4k-1)}{2^{4k} }x^{2k}
+$$
+
+$$
 	M(x) = \sum_{k\ge0}  2^{4k}\cdot \frac{(-\tfrac{1}{2})(-\tfrac{3}{2})\cdots (-\frac{ (4k-1)}{2})}{2^{2k}(2k)!}x^{2k}
-	 $$
-	 
-	 $$
-	 M(x)=\sum_{k\ge0} 16^k\,\binom{-\tfrac{1}{2}}{2k} x^{2k}=\sum_{k\ge0}  \binom{-\tfrac{1}{2}}{2k} {(4x)}^{2k}
-	 $$
-	 
-	 
-	 Sea de forma general $H(a,x,r)$ donde \( |ax| < 1 \),
-	 
-	 \[
-	 H(a,x,r)=\sum_{k\ge0}\binom{r}{2k}(ax)^{2k},
-	 \]
-	 
-	 Por la expansión binomial,
-	 \[
-	 (1+ax)^r=\sum_{n\ge0}\binom{r}{n}(ax)^n
-	 \]
-	 Expresamos la suma en los términos de grado par e impar,
-	 \[
-	 (1+ax)^r=\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}+\sum_{k\ge0}\binom{r}{2k+1}(ax)^{2k+1}
-	 \]
-	 
-	 \[
-	 (1-ax)^r 
-	 =\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}-\sum_{k\ge0}\binom{r}{2k+1}(ax)^{2k+1}
-	 \]
-	 
-	 Al sumar las dos expresiones,
-	 \[
-	 (1+ax)^r+(1-ax)^r=2\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}
-	 \]
-	 Es decir $ H(a,x,r)$ es,
-	 \[
-	 \sum_{k\ge0}\binom{r}{2k}(ax)^{2k}=\frac{(1+ax)^r+(1-ax)^r}{2}
-	 \]
-	 
-	 
-	 Entonces para $r=-\frac{1}{2}$ y $a=4$, tenemos que $M(x)$ es,
-	 
-	 \newpage
-	 
-	 $$
-	 M(x)=\frac{ (1-4x)^{-1/2}+(1+4x)^{-1/2}}{2} 
-	 $$
-	 
-	 La derivada de $M(x)$ es,  
-	 
-	 $$
-	 M'(x)=(1-4x)^{-3/2}-(1+4x)^{-3/2}
-	 $$
-	 
-	 Además $S(x)$ en términos de $M(x)$ es,
-	 
-	 $$
-	 S(x)=2x  M'(x) +M(x)
-	 $$ 
-	 De forma equivalente $M(x)$ y $2xM'(x)$ son,
-	 
-	 $$
-	 M(x)=   \pqty{\frac{1}{2}-2x}(1-4x)^{-3/2}+\pqty{\frac{1}{2}+2x}(1+4x)^{-3/2} 
-	 $$
-	 
-	 $$
-	 2xM'(x)=  2x(1-4x)^{-3/2}-2x(1+4x)^{-3/2}
-	 $$
-	 
-	 Sumamos $M(x)$ y $2xM'(x)$ para obtener $S(x)$
-	 
-	
-}
-\begin{LnxRptaBox} 
-	 $$
-	S(x)=\frac{1}{2}\Bigl[(1-4x)^{-3/2}+(1+4x)^{-3/2}\Bigr],\quad  \abs{x}<\frac{1}{4}
-	$$
-\end{LnxRptaBox} 
+$$
 
- 
+$$
+	M(x)=\sum_{k\ge0} 16^k\,\binom{-\tfrac{1}{2}}{2k} x^{2k}=\sum_{k\ge0}  \binom{-\tfrac{1}{2}}{2k} {(4x)}^{2k}
+$$
+
+
+Sea de forma general $H(a,x,r)$ donde \( |ax| < 1 \),
+
+\[
+	H(a,x,r)=\sum_{k\ge0}\binom{r}{2k}(ax)^{2k},
+\]
+
+Por la expansión binomial,
+\[
+	(1+ax)^r=\sum_{n\ge0}\binom{r}{n}(ax)^n
+\]
+Expresamos la suma en los términos de grado par e impar,
+\[
+	(1+ax)^r=\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}+\sum_{k\ge0}\binom{r}{2k+1}(ax)^{2k+1}
+\]
+
+\[
+	(1-ax)^r
+	=\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}-\sum_{k\ge0}\binom{r}{2k+1}(ax)^{2k+1}
+\]
+
+Al sumar las dos expresiones,
+\[
+	(1+ax)^r+(1-ax)^r=2\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}
+\]
+Es decir $ H(a,x,r)$ es,
+\[
+	\sum_{k\ge0}\binom{r}{2k}(ax)^{2k}=\frac{(1+ax)^r+(1-ax)^r}{2}
+\]
+
+
+Entonces para $r=-\frac{1}{2}$ y $a=4$, tenemos que $M(x)$ es,
+
+\newpage
+
+$$
+	M(x)=\frac{ (1-4x)^{-1/2}+(1+4x)^{-1/2}}{2}
+$$
+
+La derivada de $M(x)$ es,
+
+$$
+	M'(x)=(1-4x)^{-3/2}-(1+4x)^{-3/2}
+$$
+
+Además $S(x)$ en términos de $M(x)$ es,
+
+$$
+	S(x)=2x  M'(x) +M(x)
+$$
+De forma equivalente $M(x)$ y $2xM'(x)$ son,
+
+$$
+	M(x)=   \pqty{\frac{1}{2}-2x}(1-4x)^{-3/2}+\pqty{\frac{1}{2}+2x}(1+4x)^{-3/2}
+$$
+
+$$
+	2xM'(x)=  2x(1-4x)^{-3/2}-2x(1+4x)^{-3/2}
+$$
+
+Sumamos $M(x)$ y $2xM'(x)$ para obtener $S(x)$
+
+
+}
+\begin{LnxRptaBox}
+	$$
+		S(x)=\frac{1}{2}\Bigl[(1-4x)^{-3/2}+(1+4x)^{-3/2}\Bigr],\quad  \abs{x}<\frac{1}{4}
+	$$
+\end{LnxRptaBox}
+

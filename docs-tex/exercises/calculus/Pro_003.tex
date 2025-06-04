@@ -1,125 +1,126 @@
 \LnxPregunta{Calcule el valor del límite,}{
-\Huge
-\begin{equation*}
-	\lim_{x \to \infty} \pqty{ \frac{1}{x} \pqty{ \frac{\zeta(1 + \frac{1}{x})}{x} }^{\frac{x}{\gamma}} \ \pqty{ \frac{(2x)!}{x!} }^{\frac{1}{x}} - 4 } x
-\end{equation*}
-%{\Huge es}  \quad
-%$
-%2 \log(2) - \frac{4 \gamma_1}{\gamma} - 2 \gamma
-%$
-\vspace{0.2cm}
-{\LARGE 
-\begin{itemize}[label=\textcolor{white}{$\circ$}] % Usa un círculo como viñeta
-	\item $ \gamma$ es la constante de Euler-Mascheroni.
-	%\item $\gamma_1$ es la primera constante de Stieltjes.
-	\item $\zeta(s) =\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^s}$ es la función zeta de Riemann.
-\end{itemize}
-\vspace{1cm}
-\begin{flushleft}
-	%	{\Huge Si $ \text{Li}_3 $ es la función trilogarítmica. }\\
-	{\Large Propuesto en desafío a la comunidad. \textcolor{yellow}{Nivel 4, pregunta 2}.  }
-\end{flushleft}
-}
+	\Huge
+	\begin{equation*}
+		\lim_{x \to \infty} \pqty{ \frac{1}{x} \pqty{ \frac{\zeta(1 + \frac{1}{x})}{x} }^{\frac{x}{\gamma}} \ \pqty{ \frac{(2x)!}{x!} }^{\frac{1}{x}} - 4 } x
+	\end{equation*}
+	%{\Huge es}  \quad
+	%$
+	%2 \log(2) - \frac{4 \gamma_1}{\gamma} - 2 \gamma
+	%$
+	\vspace{0.2cm}
+	{\LARGE
+		\begin{itemize}[label=\textcolor{white}{$\circ$}] % Usa un círculo como viñeta
+			\item $ \gamma$ es la constante de Euler-Mascheroni.
+			      %\item $\gamma_1$ es la primera constante de Stieltjes.
+			\item $\zeta(s) =\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^s}$ es la función zeta de Riemann.
+		\end{itemize}
+		\vspace{1cm}
+		\begin{flushleft}
+			%	{\Huge Si $ \text{Li}_3 $ es la función trilogarítmica. }\\
+			{\Large Propuesto en desafío a la comunidad. \textcolor{yellow}{Nivel 4, pregunta 2}.  }
+		\end{flushleft}
+	}
 }
 
 
 \LnxSolucion{Solución}{
+
 Definimos la expresión y calculamos su aproximación,
 
 \[
-A = \left( \frac{\zeta(1 + \frac{1}{x})}{x} \right)^{\frac{x}{\gamma}}
+	A = \left( \frac{\zeta(1 + \frac{1}{x})}{x} \right)^{\frac{x}{\gamma}}
 \]
 
 Mediante la expansión de Laurent para $s=1$, tenemos que
 
 \[
-\zeta(s) \approx \frac{1}{s-1} + \gamma + \sum_{k=1}^{\infty} \frac{(-1)^k \gamma_k}{k!} (s-1)^k
+	\zeta(s) \approx \frac{1}{s-1} + \gamma + \sum_{k=1}^{\infty} \frac{(-1)^k \gamma_k}{k!} (s-1)^k
 \]
 
 Sustituyendo $s = 1 + \frac{1}{x}$,
 
 \[
-\zeta\left(1 + \frac{1}{x}\right) \approx x + \gamma + \sum_{k=1}^{\infty} \frac{(-1)^k \gamma_k}{k!} \left( \frac{1}{x} \right)^k
+	\zeta\left(1 + \frac{1}{x}\right) \approx x + \gamma + \sum_{k=1}^{\infty} \frac{(-1)^k \gamma_k}{k!} \left( \frac{1}{x} \right)^k
 \]
 
 Dividiendo entre $x$,
 
 \[
-\frac{\zeta(1 + \frac{1}{x})}{x} \approx 1 + \frac{\gamma}{x} -\frac{\gamma_1}{x^2} + \mathcal{O}\left(\frac{1}{x^3}\right)
+	\frac{\zeta(1 + \frac{1}{x})}{x} \approx 1 + \frac{\gamma}{x} -\frac{\gamma_1}{x^2} + \mathcal{O}\left(\frac{1}{x^3}\right)
 \]
 
 Aproximamos ahora $A$ usando logaritmos,
 
 \[
-\ln A = \frac{x}{\gamma} \ln \left( \frac{\zeta(1 + \frac{1}{x})}{x} \right)
+	\ln A = \frac{x}{\gamma} \ln \left( \frac{\zeta(1 + \frac{1}{x})}{x} \right)
 \]
 
 Usando  $\ln(1 + a) \approx a - \frac{a^2}{2} + \mathcal{O}(a^3)$
 
 \[
-\ln A \approx \frac{x}{\gamma} \left( \frac{\gamma}{x} - \frac{\gamma_1}{x^2} - \frac{\gamma^2}{2x^2} + \mathcal{O}\left(\frac{1}{x^3}\right) \right)
+	\ln A \approx \frac{x}{\gamma} \left( \frac{\gamma}{x} - \frac{\gamma_1}{x^2} - \frac{\gamma^2}{2x^2} + \mathcal{O}\left(\frac{1}{x^3}\right) \right)
 \]
 
 Multiplicando por $\frac{x}{\gamma}$,
 
 \[
-\ln A \approx 1 - \frac{\gamma_1}{\gamma x} - \frac{\gamma}{2x} + \mathcal{O}\left(\frac{1}{x^2}\right)
+	\ln A \approx 1 - \frac{\gamma_1}{\gamma x} - \frac{\gamma}{2x} + \mathcal{O}\left(\frac{1}{x^2}\right)
 \]
 
 Sea $a$ muy pequeño y $e^a=1+a+\frac{a^2}{2}+\cdots$,
 $$
-e^{1+a}=e^{1}\cdot e^a \approx e\pqty{1+a}+\mathcal{O}\left(a^2\right)
+	e^{1+a}=e^{1}\cdot e^a \approx e\pqty{1+a}+\mathcal{O}\left(a^2\right)
 $$
 Entonces, tomando la exponencial,
 \[
-A = e^{1 - \frac{\gamma_1}{\gamma x} - \frac{\gamma}{2x} + \mathcal{O}\left(\frac{1}{x^2}\right)} \approx e \left(1 - \frac{\gamma_1}{\gamma x} - \frac{\gamma}{2x} \right) + \mathcal{O}\left(\frac{1}{x^2}\right)
+	A = e^{1 - \frac{\gamma_1}{\gamma x} - \frac{\gamma}{2x} + \mathcal{O}\left(\frac{1}{x^2}\right)} \approx e \left(1 - \frac{\gamma_1}{\gamma x} - \frac{\gamma}{2x} \right) + \mathcal{O}\left(\frac{1}{x^2}\right)
 \]
 Definimos la expresión y calculamos su aproximación,
 \[
-B = \left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}}
+	B = \left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}}
 \]
 
-Usando la aproximación de Stirling $n! \approx \sqrt{2\pi n} \left(\frac{n}{e}\right)^n$, 
+Usando la aproximación de Stirling $n! \approx \sqrt{2\pi n} \left(\frac{n}{e}\right)^n$,
 \[
-\frac{(2x)!}{x!} \approx \frac{(2x)^{2x} e^{-2x} \sqrt{4\pi x}}{x^x e^{-x} \sqrt{2\pi x}} = 2^{2x} x^x e^{-x} \sqrt{2}
+	\frac{(2x)!}{x!} \approx \frac{(2x)^{2x} e^{-2x} \sqrt{4\pi x}}{x^x e^{-x} \sqrt{2\pi x}} = 2^{2x} x^x e^{-x} \sqrt{2}
 \]
 
 Distribuyendo la potencia
 
 \[
-B = \left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}} \approx 4 x e^{-1} \sqrt[2x]{2}.
+	B = \left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}} \approx 4 x e^{-1} \sqrt[2x]{2}.
 \]
 
 Usando $2^{1/2n} =e^{\ln(2)/2n}\approx 1 + \frac{\ln(2)}{2n}$,
 
 \[
-B \approx 4 x e^{-1} \left(1 + \frac{\ln(2)}{2x}\right) + \mathcal{O}\left(\frac{1}{x}\right)
+	B \approx 4 x e^{-1} \left(1 + \frac{\ln(2)}{2x}\right) + \mathcal{O}\left(\frac{1}{x}\right)
 \]
 
 Multiplicamos las aproximaciones de $A$ y $B$:
 
 \[
-A \cdot B = 4 \left(x - \frac{\gamma_1}{\gamma} - \frac{\gamma}{2} + \frac{\ln(2)}{2}\right) + \mathcal{O}\left(\frac{1}{x}\right)
+	A \cdot B = 4 \left(x - \frac{\gamma_1}{\gamma} - \frac{\gamma}{2} + \frac{\ln(2)}{2}\right) + \mathcal{O}\left(\frac{1}{x}\right)
 \]
 
 Finalmente, calculamos el límite:
 \[
-L=\lim_{x \to \infty} \left(\frac{1}{x} A \cdot B - 4 \right)x = \lim_{x \to \infty} \left(A \cdot B - 4x \right)
+	L=\lim_{x \to \infty} \left(\frac{1}{x} A \cdot B - 4 \right)x = \lim_{x \to \infty} \left(A \cdot B - 4x \right)
 \]
 Sustituyendo la expresión obtenida:
 \[
-L=\lim_{x \to \infty} \left(4x + 2 \ln(2) - \frac{4 \gamma_1}{\gamma} - 2 \gamma - 4x + \mathcal{O}\left(\frac{1}{x}\right) \right)
+	L=\lim_{x \to \infty} \left(4x + 2 \ln(2) - \frac{4 \gamma_1}{\gamma} - 2 \gamma - 4x + \mathcal{O}\left(\frac{1}{x}\right) \right)
 \]
 Simplificando,
 \[
-L=\lim_{x \to \infty} \left( 2 \ln(2) - \frac{4 \gamma_1}{\gamma} - 2 \gamma +\mathcal{O}\left(\frac{1}{x}\right)\right)
+	L=\lim_{x \to \infty} \left( 2 \ln(2) - \frac{4 \gamma_1}{\gamma} - 2 \gamma +\mathcal{O}\left(\frac{1}{x}\right)\right)
 \]
 }
 
 Finalmente, tenemos que el valor del límite es
 \begin{LnxRptaBox}
 	\[
-	L=  2\ln(2)- \frac{4 \gamma_1}{\gamma} - 2 \gamma
+		L=  2\ln(2)- \frac{4 \gamma_1}{\gamma} - 2 \gamma
 	\]
 \end{LnxRptaBox}
 

@@ -1,7 +1,7 @@
-\LnxPregunta{ Calcular la integral, }{  
+\LnxPregunta{ Calcular la integral, }{
 	\vspace{1.5cm}
 	\[
-	 \int_{1}^{\infty} \frac{x^{\alpha} \ln^{b}(x)}{1 + x + x^2 + \dots + x^n} \dd{x}
+		\int_{1}^{\infty} \frac{x^{\alpha} \ln^{b}(x)}{1 + x + x^2 + \dots + x^n} \dd{x}
 	\]
 	\vspace{0.1cm}
 	\begin{flushleft}
@@ -10,112 +10,112 @@
 	\end{flushleft}
 }
 
-\LnxSolucion{Solución}{  
-	 
+\LnxSolucion{Solución}{
+
 Sea $I(\alpha, b, n) $ la integral,
 
 \[
-I(\alpha, b, n) = \int_{1}^{\infty} \frac{x^{\alpha} \ln^{b}(x)}{1 + x + x^2 + \dots + x^n} \dd{x}
+	I(\alpha, b, n) = \int_{1}^{\infty} \frac{x^{\alpha} \ln^{b}(x)}{1 + x + x^2 + \dots + x^n} \dd{x}
 \]
 
 Si $b=0$, entonces la integral,
 
 \[
-I(\alpha, 0, n) = \int_{1}^{\infty} \frac{x^{\alpha}}{1 + x + x^2 + \cdots + x^n} \dd{x}
+	I(\alpha, 0, n) = \int_{1}^{\infty} \frac{x^{\alpha}}{1 + x + x^2 + \cdots + x^n} \dd{x}
 \]
- 
+
 
 El denominador es una serie geométrica,
 
 \[
-1 + x + \cdots + x^n = \frac{1 - x^{n+1}}{1 - x}, \quad \text{para} \, x \neq 1
+	1 + x + \cdots + x^n = \frac{1 - x^{n+1}}{1 - x}, \quad \text{para} \, x \neq 1
 \]
 
 Reemplazando la serie geométrica en $I(\alpha, 0, n)$,
 
 \[
-I(\alpha, 0, n) = \int_{1}^{\infty} \frac{x^{\alpha}(1 - x)}{1 - x^{n+1}} \dd{x}
+	I(\alpha, 0, n) = \int_{1}^{\infty} \frac{x^{\alpha}(1 - x)}{1 - x^{n+1}} \dd{x}
 \]
 
 
 Hacemos  cambio de variable $x = t^{-1/(n+1)}$,
 
 \[
-x = t^{-1/(n+1)}, \quad \dd{x} = -\frac{1}{n+1}t^{-(n+2)/(n+1)} \dd{t}
+	x = t^{-1/(n+1)}, \quad \dd{x} = -\frac{1}{n+1}t^{-(n+2)/(n+1)} \dd{t}
 \]
 
 \[
-I(\alpha, 0, n) = \frac{1}{n+1}\int_{0}^{1} \frac{t^{-(\alpha+1)/(n+1)}(1 - t^{-1/(n+1)})}{t-1} \dd{t}
+	I(\alpha, 0, n) = \frac{1}{n+1}\int_{0}^{1} \frac{t^{-(\alpha+1)/(n+1)}(1 - t^{-1/(n+1)})}{t-1} \dd{t}
 \]
 
 El denominador lo pasamos a $-(1-t)$  para aplicar la propiedad que involucra la función Digamma,
 
 \[
-I(\alpha, 0, n) = -\frac{1}{n+1}
-\int_{0}^{1} \frac{t^{-(\alpha+1)/(n+1)} - t^{-(\alpha+2)/(n+1)} }{1-t} \dd{t} 
+	I(\alpha, 0, n) = -\frac{1}{n+1}
+	\int_{0}^{1} \frac{t^{-(\alpha+1)/(n+1)} - t^{-(\alpha+2)/(n+1)} }{1-t} \dd{t}
 \]
 
 Sabemos que, [demostración para el lector]
 
 \[
-\int_{0}^{1} \frac{t^{p-1} - t^{q-1}}{1 - t} \dd{t}=\psi(q) -\psi(p)  , \quad \Re(p), \Re(q) > 0
-\] 
+	\int_{0}^{1} \frac{t^{p-1} - t^{q-1}}{1 - t} \dd{t}=\psi(q) -\psi(p)  , \quad \Re(p), \Re(q) > 0
+\]
 
 En consecuencia el valor de la integral cuando $b=0$ es,
 
 \[
-I(\alpha, 0, n) = \frac{1}{n+1} \bqty{ \psi\pqty{1-\frac{\alpha+1}{n+1}} - \psi\pqty{1-\frac{\alpha+2}{n+1}} }
+	I(\alpha, 0, n) = \frac{1}{n+1} \bqty{ \psi\pqty{1-\frac{\alpha+1}{n+1}} - \psi\pqty{1-\frac{\alpha+2}{n+1}} }
 \]
 
 Sabemos que, $ \displaystyle \frac{\partial^b}{\partial \alpha^b} x^{\alpha} = x^{\alpha} \cdot \ln^{b}(x)$,\\
 
-Diferenciando bajo el signo integral,  
+Diferenciando bajo el signo integral,
 $$
-I(\alpha, b, n) =   \frac{\partial^b}{\partial \alpha^b} \pqty{\int_{1}^{\infty} \frac{x^{\alpha}}{1 + x + \dots + x^n} \dd{x}}  =  \frac{\partial^b}{\partial \alpha^b} I(\alpha, 0, n) 
+	I(\alpha, b, n) =   \frac{\partial^b}{\partial \alpha^b} \pqty{\int_{1}^{\infty} \frac{x^{\alpha}}{1 + x + \dots + x^n} \dd{x}}  =  \frac{\partial^b}{\partial \alpha^b} I(\alpha, 0, n)
 $$
 
 $$
-I(\alpha, b, n)=  \pdv[b]{\alpha} \pqty{\frac{1}{n+1} \bqty{ \psi\pqty{1-\frac{\alpha+1}{n+1}} - \psi\pqty{1-\frac{\alpha+2}{n+1}} }}
-$$ 
+	I(\alpha, b, n)=  \pdv[b]{\alpha} \pqty{\frac{1}{n+1} \bqty{ \psi\pqty{1-\frac{\alpha+1}{n+1}} - \psi\pqty{1-\frac{\alpha+2}{n+1}} }}
+$$
 
 Se cumple que $\displaystyle \dv[b]{\alpha} \psi(f)=\psi^{(b)} (f) \cdot \dv[b]{\alpha} f$,
 
 \[
-I(\alpha, b, n) = \frac{(-1)^b}{(n+1)^{b+1}} \bqty{ \psi^{(b)}\pqty{1-\frac{\alpha+1}{n+1}} - \psi^{(b)}\pqty{1-\frac{\alpha+2}{n+1}} }
+	I(\alpha, b, n) = \frac{(-1)^b}{(n+1)^{b+1}} \bqty{ \psi^{(b)}\pqty{1-\frac{\alpha+1}{n+1}} - \psi^{(b)}\pqty{1-\frac{\alpha+2}{n+1}} }
 \]
 
 
 Finalmente, tenemos la integral
-	
+
 }
-\begin{LnxRptaBox}  
+\begin{LnxRptaBox}
 	\[
-I(\alpha, b, n) = 	\int_{1}^{\infty} \frac{x^{\alpha} \ln^{b}(x)}{1 + x + x^2 + \dots + x^n} \dd{x}
+		I(\alpha, b, n) = 	\int_{1}^{\infty} \frac{x^{\alpha} \ln^{b}(x)}{1 + x + x^2 + \dots + x^n} \dd{x}
 	\]
-	
+
 	\begin{equation*}
 		\scalebox{0.9}{$\displaystyle
-			I(\alpha, b, n) = \frac{(-1)^b}{(n+1)^{b+1}} \bqty{ \psi^{(b)}\pqty{1-\frac{\alpha+1}{n+1}} - \psi^{(b)}\pqty{1-\frac{\alpha+2}{n+1}} }
-	$}
+				I(\alpha, b, n) = \frac{(-1)^b}{(n+1)^{b+1}} \bqty{ \psi^{(b)}\pqty{1-\frac{\alpha+1}{n+1}} - \psi^{(b)}\pqty{1-\frac{\alpha+2}{n+1}} }
+			$}
 	\end{equation*}
-\end{LnxRptaBox} 
+\end{LnxRptaBox}
 donde \( \psi^{(b)}(z) \) es la función poligamma de orden \( b \).\\
 
 
 \begin{itemize}
 	\item Ejemplo 1
-	\[
-	I\left( \frac{1}{2},1,3 \right) = \int_{1}^{\infty} \frac{ \sqrt{x} \ln(x)}{(1+x)(1+x^2)} \, dx
-	\]
-	\[
-	  = \frac{1}{16} \left( \psi^{(1)}\left( \frac{3}{8} \right) - \psi^{(1)}\left( \frac{5}{8} \right) \right)=\frac{\pi^2}{16} \csc\pqty{\frac{3\pi}{8}}\cot(\frac{3\pi}{8})
-	\]
-	
-	\item Ejemplo 2  
-	\[
-	I\left( \frac{1}{2},2,3 \right) = \int_{1}^{\infty} \frac{ \sqrt{x} \ln^2(x)}{(1+x)(1+x^2)} \, dx
-	\]
-	\[
-	= \frac{1}{64} \left( \psi^{(2)}\left( \frac{5}{8} \right) - \psi^{(2)}\left( \frac{3}{8} \right) \right)=\frac{\pi^3}{32} \csc^2\pqty{\frac{3\pi}{8}}\cot(\frac{3\pi}{8})
-	\]
+	      \[
+		      I\left( \frac{1}{2},1,3 \right) = \int_{1}^{\infty} \frac{ \sqrt{x} \ln(x)}{(1+x)(1+x^2)} \, dx
+	      \]
+	      \[
+		      = \frac{1}{16} \left( \psi^{(1)}\left( \frac{3}{8} \right) - \psi^{(1)}\left( \frac{5}{8} \right) \right)=\frac{\pi^2}{16} \csc\pqty{\frac{3\pi}{8}}\cot(\frac{3\pi}{8})
+	      \]
+
+	\item Ejemplo 2
+	      \[
+		      I\left( \frac{1}{2},2,3 \right) = \int_{1}^{\infty} \frac{ \sqrt{x} \ln^2(x)}{(1+x)(1+x^2)} \, dx
+	      \]
+	      \[
+		      = \frac{1}{64} \left( \psi^{(2)}\left( \frac{5}{8} \right) - \psi^{(2)}\left( \frac{3}{8} \right) \right)=\frac{\pi^3}{32} \csc^2\pqty{\frac{3\pi}{8}}\cot(\frac{3\pi}{8})
+	      \]
 \end{itemize}

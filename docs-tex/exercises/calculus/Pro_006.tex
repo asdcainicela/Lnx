@@ -4,32 +4,32 @@ $$
 }
 
 \LnxSolucion{Solución}{
-	Sea $f_n(x)= (((x!)!)!\;  \ldots)! \; (n\  \text{veces})$  $\to f_n(2)=2$\ y $g(x)=x!=\Gamma(x+1)$ entonces $\ g(f_n(2))=g(2)=2 $
+Sea $f_n(x)= (((x!)!)!\;  \ldots)! \; (n\  \text{veces})$  $\to f_n(2)=2$\ y $g(x)=x!=\Gamma(x+1)$ entonces $\ g(f_n(2))=g(2)=2 $
 
-	$$
-	\Omega= 
+$$
+	\Omega=
 	\lim_{n\to \infty} \lim_{x\to 2} \frac{g(f_{n-1}(x))-2}{f_{n-1}(x)-2}= 	\lim_{n\to \infty} \lim_{x\to 2} \frac{2-2}{2-2}= \frac{0}{0}
-	$$
-		
- Mediante la regla de L'Hôpital
-	 
-	$$
+$$
+
+Mediante la regla de L'Hôpital
+
+$$
 	\Omega=  	\lim_{n\to \infty} \lim_{x\to 2}  \frac{g'(f_{n-1}(x))f'_{n-1}(x)}{f'_{n-1}(x)}=	\lim_{n\to \infty} \lim_{x\to 2} g'(f_{n-1}(x))
-	$$
-	
-	$$
+$$
+
+$$
 	\Omega= \lim_{n\to \infty} \lim_{x\to 2} \Gamma'(f_{n-1}(x)+1)=\lim_{n\to \infty} \Gamma'(f_{n-1}(2)+1)
-	$$
-	
-	Si $\psi$ es la función Digamma, $ \rightarrow \Gamma'(x)=\Gamma(x)\psi(x)$\\
-	 además,  $\displaystyle\psi(n+1)=-\gamma+\sum_{k=1}^{n} \frac{1}{k} , \quad \text{para todo } n \in \mathbb{N}$ 
-	
-	$$
+$$
+
+Si $\psi$ es la función Digamma, $ \rightarrow \Gamma'(x)=\Gamma(x)\psi(x)$\\
+además,  $\displaystyle\psi(n+1)=-\gamma+\sum_{k=1}^{n} \frac{1}{k} , \quad \text{para todo } n \in \mathbb{N}$
+
+$$
 	\Omega=\Gamma'(3)= \Gamma(3)\psi(3)=2\pqty{1+\frac{1}{2}-\gamma}
-	$$	  
+$$
 }
 \begin{LnxRptaBox}
-$$\lim_{n\to\infty} \lim_{x\to 2} \;\frac{{(((x!)!)! \ldots)!}_{(n \; \text{veces} )} -2}{{(((x!)!)! \ldots)!}_{(n-1 \; \text{veces} )} -2}=3-2\gamma $$
+	$$\lim_{n\to\infty} \lim_{x\to 2} \;\frac{{(((x!)!)! \ldots)!}_{(n \; \text{veces} )} -2}{{(((x!)!)! \ldots)!}_{(n-1 \; \text{veces} )} -2}=3-2\gamma $$
 \end{LnxRptaBox}
 Donde $\gamma$  es la constante de Euler-Mascheroni.
 

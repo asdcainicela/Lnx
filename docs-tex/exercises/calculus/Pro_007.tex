@@ -1,111 +1,109 @@
 \LnxPregunta{Pruebe  que,}{
 	$$
-	\displaystyle \int_0^1 x^2 \psi(x) \, dx = \ln\left(\dfrac{A^2}{\sqrt{2\pi}} \right)
+		\displaystyle \int_0^1 x^2 \psi(x) \, dx = \ln\left(\dfrac{A^2}{\sqrt{2\pi}} \right)
 	$$
 }
 
 \LnxSolucion{Solución}{
 
-	
-	
-	Utilizando la descomposición fraccionaria parcial de $\psi(x)$, 
-	
+	Utilizando la descomposición fraccionaria parcial de $\psi(x)$,
+
 	$$
-	\psi(x) =  -\gamma +\lim_{n\to\infty} \pqty{ H_{n+1} - \frac{1}{x} - \sum_{k=1}^{n} \frac{1}{k+x} }
+		\psi(x) =  -\gamma +\lim_{n\to\infty} \pqty{ H_{n+1} - \frac{1}{x} - \sum_{k=1}^{n} \frac{1}{k+x} }
 	$$
-	
+
 	Reemplazando en la integral,
 	$$
-	I= \lim_{n\to\infty} \int_{0}^{1} x^2 \left( -\gamma + H_{n+1} - \frac{1}{x} - \sum_{k=1}^{n} \frac{1}{k+x} \right) \dd{x}
+		I= \lim_{n\to\infty} \int_{0}^{1} x^2 \left( -\gamma + H_{n+1} - \frac{1}{x} - \sum_{k=1}^{n} \frac{1}{k+x} \right) \dd{x}
 	$$
 	Integrando
-	
+
 	$$
-	I= \lim_{n\to\infty} \int_{0}^{1} \left( \pqty{-\gamma + H_{n+1} }x^2- x - \sum_{k=1}^{n} \frac{x^2}{k+x} \right) \dd{x}
+		I= \lim_{n\to\infty} \int_{0}^{1} \left( \pqty{-\gamma + H_{n+1} }x^2- x - \sum_{k=1}^{n} \frac{x^2}{k+x} \right) \dd{x}
 	$$
-	
+
 	$$
-	I=\lim_{n\to\infty}  \left(  \eval{\pqty{-\gamma + H_{n+1} }\frac{x^3}{3}- \frac{x^2}{2}}_{0}^{1} - \sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x} \right) 
+		I=\lim_{n\to\infty}  \left(  \eval{\pqty{-\gamma + H_{n+1} }\frac{x^3}{3}- \frac{x^2}{2}}_{0}^{1} - \sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x} \right)
 	$$
-	
+
 	Sea la integral, [Demostración para el lector]
-	$$\displaystyle \int_{0}^{1}\frac{x^2}{k+x} \dd{x} = \frac{1}{2} - k + k^2 ( \ln(1 + k)-\ln(k) ) 
+	$$\displaystyle \int_{0}^{1}\frac{x^2}{k+x} \dd{x} = \frac{1}{2} - k + k^2 ( \ln(1 + k)-\ln(k) )
 	$$
 	Entonces,
 	$$
-	\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=\sum_{k=1}^{n} \pqty{ \frac{1}{2} - k + k^2 ( \ln(1 + k)-\ln(k) ) }	
+		\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=\sum_{k=1}^{n} \pqty{ \frac{1}{2} - k + k^2 ( \ln(1 + k)-\ln(k) ) }
 	$$
-	
+
 	$$
-	\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=
-	\frac{n}{2}-\frac{n(n+1)}{2}- \sum_{k=1}^{n} k^2 (\ln k - \ln(k+1)) 
+		\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=
+		\frac{n}{2}-\frac{n(n+1)}{2}- \sum_{k=1}^{n} k^2 (\ln k - \ln(k+1))
 	$$
-	
+
 	$$
-	\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=
-	-\frac{n^2}{2}- \sum_{k=1}^{n} k^2 (\ln k - \ln(k+1)) 
+		\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=
+		-\frac{n^2}{2}- \sum_{k=1}^{n} k^2 (\ln k - \ln(k+1))
 	$$
-	
-%	$$
-%	\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=	-\pqty{\frac{n^2}{2}+ \sum_{k=1}^{n} (2k-1)\ln k + n^2 \ln(n+1) }
-%	$$
-	
+
+	%	$$
+	%	\sum_{k=1}^{n} \int_{0}^{1}\frac{x^2}{k+x} \dd{x}=	-\pqty{\frac{n^2}{2}+ \sum_{k=1}^{n} (2k-1)\ln k + n^2 \ln(n+1) }
+	%	$$
+
 	Reemplazando en el límite,
-	
+
 	$$
-	I=\lim_{n\to\infty} \left( \frac{H_{n+1}-\gamma}{3}  - \frac{1}{2}+ \frac{n^2}{2} + \sum_{k=1}^{n} k^2 (\ln k - \ln(k+1)) \right)
+		I=\lim_{n\to\infty} \left( \frac{H_{n+1}-\gamma}{3}  - \frac{1}{2}+ \frac{n^2}{2} + \sum_{k=1}^{n} k^2 (\ln k - \ln(k+1)) \right)
 	$$
-		
+
 	$$
-I=\lim_{n\to\infty} \left( \frac{1}{3}\ln n  - \frac{1}{2} + \frac{n^2}{2}+ \sum_{k=1}^{n} (2k-1)\ln k - n^2 \ln(n+1) \right) 
+		I=\lim_{n\to\infty} \left( \frac{1}{3}\ln n  - \frac{1}{2} + \frac{n^2}{2}+ \sum_{k=1}^{n} (2k-1)\ln k - n^2 \ln(n+1) \right)
 	$$
-	
-	
-		Sean $(A_n)$ y $(B_n)$ denotados por,
-	
+
+
+	Sean $(A_n)$ y $(B_n)$ denotados por,
+
 	$$
-	A_n = \frac{1^1 2^2 \cdots n^n}{n^{n^2/2+n/2+1/12}\; e^{-n^2/4}}
-	\quad \text{y} \quad
-	B_n = \frac{n!}{e^{-n}\; n^{n+1/2}}
+		A_n = \frac{1^1 2^2 \cdots n^n}{n^{n^2/2+n/2+1/12}\; e^{-n^2/4}}
+		\quad \text{y} \quad
+		B_n = \frac{n!}{e^{-n}\; n^{n+1/2}}
 	$$
-	
-	Sabemos que $A_n \rightarrow A$ y $B_n\rightarrow \sqrt{2\pi}$ 
-	
+
+	Sabemos que $A_n \rightarrow A$ y $B_n\rightarrow \sqrt{2\pi}$
+
 	Podemos reescribir estas definiciones, mediante $\ln (.)$
-	
+
 	$$
 		\sum_{k=1}^{n} k \ln k
-		= \ln A_n + \left( \frac{n^2}{2} + \frac{n}{2} + \frac{1}{12} \right) \ln n - \frac{n^2}{4} 
-		$$
-		
-		$$
+		= \ln A_n + \left( \frac{n^2}{2} + \frac{n}{2} + \frac{1}{12} \right) \ln n - \frac{n^2}{4}
+	$$
+
+	$$
 		\sum_{k=1}^{n} \ln k
 		= \ln B_n + \left(n + \frac{1}{2}\right) \ln n - n.
 	$$
-	
-	
-	
-	
-	
-	
-	Reemplazando  $ \displaystyle \sum_{k=1}^{n} k \ln k$  \, y \,  $\displaystyle\sum_{k=1}^{n} \ln k $ en el límite 
-	
+
+
+
+
+
+
+	Reemplazando  $ \displaystyle \sum_{k=1}^{n} k \ln k$  \, y \,  $\displaystyle\sum_{k=1}^{n} \ln k $ en el límite
+
 	$$
-	I= \lim_{n\to\infty} \left(2\ln A_n - \ln B_n - n^2 \ln\left(1+\frac{1}{n}\right) + n - \frac{1}{2} \right)
+		I= \lim_{n\to\infty} \left(2\ln A_n - \ln B_n - n^2 \ln\left(1+\frac{1}{n}\right) + n - \frac{1}{2} \right)
 	$$
-	
-	Tomando límite, tenemos 
-	
+
+	Tomando límite, tenemos
+
 	$$
-	I= 2\ln A - \ln\sqrt{2\pi}
+		I= 2\ln A - \ln\sqrt{2\pi}
 	$$
-	
-	 
-	
+
+
+
 }
 \begin{LnxRptaBox}
 	$$
-		 \int_0^1 x^2 \psi(x) \, dx = \ln\left(\dfrac{A^2}{\sqrt{2\pi}} \right)
+		\int_0^1 x^2 \psi(x) \, dx = \ln\left(\dfrac{A^2}{\sqrt{2\pi}} \right)
 	$$
 \end{LnxRptaBox}
 Donde $A$  es la constante de Glaisher-Kinkelin \\

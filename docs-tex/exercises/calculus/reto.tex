@@ -7,86 +7,86 @@
 \newcommand{\polylog}[2]{\text{Li}_{#1}(#2)} % Polilogaritmo Li_n(x)
 
 \begin{document}
-	
-	\section*{Problemas por Nivel}
-	
-	\subsection*{Nivel Básico}
-	
-	\begin{enumerate}
-		\item Integral logarítmica:
-		\[
-		\int_0^1 \ln^2(1+x^2) \, dx
-		\]
-		
-		\item Integral trigonométrica:
-		\[
-		\int_0^{\pi} \frac{\sin x}{\sqrt{\sin x} + 1} \, dx
-		\]
-	\end{enumerate}
-	
-	\subsection*{Nivel Intermedio}
-	
-	\begin{enumerate}
-		\item Límite matricial: Para 
-		\( A(x) = \begin{pmatrix}
-			x^{x^{x^{x^x}}} & \sin^5(x-1) \\
-			(x-1)^5 & x^{x^{x^x}}
-		\end{pmatrix} \), y \( A^n(x) = \begin{pmatrix}
-			a_n(x) & b_n(x) \\
-			c_n(x) & d_n(x)
-		\end{pmatrix} \), calcule:
-		\[
-		\lim_{x \to 1} \frac{(a_n(x) - d_n(x))b_n(x)}{c_n^2(x)}
-		\]
-		
-		\item Integral paramétrica (para \( n \in \mathbb{N}_0 \)):
-		\[
-		\int_0^\infty \frac{\cos x}{\cosh^{2n+1} x} \, dx
-		\]
-	\end{enumerate}
-	
-	\subsection*{Nivel Avanzado}
-	
-	\begin{enumerate}
-		\item Integral matricial: Dada \( A = \begin{pmatrix}
-			a & b \\
-			b & a
-		\end{pmatrix} \), resuelva:
-		\[
-		\int_0^\infty \frac{\cos(Ax) + x \sin(Ax)}{x^2 + 1} \, dx
-		\]
-		
-		\item Integral con logaritmo:
-		\[
-		\int_{-1}^1 \frac{\ln^2(1+x^2)}{\sqrt{1-x^2}} \, dx
-		\]
-		
-		\item  : Integral de polilogaritmos:
-		\[
-		\int_0^1 \polylog{5}{x} \polylog{6}{x} \, dx
-		\]
-		donde \( \polylog{n}{x} \) es el polilogaritmo de orden \( n \):
-		\[
-		\polylog{n}{x} = \sum_{k=1}^\infty \frac{x^k}{k^n} \quad \text{para } |x| \leq 1.
-		\]
-	\end{enumerate}
-	
-	\subsection*{Nivel Experto}
-	
-	\begin{enumerate}
-		\item Límite doble anidado:
-		\[
-		\lim_{n \to \infty} \left[ n^2 \ln \left( \lim_{t \to 0^+} \left( \int_0^1 \frac{dx}{\sqrt[n]{x^n + t^n}} + \ln t \right) \right) \right]
-		\]
-		
-		\item Límite con función zeta y factoriales: 
-		\begin{align*}
-			\text{Donde } & \riemannZeta(s) \text{ es la función zeta de Riemann,} \\
-			& \eulerGamma \text{ la constante de Euler-Mascheroni, y } x! \text{ el factorial.}
-		\end{align*}
-		\[
-		\lim_{x \to \infty} \left[ \frac{1}{x} \left( \frac{\riemannZeta(1 + \frac{1}{x})}{x} \right)^{\frac{x}{\eulerGamma}} \left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}} - 4 \right] x
-		\]
-	\end{enumerate}
-	
+
+\section*{Problemas por Nivel}
+
+\subsection*{Nivel Básico}
+
+\begin{enumerate}
+	\item Integral logarítmica:
+	      \[
+		      \int_0^1 \ln^2(1+x^2) \, dx
+	      \]
+
+	\item Integral trigonométrica:
+	      \[
+		      \int_0^{\pi} \frac{\sin x}{\sqrt{\sin x} + 1} \, dx
+	      \]
+\end{enumerate}
+
+\subsection*{Nivel Intermedio}
+
+\begin{enumerate}
+	\item Límite matricial: Para
+	      \( A(x) = \begin{pmatrix}
+		      x^{x^{x^{x^x}}} & \sin^5(x-1) \\
+		      (x-1)^5         & x^{x^{x^x}}
+	      \end{pmatrix} \), y \( A^n(x) = \begin{pmatrix}
+		      a_n(x) & b_n(x) \\
+		      c_n(x) & d_n(x)
+	      \end{pmatrix} \), calcule:
+	      \[
+		      \lim_{x \to 1} \frac{(a_n(x) - d_n(x))b_n(x)}{c_n^2(x)}
+	      \]
+
+	\item Integral paramétrica (para \( n \in \mathbb{N}_0 \)):
+	      \[
+		      \int_0^\infty \frac{\cos x}{\cosh^{2n+1} x} \, dx
+	      \]
+\end{enumerate}
+
+\subsection*{Nivel Avanzado}
+
+\begin{enumerate}
+	\item Integral matricial: Dada \( A = \begin{pmatrix}
+		      a & b \\
+		      b & a
+	      \end{pmatrix} \), resuelva:
+	      \[
+		      \int_0^\infty \frac{\cos(Ax) + x \sin(Ax)}{x^2 + 1} \, dx
+	      \]
+
+	\item Integral con logaritmo:
+	      \[
+		      \int_{-1}^1 \frac{\ln^2(1+x^2)}{\sqrt{1-x^2}} \, dx
+	      \]
+
+	\item  : Integral de polilogaritmos:
+	      \[
+		      \int_0^1 \polylog{5}{x} \polylog{6}{x} \, dx
+	      \]
+	      donde \( \polylog{n}{x} \) es el polilogaritmo de orden \( n \):
+	      \[
+		      \polylog{n}{x} = \sum_{k=1}^\infty \frac{x^k}{k^n} \quad \text{para } |x| \leq 1.
+	      \]
+\end{enumerate}
+
+\subsection*{Nivel Experto}
+
+\begin{enumerate}
+	\item Límite doble anidado:
+	      \[
+		      \lim_{n \to \infty} \left[ n^2 \ln \left( \lim_{t \to 0^+} \left( \int_0^1 \frac{dx}{\sqrt[n]{x^n + t^n}} + \ln t \right) \right) \right]
+	      \]
+
+	\item Límite con función zeta y factoriales:
+	      \begin{align*}
+		      \text{Donde } & \riemannZeta(s) \text{ es la función zeta de Riemann,}                            \\
+		                    & \eulerGamma \text{ la constante de Euler-Mascheroni, y } x! \text{ el factorial.}
+	      \end{align*}
+	      \[
+		      \lim_{x \to \infty} \left[ \frac{1}{x} \left( \frac{\riemannZeta(1 + \frac{1}{x})}{x} \right)^{\frac{x}{\eulerGamma}} \left( \frac{(2x)!}{x!} \right)^{\frac{1}{x}} - 4 \right] x
+	      \]
+\end{enumerate}
+
 \end{document}
