@@ -1,0 +1,75 @@
+ \LnxPregunta{Calcule el siguiene límite $ k, n >0$, }{  
+ 	\vspace{1.5cm} 
+ 	$$
+ 	\lim_{x \to \infty} \left(\frac{(x+k)^{x^{n+1}} \sqrt{x^{2x^n-x^{n-1}} }    }{x^{x^{n+1}} \pqty{\Gamma(x)}^{x^{n-1}} } \right) ^{x^{-n}}
+ 	$$
+ 	\vspace{0.1cm}
+ 	\begin{flushleft}
+ 		%	{\Huge Si $ \text{Li}_3 $ es la función trilogarítmica. }\\
+ 		{\Huge donde \( \Gamma \) es la función Gamma.  }
+ 	\end{flushleft}
+ }
+  
+	\LnxSolucion{Solución}{
+	 
+	
+	Sea $L$ el límite a calcular, reconocemos $(ab)^n=a^n \cdot b^n$
+	
+	$$
+	L=  \lim_{x \to \infty}\left(\frac{(x+k)^{x^{n+1}}     }{x^{x^{n+1}} } \right) ^{x^{-n}}\cdot
+	\left(\frac{ \sqrt{x^{2x^n-x^{n-1}} }    }{ \pqty{\Gamma(x)}^{x^{n-1}} } \right) ^{x^{-n}}
+	$$
+	
+	Tambien vemos $a^n \cdot a^m=a^{n+m}$ 
+	
+	$$
+	L=  \lim_{x \to \infty}\frac{(x+k)^{x^{n+1-n}}     }{x^{x^{n+1-n}} } \cdot
+	\lim_{x \to \infty} \left(\frac{ \sqrt{x^{2x^{n-n+1}-x^{n-1-n+1}} }    }{ \pqty{\Gamma(x)}^{x^{n-1-n+1}} } \right)^{x^{-1}}
+	$$
+	
+	$$
+	L= \lim_{x \to \infty}\frac{(x+k)^x     }{x^x } \cdot
+	\lim_{x \to \infty} \left(\frac{ \sqrt{x^{2x-1} }    }{ \Gamma(x) } \right)^{x^{-1}}
+	$$
+	
+	Relacionamos la función Gamma con el factorial 
+	
+	$\Gamma(x)=(x-1)!$\; y\;     $ x(x-1)!=x! $
+	
+	$$
+	L=  \lim_{x \to \infty} \left( \frac{x+k    }{x }\right)^x  \cdot
+	\lim_{x \to \infty} \left(\frac{x^{x-1/2} }{ (x-1)! } \right)^{x^{-1}}
+	$$
+	
+	Es facil probar que $ \lim_{x \to \infty} \left( \frac{x+k    }{x }\right)^x = e^x$, entonces
+	
+	$$ 
+	L=	e^k \cdot
+	\lim_{x \to \infty} \left(\frac{x^{x+1/2} }{ x! } \right)^{x^{-1}}
+	$$
+	\newpage
+	
+	Mediante la aproximación de Stirling $  n!\sim n^n e^{-n}\sqrt{2\pi n }$
+	
+	$$
+	L=   e^k\lim_{x \to \infty} \left(\frac{x^{x+1/2} }{\sqrt{2\pi}\  x^{x+1/2} \ e^{-x}} \right)^{x^{-1}}
+	=
+	e^k\lim_{x \to \infty} \left(\frac{e^x }{\sqrt{2\pi}  } \right)^{x^{-1}}
+	$$
+	
+	Facilmente se comprueba que  $\lim_{x\to\infty} \sqrt[2x]{2\pi }=1$, entonces
+	
+	$$
+	L= e^k\lim_{x \to \infty} \frac{e}{\sqrt[2x]{2\pi}  } =e^k\cdot e=e^{k+1}
+	$$
+	
+	Finalmente, tenemos el valor de $L$,
+	 
+}
+
+
+\begin{LnxRptaBox} 
+	\begin{equation*}
+		   \therefore  \lim_{x \to \infty} \left(\frac{(x+k)^{x^{n+1}} \sqrt{x^{2x^n-x^{n-1}} }    }{x^{x^{n+1}} \Gamma^{x^{n-1}}(x) } \right) ^{x^{-n}}=e^{k+1}
+	\end{equation*} 
+\end{LnxRptaBox}  
